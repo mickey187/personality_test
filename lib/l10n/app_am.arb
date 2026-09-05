@@ -1,0 +1,58 @@
+{
+  "@@locale": "am",
+  "appTitle": "እኔ ማነኝ",
+
+  "landingDesc": "ስብዕናዎን ይወቁ — በሳይንስ ላይ የተመሠረተ የ Big Five ምርመራ በ 2 ደቂቃ ውስጥ።",
+  "landingTime": "~2 ደቂቃ ብቻ",
+  "landingScience": "በሳይንስ የተረጋገጠ",
+  "startButton": "ጀምር",
+  "continueButton": "ቀጥል",
+  "aboutLink": "ስለ ምርመራው",
+
+  "questionProgress": "{current} / {total}",
+  "@questionProgress": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "likert1": "በጣም ስህተት",
+  "likert2": "ትንሽ ስህተት",
+  "likert3": "ገለልተኛ",
+  "likert4": "ትንሽ ትክክል",
+  "likert5": "በጣም ትክክል",
+
+  "resultsTitle": "ውጤትዎ",
+  "resultsSubtitle": "የ Big Five ስብዕና ገጽታዎ",
+  "shareButton": "ውጤት አጋራ",
+  "retakeButton": "እንደገና ውሰድ",
+  "seeResultButton": "ውጤት ይመልከቱ",
+
+  "traitExtraversion": "ግልጽነት (ኤክስትራቨርዥን)",
+  "traitAgreeableness": "ደግነት (አግሪአብልነስ)",
+  "traitConscientiousness": "ታታሪነት (ኮንሺየንሽስነስ)",
+  "traitNeuroticism": "ስሜታዊነት (ኒውሮቲሲዝም)",
+  "traitOpenness": "ክፍትነት (ኦፕንነስ)",
+
+  "sharePreviewTitle": "ለማጋራት ይቅረቡ",
+  "shareFormatTelegram": "Telegram",
+  "shareFormatStories": "Stories",
+  "shareNow": "አሁን አጋራ",
+  "shareCardProfileLabel": "የ Big Five መገለጫ",
+  "shareCardWhoAreYou": "አንተስ ማነህ?",
+  "shareSheetText": "የ Big Five ስብዕና ውጤቴን በ«እኔ ማነኝ» አገኘሁ 🧠 አንተስ ማነህ?\n{url}",
+  "@shareSheetText": {
+    "placeholders": {
+      "url": { "type": "String" }
+    }
+  },
+
+  "aboutTitle": "ስለ ምርመራው",
+  "aboutScienceTitle": "ሳይንሳዊ መሠረት",
+  "aboutScienceDesc": "ይህ ምርመራ Mini-IPIP (Donnellan et al., 2006) ላይ የተመሠረተ ነው — 20 ጥያቄዎች ያሉት፣ በዓለም ዙሪያ ጥናት የተደረገበት Big Five ስብዕና ሞዴል። ኤክስትራቨርዥን፣ አግሪአብልነስ፣ ኮንሺየንሽስነስ፣ ኒውሮቲሲዝም እና ኦፕንነስ ይለካል።",
+  "aboutPrivacyTitle": "ግላዊነት",
+  "aboutPrivacyDesc": "ምንም ዳታ አይሰበሰብም። ውጤትዎ በስልክዎ ላይ ብቻ ይቀመጣል — ወደ ሰርቨር አይላክም፣ አካውንት አያስፈልግም።",
+  "aboutDisclaimerTitle": "ማስታወቂያ",
+  "aboutDisclaimerDesc": "ይህ ምርመራ ለራስ ግንዛቤ ብቻ ነው — ምርመራ ወይም ትንበያ ለማድረግ የተዘጋጀ አይደለም። ስለ ስብዕናዎ ጥያቄ ካለዎ ባለሙያ ያማክሩ።"
+}

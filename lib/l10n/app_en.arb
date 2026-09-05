@@ -1,0 +1,58 @@
+{
+  "@@locale": "en",
+  "appTitle": "Who Am I?",
+
+  "landingDesc": "Discover your personality — a science-based Big Five assessment in just 2 minutes.",
+  "landingTime": "~2 minutes",
+  "landingScience": "Scientifically validated",
+  "startButton": "Start Test",
+  "continueButton": "Continue",
+  "aboutLink": "About this test",
+
+  "questionProgress": "{current} / {total}",
+  "@questionProgress": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "likert1": "Very Inaccurate",
+  "likert2": "Slightly Inaccurate",
+  "likert3": "Neutral",
+  "likert4": "Slightly Accurate",
+  "likert5": "Very Accurate",
+
+  "resultsTitle": "Your Results",
+  "resultsSubtitle": "Your Big Five personality profile",
+  "shareButton": "Share Results",
+  "retakeButton": "Retake Test",
+  "seeResultButton": "See Result",
+
+  "traitExtraversion": "Extraversion",
+  "traitAgreeableness": "Agreeableness",
+  "traitConscientiousness": "Conscientiousness",
+  "traitNeuroticism": "Neuroticism",
+  "traitOpenness": "Openness",
+
+  "sharePreviewTitle": "Share Preview",
+  "shareFormatTelegram": "Telegram",
+  "shareFormatStories": "Stories",
+  "shareNow": "Share Now",
+  "shareCardProfileLabel": "Big Five Profile",
+  "shareCardWhoAreYou": "Who are you?",
+  "shareSheetText": "I discovered my Big Five personality profile with \"Who Am I?\" 🧠 What are yours?\n{url}",
+  "@shareSheetText": {
+    "placeholders": {
+      "url": { "type": "String" }
+    }
+  },
+
+  "aboutTitle": "About This Test",
+  "aboutScienceTitle": "Scientific Basis",
+  "aboutScienceDesc": "This test is based on the Mini-IPIP (Donnellan et al., 2006) — a 20-item measure of the Big Five personality traits that has been validated across many cultures. It measures Extraversion, Agreeableness, Conscientiousness, Neuroticism, and Openness.",
+  "aboutPrivacyTitle": "Privacy",
+  "aboutPrivacyDesc": "No data is collected. Your results stay on your device only — nothing is sent to a server, and no account is needed.",
+  "aboutDisclaimerTitle": "Disclaimer",
+  "aboutDisclaimerDesc": "This test is for self-reflection only — it is not designed to diagnose or predict anything. If you have questions about your personality, consult a professional."
+}
