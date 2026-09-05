@@ -19,17 +19,18 @@ abstract final class AppColors {
   /// Primary ink (`--color-text`).
   static const Color text = Color(0xFF201E1D);
 
-  /// Terracotta accent (`--color-accent`).
-  static const Color accent = Color(0xFFC67139);
+  /// Blue accent (`--color-accent`); swapped from the original terracotta,
+  /// hue-rotated to blue while preserving each step's lightness/saturation.
+  static const Color accent = Color(0xFF3982C6);
 
   /// Sage second accent (`--color-accent-2`).
   static const Color accent2 = Color(0xFF7A8A5E);
 
   // Accent ramp steps used by the design.
-  static const Color accentTint = Color(0xFFFFF2EB); // accent-100
-  static const Color accentLight = Color(0xFFF6A06B); // accent-400
-  static const Color accentHover = Color(0xFFB2622D); // accent-600
-  static const Color accentActive = Color(0xFF8C491A); // accent-700
+  static const Color accentTint = Color(0xFFEBF6FF); // accent-100
+  static const Color accentLight = Color(0xFF6BB5F6); // accent-400
+  static const Color accentHover = Color(0xFF2D72B2); // accent-600
+  static const Color accentActive = Color(0xFF1A548C); // accent-700
 
   // Neutral ramp steps used by the design.
   static const Color muted = Color(0xFFA19786); // neutral-500 (labels)
