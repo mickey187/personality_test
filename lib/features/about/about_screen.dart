@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/ads/ad_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../l10n/app_localizations.dart';
 import '../widgets/organic_widgets.dart';
@@ -46,7 +47,21 @@ class AboutScreen extends StatelessWidget {
                 title: l10n.aboutDisclaimerTitle,
                 body: l10n.aboutDisclaimerDesc,
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
+              FutureBuilder<bool>(
+                future: AdService.instance.isPrivacyOptionsRequired(),
+                builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                  if (snapshot.data != true) return const SizedBox.shrink();
+                  return Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      onPressed: () => AdService.instance.showPrivacyOptionsForm(),
+                      child: Text(l10n.aboutPrivacyOptions),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: 8),
               Center(
                 child: Text(
                   Brand.citation,

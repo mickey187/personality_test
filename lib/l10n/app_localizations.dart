@@ -319,6 +319,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This test is for self-reflection only — it is not designed to diagnose or predict anything. If you have questions about your personality, consult a professional.'**
   String get aboutDisclaimerDesc;
+
+  /// No description provided for @aboutPrivacyOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Options'**
+  String get aboutPrivacyOptions;
 }
 
 class _AppLocalizationsDelegate

@@ -26,7 +26,7 @@
   "resultsTitle": "ውጤትዎ",
   "resultsSubtitle": "የ Big Five ስብዕና ገጽታዎ",
   "shareButton": "ውጤት አጋራ",
-  "retakeButton": "እንደገና ውሰድ",
+  "retakeButton": "እንደገና ፈተናውን ውሰድ",
   "seeResultButton": "ውጤት ይመልከቱ",
 
   "traitExtraversion": "ግልጽነት (ኤክስትራቨርዥን)",
@@ -54,5 +54,6 @@
   "aboutPrivacyTitle": "ግላዊነት",
   "aboutPrivacyDesc": "ምንም ዳታ አይሰበሰብም። ውጤትዎ በስልክዎ ላይ ብቻ ይቀመጣል — ወደ ሰርቨር አይላክም፣ አካውንት አያስፈልግም።",
   "aboutDisclaimerTitle": "ማስታወቂያ",
-  "aboutDisclaimerDesc": "ይህ ምርመራ ለራስ ግንዛቤ ብቻ ነው — ምርመራ ወይም ትንበያ ለማድረግ የተዘጋጀ አይደለም። ስለ ስብዕናዎ ጥያቄ ካለዎ ባለሙያ ያማክሩ።"
+  "aboutDisclaimerDesc": "ይህ ምርመራ ለራስ ግንዛቤ ብቻ ነው — ምርመራ ወይም ትንበያ ለማድረግ የተዘጋጀ አይደለም። ስለ ስብዕናዎ ጥያቄ ካለዎ ባለሙያ ያማክሩ።",
+  "aboutPrivacyOptions": "የግላዊነት አማራጮች"
 }

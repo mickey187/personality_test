@@ -54,5 +54,6 @@
   "aboutPrivacyTitle": "Privacy",
   "aboutPrivacyDesc": "No data is collected. Your results stay on your device only — nothing is sent to a server, and no account is needed.",
   "aboutDisclaimerTitle": "Disclaimer",
-  "aboutDisclaimerDesc": "This test is for self-reflection only — it is not designed to diagnose or predict anything. If you have questions about your personality, consult a professional."
+  "aboutDisclaimerDesc": "This test is for self-reflection only — it is not designed to diagnose or predict anything. If you have questions about your personality, consult a professional.",
+  "aboutPrivacyOptions": "Privacy Options"
 }

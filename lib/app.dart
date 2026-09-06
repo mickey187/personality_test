@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_scope.dart';
+import 'core/ads/banner_ad_widget.dart';
 import 'core/fallback_localizations.dart';
 import 'core/theme/app_theme.dart';
 import 'l10n/app_localizations.dart';
@@ -48,6 +49,20 @@ class WhoAmIApp extends StatelessWidget {
             theme: buildOrganicTheme(),
             routerConfig: _router,
             debugShowCheckedModeBanner: false,
+            builder: (BuildContext context, Widget? child) {
+              return ColoredBox(
+                color: AppColors.bg,
+                child: SafeArea(
+                  top: false,
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(child: child ?? const SizedBox.shrink()),
+                      const BottomBannerAd(),
+                    ],
+                  ),
+                ),
+              );
+            },
           );
         },
       ),

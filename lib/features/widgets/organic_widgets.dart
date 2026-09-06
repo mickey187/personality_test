@@ -158,10 +158,13 @@ class SecondaryPillButton extends StatelessWidget {
         customBorder: const StadiumBorder(),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 14),
-          child: Text(
-            label,
-            textAlign: TextAlign.center,
-            style: AppFonts.display(size: 15, color: AppColors.text),
+          child: SizedBox(
+            width: double.infinity,
+            child: Text(
+              label,
+              textAlign: TextAlign.center,
+              style: AppFonts.display(size: 15, color: AppColors.text),
+            ),
           ),
         ),
       ),

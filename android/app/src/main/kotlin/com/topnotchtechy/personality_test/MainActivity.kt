@@ -1,4 +1,4 @@
-package com.mickeyhailu.personality_test
+package com.topnotchtechy.personality_test
 
 import io.flutter.embedding.android.FlutterActivity
 

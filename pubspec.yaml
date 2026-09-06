@@ -55,9 +55,6 @@ dependencies:
   # Monetisation.
   google_mobile_ads: ^8.0.0
 
-  # Launcher icon generation.
-  flutter_launcher_icons: ^0.14.4
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

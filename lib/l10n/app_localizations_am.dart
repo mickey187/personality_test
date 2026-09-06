@@ -60,7 +60,7 @@ class AppLocalizationsAm extends AppLocalizations {
   String get shareButton => 'ውጤት አጋራ';
 
   @override
-  String get retakeButton => 'እንደገና ውሰድ';
+  String get retakeButton => 'እንደገና ፈተናውን ውሰድ';
 
   @override
   String get seeResultButton => 'ውጤት ይመልከቱ';
@@ -126,4 +126,7 @@ class AppLocalizationsAm extends AppLocalizations {
   @override
   String get aboutDisclaimerDesc =>
       'ይህ ምርመራ ለራስ ግንዛቤ ብቻ ነው — ምርመራ ወይም ትንበያ ለማድረግ የተዘጋጀ አይደለም። ስለ ስብዕናዎ ጥያቄ ካለዎ ባለሙያ ያማክሩ።';
+
+  @override
+  String get aboutPrivacyOptions => 'የግላዊነት አማራጮች';
 }

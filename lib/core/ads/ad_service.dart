@@ -1,13 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 /// Loads and shows the single interstitial the app uses (gating the results
 /// reveal — see PRD; placing it right after the quiz ends is the natural
 /// transition point).
 ///
-/// Uses Google's official TEST ad unit id. Replace [_prodInterstitialId] and
-/// the AdMob app id in AndroidManifest.xml with real ids before release.
+/// Automatically uses Google's TEST ad unit id in debug/profile builds and
+/// the real AdMob unit id in release builds, so there's no manual swap
+/// before shipping.
 class AdService {
   AdService._();
   static final AdService instance = AdService._();
@@ -16,25 +18,65 @@ class AdService {
   static const String _testInterstitialId =
       'ca-app-pub-3940256099942544/1033173712';
 
-  /// TODO(release): set the real AdMob interstitial unit id here.
-  static const String? _prodInterstitialId = null;
+  static const String _prodInterstitialId =
+      'ca-app-pub-9648776500549891/6191991877';
 
-  String get _adUnitId => _prodInterstitialId ?? _testInterstitialId;
+  String get _adUnitId =>
+      kReleaseMode ? _prodInterstitialId : _testInterstitialId;
 
   bool _initialized = false;
   InterstitialAd? _interstitial;
 
-  /// Initialises the Mobile Ads SDK and preloads the interstitial. Safe to call
-  /// multiple times; never throws to the caller.
+  /// Runs the UMP consent flow, then initialises the Mobile Ads SDK and
+  /// preloads the interstitial. Safe to call multiple times; never throws to
+  /// the caller.
+  ///
+  /// Google requires consent to be gathered (EEA/UK/Swiss users) before ads
+  /// are requested; `canRequestAds()` reflects that requirement so we never
+  /// call `MobileAds.instance.initialize()` ahead of it.
   Future<void> init() async {
     if (_initialized) return;
     _initialized = true;
     try {
+      await _gatherConsent();
+      if (!await ConsentInformation.instance.canRequestAds()) return;
       await MobileAds.instance.initialize();
       _load();
     } catch (_) {
       // Ads are non-essential — swallow init failures.
     }
+  }
+
+  Future<void> _gatherConsent() {
+    final Completer<void> done = Completer<void>();
+    ConsentInformation.instance.requestConsentInfoUpdate(
+      ConsentRequestParameters(),
+      () async {
+        await ConsentForm.loadAndShowConsentFormIfRequired((FormError? _) {});
+        if (!done.isCompleted) done.complete();
+      },
+      (FormError _) {
+        if (!done.isCompleted) done.complete();
+      },
+    );
+    return done.future;
+  }
+
+  /// Whether the user's consent choice means a "Privacy options" entry point
+  /// must be shown somewhere in the app (e.g. the About screen).
+  Future<bool> isPrivacyOptionsRequired() async {
+    final PrivacyOptionsRequirementStatus status =
+        await ConsentInformation.instance.getPrivacyOptionsRequirementStatus();
+    return status == PrivacyOptionsRequirementStatus.required;
+  }
+
+  /// Re-opens the UMP privacy options form so the user can change consent.
+  Future<void> showPrivacyOptionsForm() {
+    final Completer<void> done = Completer<void>();
+    ConsentForm.showPrivacyOptionsForm((FormError? _) {
+      if (!done.isCompleted) done.complete();
+    });
+    return done.future;
   }
 
   void _load() {

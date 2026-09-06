@@ -126,4 +126,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get aboutDisclaimerDesc =>
       'This test is for self-reflection only — it is not designed to diagnose or predict anything. If you have questions about your personality, consult a professional.';
+
+  @override
+  String get aboutPrivacyOptions => 'Privacy Options';
 }
