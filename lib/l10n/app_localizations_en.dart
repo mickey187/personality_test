@@ -208,6 +208,123 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get loveResultsTitle => 'Your Love Language';
+
+  @override
+  String get loveResultsSubtitle => 'How you give and receive love';
+
+  @override
+  String get lovePrimaryLabel => 'Your primary love language';
+
+  @override
+  String get loveMeaningTitle => 'What this means for you';
+
+  @override
+  String get loveTipsTitle => 'How to connect';
+
+  @override
+  String get loveAttribution =>
+      'Based on Gary Chapman\'s Five Love Languages — a popular framework, not a validated measure.';
+
+  @override
+  String loveShareText(String value, String url) {
+    return 'My primary love language is $value — I found out with \"Who Am I?\" ❤️ What\'s yours?\n$url';
+  }
+
+  @override
+  String get loveWordsOfAffirmation => 'Words of Affirmation';
+
+  @override
+  String get loveQualityTime => 'Quality Time';
+
+  @override
+  String get loveReceivingGifts => 'Receiving Gifts';
+
+  @override
+  String get loveActsOfService => 'Acts of Service';
+
+  @override
+  String get lovePhysicalTouch => 'Physical Touch';
+
+  @override
+  String get leadershipResultsTitle => 'Your Leadership Style';
+
+  @override
+  String get leadershipResultsSubtitle => 'The styles you lead with';
+
+  @override
+  String get leadershipPrimaryLabel => 'Your dominant style';
+
+  @override
+  String get leadershipStylesTitle => 'Your top styles';
+
+  @override
+  String get leadershipFlexTitle => 'When to use them';
+
+  @override
+  String get leadershipAttribution =>
+      'Based on Daniel Goleman\'s six leadership styles (HBR, 2000).';
+
+  @override
+  String leadershipShareText(String value, String url) {
+    return 'My dominant leadership style is $value — I found out with \"Who Am I?\" 🎯 What\'s yours?\n$url';
+  }
+
+  @override
+  String get leadershipVisionary => 'Visionary';
+
+  @override
+  String get leadershipCoaching => 'Coaching';
+
+  @override
+  String get leadershipAffiliative => 'Affiliative';
+
+  @override
+  String get leadershipDemocratic => 'Democratic';
+
+  @override
+  String get leadershipPacesetting => 'Pacesetting';
+
+  @override
+  String get leadershipCommanding => 'Commanding';
+
+  @override
+  String get learningResultsTitle => 'Your Learning Style';
+
+  @override
+  String get learningResultsSubtitle => 'How you prefer to learn';
+
+  @override
+  String get learningPrimaryLabel => 'Your primary learning style';
+
+  @override
+  String get learningBestTitle => 'How you learn best';
+
+  @override
+  String get learningTipsTitle => 'Study tips';
+
+  @override
+  String get learningAttribution =>
+      'Based on the VARK model (Fleming) — a popular preference framework, not a validated predictor of outcomes.';
+
+  @override
+  String learningShareText(String value, String url) {
+    return 'My primary learning style is $value — I found out with \"Who Am I?\" 📚 What\'s yours?\n$url';
+  }
+
+  @override
+  String get learningVisual => 'Visual';
+
+  @override
+  String get learningAuditory => 'Auditory';
+
+  @override
+  String get learningReadingWriting => 'Reading / Writing';
+
+  @override
+  String get learningKinesthetic => 'Kinesthetic';
+
+  @override
   String get sharePreviewTitle => 'Share Preview';
 
   @override

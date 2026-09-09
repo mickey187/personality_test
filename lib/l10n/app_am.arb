@@ -93,6 +93,54 @@
     }
   },
 
+  "loveResultsTitle": "የፍቅር ቋንቋዎ",
+  "loveResultsSubtitle": "ፍቅርን የሚሰጡበትና የሚቀበሉበት መንገድ",
+  "lovePrimaryLabel": "ዋና የፍቅር ቋንቋዎ",
+  "loveMeaningTitle": "ይህ ለእርስዎ ምን ማለት ነው",
+  "loveTipsTitle": "እንዴት መቀራረብ እንደሚችሉ",
+  "loveAttribution": "በጋሪ ቻፕማን አምስት የፍቅር ቋንቋዎች ላይ የተመሠረተ — ታዋቂ ማዕቀፍ እንጂ የተረጋገጠ መለኪያ አይደለም።",
+  "loveShareText": "ዋና የፍቅር ቋንቋዬ {value} ነው — በ«እኔ ማነኝ» አገኘሁት ❤️ አንተስ?\n{url}",
+  "@loveShareText": {
+    "placeholders": { "value": { "type": "String" }, "url": { "type": "String" } }
+  },
+  "loveWordsOfAffirmation": "የማረጋገጫ ቃላት",
+  "loveQualityTime": "ጥራት ያለው ጊዜ",
+  "loveReceivingGifts": "ስጦታ መቀበል",
+  "loveActsOfService": "የእገዛ ተግባራት",
+  "lovePhysicalTouch": "አካላዊ ንክኪ",
+
+  "leadershipResultsTitle": "የአመራር ዘይቤዎ",
+  "leadershipResultsSubtitle": "የሚመሩባቸው ዘይቤዎች",
+  "leadershipPrimaryLabel": "ዋነኛ ዘይቤዎ",
+  "leadershipStylesTitle": "ዋና ዋና ዘይቤዎችዎ",
+  "leadershipFlexTitle": "መቼ እንደሚጠቀሙባቸው",
+  "leadershipAttribution": "በዳንኤል ጎልማን ስድስት የአመራር ዘይቤዎች (HBR, 2000) ላይ የተመሠረተ።",
+  "leadershipShareText": "ዋነኛ የአመራር ዘይቤዬ {value} ነው — በ«እኔ ማነኝ» አገኘሁት 🎯 አንተስ?\n{url}",
+  "@leadershipShareText": {
+    "placeholders": { "value": { "type": "String" }, "url": { "type": "String" } }
+  },
+  "leadershipVisionary": "ራዕይ ሰጪ",
+  "leadershipCoaching": "አሰልጣኝ",
+  "leadershipAffiliative": "አስማሚ",
+  "leadershipDemocratic": "ዲሞክራሲያዊ",
+  "leadershipPacesetting": "ፍጥነት አስያዥ",
+  "leadershipCommanding": "አዛዥ",
+
+  "learningResultsTitle": "የመማር ዘዴዎ",
+  "learningResultsSubtitle": "መማርን የሚመርጡበት መንገድ",
+  "learningPrimaryLabel": "ዋና የመማሪያ ዘዴዎ",
+  "learningBestTitle": "በተሻለ የሚማሩበት መንገድ",
+  "learningTipsTitle": "የጥናት ምክሮች",
+  "learningAttribution": "በ VARK ሞዴል (ፍሌሚንግ) ላይ የተመሠረተ — ታዋቂ የምርጫ ማዕቀፍ እንጂ የውጤት ተንባይ አይደለም።",
+  "learningShareText": "ዋና የመማሪያ ዘዴዬ {value} ነው — በ«እኔ ማነኝ» አገኘሁት 📚 አንተስ?\n{url}",
+  "@learningShareText": {
+    "placeholders": { "value": { "type": "String" }, "url": { "type": "String" } }
+  },
+  "learningVisual": "በማየት (ዓይናዊ)",
+  "learningAuditory": "በመስማት (ጆሮአዊ)",
+  "learningReadingWriting": "ንባብ / ጽሑፍ",
+  "learningKinesthetic": "በተግባር (እንቅስቃሴ)",
+
   "sharePreviewTitle": "ለማጋራት ይቅረቡ",
   "shareFormatTelegram": "Telegram",
   "shareFormatStories": "Stories",

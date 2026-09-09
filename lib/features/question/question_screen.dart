@@ -6,6 +6,9 @@ import '../../core/theme/app_theme.dart';
 import '../../data/models/question.dart';
 import '../../domain/career_scoring.dart';
 import '../../domain/eq_scoring.dart';
+import '../../domain/leadership_scoring.dart';
+import '../../domain/learning_scoring.dart';
+import '../../domain/love_scoring.dart';
 import '../../domain/scoring.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
@@ -37,6 +40,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
           l10n.careerLikert5,
         ];
       case 'eq':
+      case 'love':
+      case 'leadership':
+      case 'learning':
         return <String>[
           l10n.agreeLikert1,
           l10n.agreeLikert2,
@@ -93,6 +99,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
         await AppScope.eqResultsOf(context).complete(result);
         if (!mounted) return;
         context.go(Routes.eqResults);
+      case 'love':
+        final result = scoreLove(session.answers);
+        await AppScope.loveResultsOf(context).complete(result);
+        if (!mounted) return;
+        context.go(Routes.loveResults);
+      case 'leadership':
+        final result = scoreLeadership(session.answers);
+        await AppScope.leadershipResultsOf(context).complete(result);
+        if (!mounted) return;
+        context.go(Routes.leadershipResults);
+      case 'learning':
+        final result = scoreLearning(session.answers);
+        await AppScope.learningResultsOf(context).complete(result);
+        if (!mounted) return;
+        context.go(Routes.learningResults);
       default:
         final result = scoreAnswers(session.answers);
         await AppScope.resultsOf(context).complete(result);

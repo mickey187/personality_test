@@ -4,6 +4,9 @@ import '../features/about/about_screen.dart';
 import '../features/career_results/career_results_screen.dart';
 import '../features/eq_results/eq_results_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/leadership_results/leadership_results_screen.dart';
+import '../features/learning_results/learning_results_screen.dart';
+import '../features/love_results/love_results_screen.dart';
 import '../features/question/question_screen.dart';
 import '../features/results/results_screen.dart';
 import '../features/share/share_card_screen.dart';
@@ -17,6 +20,9 @@ abstract final class Routes {
   static const String share = '/results/share';
   static const String careerResults = '/career/results';
   static const String eqResults = '/eq/results';
+  static const String loveResults = '/love/results';
+  static const String leadershipResults = '/leadership/results';
+  static const String learningResults = '/learning/results';
   static const String about = '/about';
 }
 
@@ -58,6 +64,18 @@ GoRouter createAppRouter() {
       GoRoute(
         path: Routes.eqResults,
         builder: (context, state) => const EqResultsScreen(),
+      ),
+      GoRoute(
+        path: Routes.loveResults,
+        builder: (context, state) => const LoveResultsScreen(),
+      ),
+      GoRoute(
+        path: Routes.leadershipResults,
+        builder: (context, state) => const LeadershipResultsScreen(),
+      ),
+      GoRoute(
+        path: Routes.learningResults,
+        builder: (context, state) => const LearningResultsScreen(),
       ),
       GoRoute(
         path: Routes.about,

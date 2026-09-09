@@ -64,43 +64,45 @@ const List<TestCatalogItem> kTestCatalog = <TestCatalogItem>[
     id: 'love',
     icon: Icons.volunteer_activism_rounded,
     color: Color(0xFFC65B8A),
-    available: false,
+    available: true,
     name: LocalizedText(en: 'Love Language', am: 'የፍቅር ቋንቋ'),
     category: LocalizedText(en: 'Relationship Test', am: 'ግንኙነት ምርመራ'),
     description: LocalizedText(
-      en: 'How do you express and receive love? Discover your primary love '
-          'language.',
-      am: 'ፍቅርን እንዴት ይገልጻሉ? እንዴትስ ይቀበላሉ? የፍቅር ቋንቋዎን ያግኙ።',
+      en: "Discover how you most feel love — your primary love language, based "
+          "on Gary Chapman's five love languages.",
+      am: 'ፍቅርን በምን መንገድ በጣም እንደሚሰማዎት ይወቁ — በጋሪ ቻፕማን አምስት የፍቅር ቋንቋዎች ላይ '
+          'የተመሠረተ የእርስዎ ዋና የፍቅር ቋንቋ።',
     ),
-    duration: LocalizedText(en: '~5 min', am: '~5 ደቂቃ'),
+    duration: LocalizedText(en: '~4 min', am: '~4 ደቂቃ'),
     questions: LocalizedText(en: '25 questions', am: '25 ጥያቄዎች'),
   ),
   TestCatalogItem(
     id: 'leadership',
     icon: Icons.workspace_premium_rounded,
     color: Color(0xFF1A548C),
-    available: false,
+    available: true,
     name: LocalizedText(en: 'Leadership Style', am: 'የአመራር ዘይቤ'),
     category: LocalizedText(en: 'Career Test', am: 'ሙያ ምርመራ'),
     description: LocalizedText(
-      en: 'Discover your leadership style — visionary, collaborative, '
-          'strategic, or directive?',
-      am: 'የአመራር ዘይቤዎን ይወቁ — ራዕይ ሰጪ? ተባባሪ? ስልታዊ? ተቆጣጣሪ?',
+      en: "Discover the leadership styles you lean on, based on Daniel "
+          "Goleman's six leadership styles.",
+      am: 'የሚጠቀሙባቸውን የአመራር ዘይቤዎች ይወቁ — በዳንኤል ጎልማን ስድስት የአመራር ዘይቤዎች ላይ የተመሠረተ።',
     ),
-    duration: LocalizedText(en: '~7 min', am: '~7 ደቂቃ'),
-    questions: LocalizedText(en: '40 questions', am: '40 ጥያቄዎች'),
+    duration: LocalizedText(en: '~6 min', am: '~6 ደቂቃ'),
+    questions: LocalizedText(en: '36 questions', am: '36 ጥያቄዎች'),
   ),
   TestCatalogItem(
     id: 'learning',
     icon: Icons.menu_book_rounded,
     color: Color(0xFFAEBF92),
-    available: false,
+    available: true,
     name: LocalizedText(en: 'Learning Style', am: 'የመማር ዘዴ'),
     category: LocalizedText(en: 'Self-Knowledge', am: 'ራስን ማወቅ'),
     description: LocalizedText(
-      en: 'How do you learn best — visual, auditory, or hands-on? Find your '
-          'learning style.',
-      am: 'በምን ዘዴ ቶሎ ይማራሉ? ዓይን? ጆሮ? ተግባር? የመማሪያ ዘዴዎን ይወቁ።',
+      en: 'Discover how you prefer to learn with the VARK model — visual, '
+          'auditory, reading/writing, or hands-on.',
+      am: 'በ VARK ሞዴል መማርን በምን መንገድ እንደሚመርጡ ይወቁ — በማየት፣ በመስማት፣ በንባብና ጽሑፍ ወይም '
+          'በተግባር።',
     ),
     duration: LocalizedText(en: '~3 min', am: '~3 ደቂቃ'),
     questions: LocalizedText(en: '20 questions', am: '20 ጥያቄዎች'),

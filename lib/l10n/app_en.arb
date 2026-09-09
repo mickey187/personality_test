@@ -93,6 +93,54 @@
     }
   },
 
+  "loveResultsTitle": "Your Love Language",
+  "loveResultsSubtitle": "How you give and receive love",
+  "lovePrimaryLabel": "Your primary love language",
+  "loveMeaningTitle": "What this means for you",
+  "loveTipsTitle": "How to connect",
+  "loveAttribution": "Based on Gary Chapman's Five Love Languages — a popular framework, not a validated measure.",
+  "loveShareText": "My primary love language is {value} — I found out with \"Who Am I?\" ❤️ What's yours?\n{url}",
+  "@loveShareText": {
+    "placeholders": { "value": { "type": "String" }, "url": { "type": "String" } }
+  },
+  "loveWordsOfAffirmation": "Words of Affirmation",
+  "loveQualityTime": "Quality Time",
+  "loveReceivingGifts": "Receiving Gifts",
+  "loveActsOfService": "Acts of Service",
+  "lovePhysicalTouch": "Physical Touch",
+
+  "leadershipResultsTitle": "Your Leadership Style",
+  "leadershipResultsSubtitle": "The styles you lead with",
+  "leadershipPrimaryLabel": "Your dominant style",
+  "leadershipStylesTitle": "Your top styles",
+  "leadershipFlexTitle": "When to use them",
+  "leadershipAttribution": "Based on Daniel Goleman's six leadership styles (HBR, 2000).",
+  "leadershipShareText": "My dominant leadership style is {value} — I found out with \"Who Am I?\" 🎯 What's yours?\n{url}",
+  "@leadershipShareText": {
+    "placeholders": { "value": { "type": "String" }, "url": { "type": "String" } }
+  },
+  "leadershipVisionary": "Visionary",
+  "leadershipCoaching": "Coaching",
+  "leadershipAffiliative": "Affiliative",
+  "leadershipDemocratic": "Democratic",
+  "leadershipPacesetting": "Pacesetting",
+  "leadershipCommanding": "Commanding",
+
+  "learningResultsTitle": "Your Learning Style",
+  "learningResultsSubtitle": "How you prefer to learn",
+  "learningPrimaryLabel": "Your primary learning style",
+  "learningBestTitle": "How you learn best",
+  "learningTipsTitle": "Study tips",
+  "learningAttribution": "Based on the VARK model (Fleming) — a popular preference framework, not a validated predictor of outcomes.",
+  "learningShareText": "My primary learning style is {value} — I found out with \"Who Am I?\" 📚 What's yours?\n{url}",
+  "@learningShareText": {
+    "placeholders": { "value": { "type": "String" }, "url": { "type": "String" } }
+  },
+  "learningVisual": "Visual",
+  "learningAuditory": "Auditory",
+  "learningReadingWriting": "Reading / Writing",
+  "learningKinesthetic": "Kinesthetic",
+
   "sharePreviewTitle": "Share Preview",
   "shareFormatTelegram": "Telegram",
   "shareFormatStories": "Stories",

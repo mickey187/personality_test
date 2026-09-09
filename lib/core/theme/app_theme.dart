@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../data/models/eq.dart';
+import '../../data/models/leadership.dart';
+import '../../data/models/learning.dart';
+import '../../data/models/love.dart';
 import '../../data/models/riasec.dart';
 import '../../data/models/trait.dart';
 
@@ -73,6 +76,33 @@ const Map<EqDimension, Color> kEqColors = <EqDimension, Color>{
   EqDimension.othersAppraisal: Color(0xFF7A8A5E), // sage
   EqDimension.useOfEmotion: Color(0xFFE8A44A), // amber
   EqDimension.regulation: Color(0xFF1A548C), // dark blue
+};
+
+/// Accent colours for the five love languages on the results screen.
+const Map<LoveLanguage, Color> kLoveColors = <LoveLanguage, Color>{
+  LoveLanguage.wordsOfAffirmation: Color(0xFF3982C6), // blue
+  LoveLanguage.qualityTime: Color(0xFF7A8A5E), // sage
+  LoveLanguage.receivingGifts: Color(0xFFE8A44A), // amber
+  LoveLanguage.actsOfService: Color(0xFF1A548C), // dark blue
+  LoveLanguage.physicalTouch: Color(0xFFC65B8A), // rose
+};
+
+/// Accent colours for the six Goleman leadership styles.
+const Map<LeadershipStyle, Color> kLeadershipColors = <LeadershipStyle, Color>{
+  LeadershipStyle.visionary: Color(0xFF3982C6), // blue
+  LeadershipStyle.coaching: Color(0xFF7A8A5E), // sage
+  LeadershipStyle.affiliative: Color(0xFFC65B8A), // rose
+  LeadershipStyle.democratic: Color(0xFF6BB5F6), // light blue
+  LeadershipStyle.pacesetting: Color(0xFFE8A44A), // amber
+  LeadershipStyle.commanding: Color(0xFF1A548C), // dark blue
+};
+
+/// Accent colours for the four VARK learning modes.
+const Map<LearningStyle, Color> kLearningColors = <LearningStyle, Color>{
+  LearningStyle.visual: Color(0xFF3982C6), // blue
+  LearningStyle.auditory: Color(0xFFE8A44A), // amber
+  LearningStyle.readingWriting: Color(0xFF7A8A5E), // sage
+  LearningStyle.kinesthetic: Color(0xFF1A548C), // dark blue
 };
 
 /// Corner radii (`--radius-*`); small controls go fully pill (999px).

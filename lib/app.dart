@@ -10,6 +10,9 @@ import 'router/app_router.dart';
 import 'state/app_settings.dart';
 import 'state/career_result_store.dart';
 import 'state/eq_result_store.dart';
+import 'state/leadership_result_store.dart';
+import 'state/learning_result_store.dart';
+import 'state/love_result_store.dart';
 import 'state/result_store.dart';
 import 'state/test_session.dart';
 
@@ -22,6 +25,9 @@ class WhoAmIApp extends StatelessWidget {
     required this.results,
     required this.careerResults,
     required this.eqResults,
+    required this.loveResults,
+    required this.leadershipResults,
+    required this.learningResults,
   });
 
   final AppSettings settings;
@@ -29,6 +35,9 @@ class WhoAmIApp extends StatelessWidget {
   final ResultStore results;
   final CareerResultStore careerResults;
   final EqResultStore eqResults;
+  final LoveResultStore loveResults;
+  final LeadershipResultStore leadershipResults;
+  final LearningResultStore learningResults;
 
   static final GoRouter _router = createAppRouter();
 
@@ -40,6 +49,9 @@ class WhoAmIApp extends StatelessWidget {
       results: results,
       careerResults: careerResults,
       eqResults: eqResults,
+      loveResults: loveResults,
+      leadershipResults: leadershipResults,
+      learningResults: learningResults,
       child: ListenableBuilder(
         listenable: settings,
         builder: (BuildContext context, _) {

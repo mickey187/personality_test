@@ -207,6 +207,123 @@ class AppLocalizationsAm extends AppLocalizations {
   }
 
   @override
+  String get loveResultsTitle => 'የፍቅር ቋንቋዎ';
+
+  @override
+  String get loveResultsSubtitle => 'ፍቅርን የሚሰጡበትና የሚቀበሉበት መንገድ';
+
+  @override
+  String get lovePrimaryLabel => 'ዋና የፍቅር ቋንቋዎ';
+
+  @override
+  String get loveMeaningTitle => 'ይህ ለእርስዎ ምን ማለት ነው';
+
+  @override
+  String get loveTipsTitle => 'እንዴት መቀራረብ እንደሚችሉ';
+
+  @override
+  String get loveAttribution =>
+      'በጋሪ ቻፕማን አምስት የፍቅር ቋንቋዎች ላይ የተመሠረተ — ታዋቂ ማዕቀፍ እንጂ የተረጋገጠ መለኪያ አይደለም።';
+
+  @override
+  String loveShareText(String value, String url) {
+    return 'ዋና የፍቅር ቋንቋዬ $value ነው — በ«እኔ ማነኝ» አገኘሁት ❤️ አንተስ?\n$url';
+  }
+
+  @override
+  String get loveWordsOfAffirmation => 'የማረጋገጫ ቃላት';
+
+  @override
+  String get loveQualityTime => 'ጥራት ያለው ጊዜ';
+
+  @override
+  String get loveReceivingGifts => 'ስጦታ መቀበል';
+
+  @override
+  String get loveActsOfService => 'የእገዛ ተግባራት';
+
+  @override
+  String get lovePhysicalTouch => 'አካላዊ ንክኪ';
+
+  @override
+  String get leadershipResultsTitle => 'የአመራር ዘይቤዎ';
+
+  @override
+  String get leadershipResultsSubtitle => 'የሚመሩባቸው ዘይቤዎች';
+
+  @override
+  String get leadershipPrimaryLabel => 'ዋነኛ ዘይቤዎ';
+
+  @override
+  String get leadershipStylesTitle => 'ዋና ዋና ዘይቤዎችዎ';
+
+  @override
+  String get leadershipFlexTitle => 'መቼ እንደሚጠቀሙባቸው';
+
+  @override
+  String get leadershipAttribution =>
+      'በዳንኤል ጎልማን ስድስት የአመራር ዘይቤዎች (HBR, 2000) ላይ የተመሠረተ።';
+
+  @override
+  String leadershipShareText(String value, String url) {
+    return 'ዋነኛ የአመራር ዘይቤዬ $value ነው — በ«እኔ ማነኝ» አገኘሁት 🎯 አንተስ?\n$url';
+  }
+
+  @override
+  String get leadershipVisionary => 'ራዕይ ሰጪ';
+
+  @override
+  String get leadershipCoaching => 'አሰልጣኝ';
+
+  @override
+  String get leadershipAffiliative => 'አስማሚ';
+
+  @override
+  String get leadershipDemocratic => 'ዲሞክራሲያዊ';
+
+  @override
+  String get leadershipPacesetting => 'ፍጥነት አስያዥ';
+
+  @override
+  String get leadershipCommanding => 'አዛዥ';
+
+  @override
+  String get learningResultsTitle => 'የመማር ዘዴዎ';
+
+  @override
+  String get learningResultsSubtitle => 'መማርን የሚመርጡበት መንገድ';
+
+  @override
+  String get learningPrimaryLabel => 'ዋና የመማሪያ ዘዴዎ';
+
+  @override
+  String get learningBestTitle => 'በተሻለ የሚማሩበት መንገድ';
+
+  @override
+  String get learningTipsTitle => 'የጥናት ምክሮች';
+
+  @override
+  String get learningAttribution =>
+      'በ VARK ሞዴል (ፍሌሚንግ) ላይ የተመሠረተ — ታዋቂ የምርጫ ማዕቀፍ እንጂ የውጤት ተንባይ አይደለም።';
+
+  @override
+  String learningShareText(String value, String url) {
+    return 'ዋና የመማሪያ ዘዴዬ $value ነው — በ«እኔ ማነኝ» አገኘሁት 📚 አንተስ?\n$url';
+  }
+
+  @override
+  String get learningVisual => 'በማየት (ዓይናዊ)';
+
+  @override
+  String get learningAuditory => 'በመስማት (ጆሮአዊ)';
+
+  @override
+  String get learningReadingWriting => 'ንባብ / ጽሑፍ';
+
+  @override
+  String get learningKinesthetic => 'በተግባር (እንቅስቃሴ)';
+
+  @override
   String get sharePreviewTitle => 'ለማጋራት ይቅረቡ';
 
   @override

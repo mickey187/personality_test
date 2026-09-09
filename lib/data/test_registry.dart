@@ -1,5 +1,8 @@
 import 'career_items.dart';
 import 'eq_items.dart';
+import 'leadership_items.dart';
+import 'learning_items.dart';
+import 'love_items.dart';
 import 'mini_ipip_items.dart';
 import 'models/question.dart';
 
@@ -14,6 +17,12 @@ List<TestItem> itemsForTest(String testId) {
       return kCareerItems;
     case 'eq':
       return kEqItems;
+    case 'love':
+      return kLoveItems;
+    case 'leadership':
+      return kLeadershipItems;
+    case 'learning':
+      return kLearningItems;
     case 'bigfive':
     default:
       return kMiniIpipItems;

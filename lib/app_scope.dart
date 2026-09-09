@@ -3,6 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'state/app_settings.dart';
 import 'state/career_result_store.dart';
 import 'state/eq_result_store.dart';
+import 'state/leadership_result_store.dart';
+import 'state/learning_result_store.dart';
+import 'state/love_result_store.dart';
 import 'state/result_store.dart';
 import 'state/test_session.dart';
 
@@ -16,6 +19,9 @@ class AppScope extends InheritedWidget {
     required this.results,
     required this.careerResults,
     required this.eqResults,
+    required this.loveResults,
+    required this.leadershipResults,
+    required this.learningResults,
     required super.child,
   });
 
@@ -24,6 +30,9 @@ class AppScope extends InheritedWidget {
   final ResultStore results;
   final CareerResultStore careerResults;
   final EqResultStore eqResults;
+  final LoveResultStore loveResults;
+  final LeadershipResultStore leadershipResults;
+  final LearningResultStore learningResults;
 
   static AppScope _of(BuildContext context) {
     final AppScope? scope = context.getInheritedWidgetOfExactType<AppScope>();
@@ -38,6 +47,12 @@ class AppScope extends InheritedWidget {
       _of(context).careerResults;
   static EqResultStore eqResultsOf(BuildContext context) =>
       _of(context).eqResults;
+  static LoveResultStore loveResultsOf(BuildContext context) =>
+      _of(context).loveResults;
+  static LeadershipResultStore leadershipResultsOf(BuildContext context) =>
+      _of(context).leadershipResults;
+  static LearningResultStore learningResultsOf(BuildContext context) =>
+      _of(context).learningResults;
 
   @override
   bool updateShouldNotify(AppScope oldWidget) =>
@@ -45,5 +60,8 @@ class AppScope extends InheritedWidget {
       session != oldWidget.session ||
       results != oldWidget.results ||
       careerResults != oldWidget.careerResults ||
-      eqResults != oldWidget.eqResults;
+      eqResults != oldWidget.eqResults ||
+      loveResults != oldWidget.loveResults ||
+      leadershipResults != oldWidget.leadershipResults ||
+      learningResults != oldWidget.learningResults;
 }

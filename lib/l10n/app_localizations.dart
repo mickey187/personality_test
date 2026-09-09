@@ -476,6 +476,222 @@ abstract class AppLocalizations {
   /// **'My EQ score is {percent}% ({level}) — I discovered my emotional intelligence profile with \"Who Am I?\" 🧠 What\'s yours?\n{url}'**
   String eqShareText(int percent, String level, String url);
 
+  /// No description provided for @loveResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Love Language'**
+  String get loveResultsTitle;
+
+  /// No description provided for @loveResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How you give and receive love'**
+  String get loveResultsSubtitle;
+
+  /// No description provided for @lovePrimaryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your primary love language'**
+  String get lovePrimaryLabel;
+
+  /// No description provided for @loveMeaningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What this means for you'**
+  String get loveMeaningTitle;
+
+  /// No description provided for @loveTipsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How to connect'**
+  String get loveTipsTitle;
+
+  /// No description provided for @loveAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on Gary Chapman\'s Five Love Languages — a popular framework, not a validated measure.'**
+  String get loveAttribution;
+
+  /// No description provided for @loveShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'My primary love language is {value} — I found out with \"Who Am I?\" ❤️ What\'s yours?\n{url}'**
+  String loveShareText(String value, String url);
+
+  /// No description provided for @loveWordsOfAffirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Words of Affirmation'**
+  String get loveWordsOfAffirmation;
+
+  /// No description provided for @loveQualityTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality Time'**
+  String get loveQualityTime;
+
+  /// No description provided for @loveReceivingGifts.
+  ///
+  /// In en, this message translates to:
+  /// **'Receiving Gifts'**
+  String get loveReceivingGifts;
+
+  /// No description provided for @loveActsOfService.
+  ///
+  /// In en, this message translates to:
+  /// **'Acts of Service'**
+  String get loveActsOfService;
+
+  /// No description provided for @lovePhysicalTouch.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical Touch'**
+  String get lovePhysicalTouch;
+
+  /// No description provided for @leadershipResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Leadership Style'**
+  String get leadershipResultsTitle;
+
+  /// No description provided for @leadershipResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The styles you lead with'**
+  String get leadershipResultsSubtitle;
+
+  /// No description provided for @leadershipPrimaryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your dominant style'**
+  String get leadershipPrimaryLabel;
+
+  /// No description provided for @leadershipStylesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your top styles'**
+  String get leadershipStylesTitle;
+
+  /// No description provided for @leadershipFlexTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'When to use them'**
+  String get leadershipFlexTitle;
+
+  /// No description provided for @leadershipAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on Daniel Goleman\'s six leadership styles (HBR, 2000).'**
+  String get leadershipAttribution;
+
+  /// No description provided for @leadershipShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'My dominant leadership style is {value} — I found out with \"Who Am I?\" 🎯 What\'s yours?\n{url}'**
+  String leadershipShareText(String value, String url);
+
+  /// No description provided for @leadershipVisionary.
+  ///
+  /// In en, this message translates to:
+  /// **'Visionary'**
+  String get leadershipVisionary;
+
+  /// No description provided for @leadershipCoaching.
+  ///
+  /// In en, this message translates to:
+  /// **'Coaching'**
+  String get leadershipCoaching;
+
+  /// No description provided for @leadershipAffiliative.
+  ///
+  /// In en, this message translates to:
+  /// **'Affiliative'**
+  String get leadershipAffiliative;
+
+  /// No description provided for @leadershipDemocratic.
+  ///
+  /// In en, this message translates to:
+  /// **'Democratic'**
+  String get leadershipDemocratic;
+
+  /// No description provided for @leadershipPacesetting.
+  ///
+  /// In en, this message translates to:
+  /// **'Pacesetting'**
+  String get leadershipPacesetting;
+
+  /// No description provided for @leadershipCommanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Commanding'**
+  String get leadershipCommanding;
+
+  /// No description provided for @learningResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Learning Style'**
+  String get learningResultsTitle;
+
+  /// No description provided for @learningResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How you prefer to learn'**
+  String get learningResultsSubtitle;
+
+  /// No description provided for @learningPrimaryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your primary learning style'**
+  String get learningPrimaryLabel;
+
+  /// No description provided for @learningBestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How you learn best'**
+  String get learningBestTitle;
+
+  /// No description provided for @learningTipsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Study tips'**
+  String get learningTipsTitle;
+
+  /// No description provided for @learningAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on the VARK model (Fleming) — a popular preference framework, not a validated predictor of outcomes.'**
+  String get learningAttribution;
+
+  /// No description provided for @learningShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'My primary learning style is {value} — I found out with \"Who Am I?\" 📚 What\'s yours?\n{url}'**
+  String learningShareText(String value, String url);
+
+  /// No description provided for @learningVisual.
+  ///
+  /// In en, this message translates to:
+  /// **'Visual'**
+  String get learningVisual;
+
+  /// No description provided for @learningAuditory.
+  ///
+  /// In en, this message translates to:
+  /// **'Auditory'**
+  String get learningAuditory;
+
+  /// No description provided for @learningReadingWriting.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading / Writing'**
+  String get learningReadingWriting;
+
+  /// No description provided for @learningKinesthetic.
+  ///
+  /// In en, this message translates to:
+  /// **'Kinesthetic'**
+  String get learningKinesthetic;
+
   /// No description provided for @sharePreviewTitle.
   ///
   /// In en, this message translates to:
