@@ -122,6 +122,24 @@ abstract class AppLocalizations {
   /// **'Scientifically validated'**
   String get landingScience;
 
+  /// No description provided for @homeGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Know yourself — pick a test'**
+  String get homeGreeting;
+
+  /// No description provided for @soonBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Soon'**
+  String get soonBadge;
+
+  /// No description provided for @comingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming Soon'**
+  String get comingSoon;
+
   /// No description provided for @startButton.
   ///
   /// In en, this message translates to:
@@ -175,6 +193,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Very Accurate'**
   String get likert5;
+
+  /// No description provided for @careerLikert1.
+  ///
+  /// In en, this message translates to:
+  /// **'Strongly Dislike'**
+  String get careerLikert1;
+
+  /// No description provided for @careerLikert2.
+  ///
+  /// In en, this message translates to:
+  /// **'Dislike'**
+  String get careerLikert2;
+
+  /// No description provided for @careerLikert3.
+  ///
+  /// In en, this message translates to:
+  /// **'Unsure'**
+  String get careerLikert3;
+
+  /// No description provided for @careerLikert4.
+  ///
+  /// In en, this message translates to:
+  /// **'Like'**
+  String get careerLikert4;
+
+  /// No description provided for @careerLikert5.
+  ///
+  /// In en, this message translates to:
+  /// **'Strongly Like'**
+  String get careerLikert5;
+
+  /// No description provided for @agreeLikert1.
+  ///
+  /// In en, this message translates to:
+  /// **'Strongly Disagree'**
+  String get agreeLikert1;
+
+  /// No description provided for @agreeLikert2.
+  ///
+  /// In en, this message translates to:
+  /// **'Disagree'**
+  String get agreeLikert2;
+
+  /// No description provided for @agreeLikert3.
+  ///
+  /// In en, this message translates to:
+  /// **'Neutral'**
+  String get agreeLikert3;
+
+  /// No description provided for @agreeLikert4.
+  ///
+  /// In en, this message translates to:
+  /// **'Agree'**
+  String get agreeLikert4;
+
+  /// No description provided for @agreeLikert5.
+  ///
+  /// In en, this message translates to:
+  /// **'Strongly Agree'**
+  String get agreeLikert5;
 
   /// No description provided for @resultsTitle.
   ///
@@ -235,6 +313,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Openness'**
   String get traitOpenness;
+
+  /// No description provided for @careerResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Career Profile'**
+  String get careerResultsTitle;
+
+  /// No description provided for @careerResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your RIASEC interest profile'**
+  String get careerResultsSubtitle;
+
+  /// No description provided for @careerCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your interest code'**
+  String get careerCodeLabel;
+
+  /// No description provided for @careerTopInterests.
+  ///
+  /// In en, this message translates to:
+  /// **'Your top interests'**
+  String get careerTopInterests;
+
+  /// No description provided for @careersThatFit.
+  ///
+  /// In en, this message translates to:
+  /// **'Careers that fit you'**
+  String get careersThatFit;
+
+  /// No description provided for @onetAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest items adapted from the O*NET Interest Profiler, U.S. Dept. of Labor (CC BY 4.0).'**
+  String get onetAttribution;
+
+  /// No description provided for @careerShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'My career interest code is {code} — I discovered careers that fit me with \"Who Am I?\" 🧭 What\'s yours?\n{url}'**
+  String careerShareText(String code, String url);
+
+  /// No description provided for @riasecRealistic.
+  ///
+  /// In en, this message translates to:
+  /// **'Realistic (Doers)'**
+  String get riasecRealistic;
+
+  /// No description provided for @riasecInvestigative.
+  ///
+  /// In en, this message translates to:
+  /// **'Investigative (Thinkers)'**
+  String get riasecInvestigative;
+
+  /// No description provided for @riasecArtistic.
+  ///
+  /// In en, this message translates to:
+  /// **'Artistic (Creators)'**
+  String get riasecArtistic;
+
+  /// No description provided for @riasecSocial.
+  ///
+  /// In en, this message translates to:
+  /// **'Social (Helpers)'**
+  String get riasecSocial;
+
+  /// No description provided for @riasecEnterprising.
+  ///
+  /// In en, this message translates to:
+  /// **'Enterprising (Persuaders)'**
+  String get riasecEnterprising;
+
+  /// No description provided for @riasecConventional.
+  ///
+  /// In en, this message translates to:
+  /// **'Conventional (Organizers)'**
+  String get riasecConventional;
+
+  /// No description provided for @eqResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your EQ Profile'**
+  String get eqResultsTitle;
+
+  /// No description provided for @eqResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your emotional intelligence across four skills'**
+  String get eqResultsSubtitle;
+
+  /// No description provided for @eqOverallLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your EQ score'**
+  String get eqOverallLabel;
+
+  /// No description provided for @eqStrengthsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your strengths'**
+  String get eqStrengthsTitle;
+
+  /// No description provided for @eqGrowthTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Where to grow'**
+  String get eqGrowthTitle;
+
+  /// No description provided for @eqLevelDeveloping.
+  ///
+  /// In en, this message translates to:
+  /// **'Developing'**
+  String get eqLevelDeveloping;
+
+  /// No description provided for @eqLevelBalanced.
+  ///
+  /// In en, this message translates to:
+  /// **'Balanced'**
+  String get eqLevelBalanced;
+
+  /// No description provided for @eqLevelStrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Strong'**
+  String get eqLevelStrong;
+
+  /// No description provided for @eqAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on the Wong & Law Emotional Intelligence Scale (WLEIS) and the Mayer–Salovey four-branch model.'**
+  String get eqAttribution;
+
+  /// No description provided for @eqSelfAppraisal.
+  ///
+  /// In en, this message translates to:
+  /// **'Understanding Yourself'**
+  String get eqSelfAppraisal;
+
+  /// No description provided for @eqOthersAppraisal.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Others'**
+  String get eqOthersAppraisal;
+
+  /// No description provided for @eqUseOfEmotion.
+  ///
+  /// In en, this message translates to:
+  /// **'Using Emotions'**
+  String get eqUseOfEmotion;
+
+  /// No description provided for @eqRegulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Managing Emotions'**
+  String get eqRegulation;
+
+  /// No description provided for @eqShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'My EQ score is {percent}% ({level}) — I discovered my emotional intelligence profile with \"Who Am I?\" 🧠 What\'s yours?\n{url}'**
+  String eqShareText(int percent, String level, String url);
 
   /// No description provided for @sharePreviewTitle.
   ///

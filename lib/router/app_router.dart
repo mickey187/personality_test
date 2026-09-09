@@ -1,10 +1,13 @@
 import 'package:go_router/go_router.dart';
 
 import '../features/about/about_screen.dart';
-import '../features/landing/landing_screen.dart';
+import '../features/career_results/career_results_screen.dart';
+import '../features/eq_results/eq_results_screen.dart';
+import '../features/home/home_screen.dart';
 import '../features/question/question_screen.dart';
 import '../features/results/results_screen.dart';
 import '../features/share/share_card_screen.dart';
+import '../features/test_detail/test_detail_screen.dart';
 
 /// Route path constants.
 abstract final class Routes {
@@ -12,22 +15,31 @@ abstract final class Routes {
   static const String test = '/test';
   static const String results = '/results';
   static const String share = '/results/share';
+  static const String careerResults = '/career/results';
+  static const String eqResults = '/eq/results';
   static const String about = '/about';
 }
 
-/// Builds the app router. Flat routes matching the design's screen flow:
-/// landing → test → results → (share), plus about.
+/// Builds the app router. Screen flow: home → test detail → questions →
+/// results → (share), plus about.
 GoRouter createAppRouter() {
   return GoRouter(
     initialLocation: Routes.landing,
     routes: <RouteBase>[
       GoRoute(
         path: Routes.landing,
-        builder: (context, state) => const LandingScreen(),
+        builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
-        path: Routes.test,
-        builder: (context, state) => const QuestionScreen(),
+        path: '${Routes.test}/:id',
+        builder: (context, state) =>
+            TestDetailScreen(testId: state.pathParameters['id']!),
+        routes: <RouteBase>[
+          GoRoute(
+            path: 'questions',
+            builder: (context, state) => const QuestionScreen(),
+          ),
+        ],
       ),
       GoRoute(
         path: Routes.results,
@@ -38,6 +50,14 @@ GoRouter createAppRouter() {
             builder: (context, state) => const ShareCardScreen(),
           ),
         ],
+      ),
+      GoRoute(
+        path: Routes.careerResults,
+        builder: (context, state) => const CareerResultsScreen(),
+      ),
+      GoRoute(
+        path: Routes.eqResults,
+        builder: (context, state) => const EqResultsScreen(),
       ),
       GoRoute(
         path: Routes.about,

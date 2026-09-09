@@ -10,38 +10,46 @@ class LanguageToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = AppScope.settingsOf(context);
-    final bool isAm = settings.localeCode == 'am';
-    return Container(
-      padding: const EdgeInsets.all(3),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(AppRadii.pill),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          _LangChip(
-            label: 'አማ',
-            selected: isAm,
-            style: AppFonts.ethiopic(
-              size: 12,
-              weight: FontWeight.w600,
-              color: isAm ? AppColors.bg : AppColors.muted,
-            ),
-            onTap: () => settings.setLocaleCode('am'),
+    // Listen to the settings store so the selected pill updates on toggle.
+    // Without this the widget (often used `const`) never rebuilds, leaving the
+    // toggle visually stuck even though the app locale actually changes.
+    return ListenableBuilder(
+      listenable: settings,
+      builder: (BuildContext context, _) {
+        final bool isAm = settings.localeCode == 'am';
+        return Container(
+          padding: const EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            color: AppColors.surface,
+            borderRadius: BorderRadius.circular(AppRadii.pill),
           ),
-          _LangChip(
-            label: 'EN',
-            selected: !isAm,
-            style: AppFonts.body(
-              size: 12,
-              weight: FontWeight.w600,
-              color: !isAm ? AppColors.bg : AppColors.muted,
-            ),
-            onTap: () => settings.setLocaleCode('en'),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              _LangChip(
+                label: 'አማ',
+                selected: isAm,
+                style: AppFonts.ethiopic(
+                  size: 12,
+                  weight: FontWeight.w600,
+                  color: isAm ? AppColors.bg : AppColors.muted,
+                ),
+                onTap: () => settings.setLocaleCode('am'),
+              ),
+              _LangChip(
+                label: 'EN',
+                selected: !isAm,
+                style: AppFonts.body(
+                  size: 12,
+                  weight: FontWeight.w600,
+                  color: !isAm ? AppColors.bg : AppColors.muted,
+                ),
+                onTap: () => settings.setLocaleCode('en'),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

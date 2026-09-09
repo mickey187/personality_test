@@ -8,6 +8,8 @@ import 'core/theme/app_theme.dart';
 import 'l10n/app_localizations.dart';
 import 'router/app_router.dart';
 import 'state/app_settings.dart';
+import 'state/career_result_store.dart';
+import 'state/eq_result_store.dart';
 import 'state/result_store.dart';
 import 'state/test_session.dart';
 
@@ -18,11 +20,15 @@ class WhoAmIApp extends StatelessWidget {
     required this.settings,
     required this.session,
     required this.results,
+    required this.careerResults,
+    required this.eqResults,
   });
 
   final AppSettings settings;
   final TestSession session;
   final ResultStore results;
+  final CareerResultStore careerResults;
+  final EqResultStore eqResults;
 
   static final GoRouter _router = createAppRouter();
 
@@ -32,6 +38,8 @@ class WhoAmIApp extends StatelessWidget {
       settings: settings,
       session: session,
       results: results,
+      careerResults: careerResults,
+      eqResults: eqResults,
       child: ListenableBuilder(
         listenable: settings,
         builder: (BuildContext context, _) {

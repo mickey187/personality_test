@@ -73,6 +73,18 @@ class AboutScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 8),
+              Center(
+                child: Text(
+                  l10n.onetAttribution,
+                  textAlign: TextAlign.center,
+                  style: AppFonts.body(
+                    size: 12,
+                    color: AppColors.muted,
+                    height: 1.5,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

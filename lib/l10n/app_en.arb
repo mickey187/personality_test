@@ -5,6 +5,9 @@
   "landingDesc": "Discover your personality — a science-based Big Five assessment in just 2 minutes.",
   "landingTime": "~2 minutes",
   "landingScience": "Scientifically validated",
+  "homeGreeting": "Know yourself — pick a test",
+  "soonBadge": "Soon",
+  "comingSoon": "Coming Soon",
   "startButton": "Start Test",
   "continueButton": "Continue",
   "aboutLink": "About this test",
@@ -23,6 +26,18 @@
   "likert4": "Slightly Accurate",
   "likert5": "Very Accurate",
 
+  "careerLikert1": "Strongly Dislike",
+  "careerLikert2": "Dislike",
+  "careerLikert3": "Unsure",
+  "careerLikert4": "Like",
+  "careerLikert5": "Strongly Like",
+
+  "agreeLikert1": "Strongly Disagree",
+  "agreeLikert2": "Disagree",
+  "agreeLikert3": "Neutral",
+  "agreeLikert4": "Agree",
+  "agreeLikert5": "Strongly Agree",
+
   "resultsTitle": "Your Results",
   "resultsSubtitle": "Your Big Five personality profile",
   "shareButton": "Share Results",
@@ -34,6 +49,49 @@
   "traitConscientiousness": "Conscientiousness",
   "traitNeuroticism": "Neuroticism",
   "traitOpenness": "Openness",
+
+  "careerResultsTitle": "Your Career Profile",
+  "careerResultsSubtitle": "Your RIASEC interest profile",
+  "careerCodeLabel": "Your interest code",
+  "careerTopInterests": "Your top interests",
+  "careersThatFit": "Careers that fit you",
+  "onetAttribution": "Interest items adapted from the O*NET Interest Profiler, U.S. Dept. of Labor (CC BY 4.0).",
+  "careerShareText": "My career interest code is {code} — I discovered careers that fit me with \"Who Am I?\" 🧭 What's yours?\n{url}",
+  "@careerShareText": {
+    "placeholders": {
+      "code": { "type": "String" },
+      "url": { "type": "String" }
+    }
+  },
+
+  "riasecRealistic": "Realistic (Doers)",
+  "riasecInvestigative": "Investigative (Thinkers)",
+  "riasecArtistic": "Artistic (Creators)",
+  "riasecSocial": "Social (Helpers)",
+  "riasecEnterprising": "Enterprising (Persuaders)",
+  "riasecConventional": "Conventional (Organizers)",
+
+  "eqResultsTitle": "Your EQ Profile",
+  "eqResultsSubtitle": "Your emotional intelligence across four skills",
+  "eqOverallLabel": "Your EQ score",
+  "eqStrengthsTitle": "Your strengths",
+  "eqGrowthTitle": "Where to grow",
+  "eqLevelDeveloping": "Developing",
+  "eqLevelBalanced": "Balanced",
+  "eqLevelStrong": "Strong",
+  "eqAttribution": "Based on the Wong & Law Emotional Intelligence Scale (WLEIS) and the Mayer–Salovey four-branch model.",
+  "eqSelfAppraisal": "Understanding Yourself",
+  "eqOthersAppraisal": "Reading Others",
+  "eqUseOfEmotion": "Using Emotions",
+  "eqRegulation": "Managing Emotions",
+  "eqShareText": "My EQ score is {percent}% ({level}) — I discovered my emotional intelligence profile with \"Who Am I?\" 🧠 What's yours?\n{url}",
+  "@eqShareText": {
+    "placeholders": {
+      "percent": { "type": "int" },
+      "level": { "type": "String" },
+      "url": { "type": "String" }
+    }
+  },
 
   "sharePreviewTitle": "Share Preview",
   "shareFormatTelegram": "Telegram",

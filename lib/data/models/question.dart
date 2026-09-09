@@ -16,8 +16,17 @@ class LocalizedText {
   String resolve(String languageCode) => languageCode == 'am' ? am : en;
 }
 
+/// A test item that the shared quiz flow can present: a stable [id] and the
+/// localized statement [text] shown on screen. Both [Question] (Big Five) and
+/// [CareerItem] (RIASEC) implement this so [TestSession] / the question screen
+/// stay test-agnostic.
+abstract interface class TestItem {
+  int get id;
+  LocalizedText get text;
+}
+
 /// A single Mini-IPIP item.
-class Question {
+class Question implements TestItem {
   const Question({
     required this.id,
     required this.trait,
@@ -26,6 +35,7 @@ class Question {
   });
 
   /// 1-based item number in canonical Mini-IPIP order.
+  @override
   final int id;
 
   /// Which Big Five trait this item loads onto.
@@ -37,5 +47,6 @@ class Question {
   final bool reverseScored;
 
   /// First-person statement shown to the user, in each supported language.
+  @override
   final LocalizedText text;
 }

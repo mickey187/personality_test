@@ -22,6 +22,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get landingScience => 'Scientifically validated';
 
   @override
+  String get homeGreeting => 'Know yourself — pick a test';
+
+  @override
+  String get soonBadge => 'Soon';
+
+  @override
+  String get comingSoon => 'Coming Soon';
+
+  @override
   String get startButton => 'Start Test';
 
   @override
@@ -49,6 +58,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get likert5 => 'Very Accurate';
+
+  @override
+  String get careerLikert1 => 'Strongly Dislike';
+
+  @override
+  String get careerLikert2 => 'Dislike';
+
+  @override
+  String get careerLikert3 => 'Unsure';
+
+  @override
+  String get careerLikert4 => 'Like';
+
+  @override
+  String get careerLikert5 => 'Strongly Like';
+
+  @override
+  String get agreeLikert1 => 'Strongly Disagree';
+
+  @override
+  String get agreeLikert2 => 'Disagree';
+
+  @override
+  String get agreeLikert3 => 'Neutral';
+
+  @override
+  String get agreeLikert4 => 'Agree';
+
+  @override
+  String get agreeLikert5 => 'Strongly Agree';
 
   @override
   String get resultsTitle => 'Your Results';
@@ -79,6 +118,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get traitOpenness => 'Openness';
+
+  @override
+  String get careerResultsTitle => 'Your Career Profile';
+
+  @override
+  String get careerResultsSubtitle => 'Your RIASEC interest profile';
+
+  @override
+  String get careerCodeLabel => 'Your interest code';
+
+  @override
+  String get careerTopInterests => 'Your top interests';
+
+  @override
+  String get careersThatFit => 'Careers that fit you';
+
+  @override
+  String get onetAttribution =>
+      'Interest items adapted from the O*NET Interest Profiler, U.S. Dept. of Labor (CC BY 4.0).';
+
+  @override
+  String careerShareText(String code, String url) {
+    return 'My career interest code is $code — I discovered careers that fit me with \"Who Am I?\" 🧭 What\'s yours?\n$url';
+  }
+
+  @override
+  String get riasecRealistic => 'Realistic (Doers)';
+
+  @override
+  String get riasecInvestigative => 'Investigative (Thinkers)';
+
+  @override
+  String get riasecArtistic => 'Artistic (Creators)';
+
+  @override
+  String get riasecSocial => 'Social (Helpers)';
+
+  @override
+  String get riasecEnterprising => 'Enterprising (Persuaders)';
+
+  @override
+  String get riasecConventional => 'Conventional (Organizers)';
+
+  @override
+  String get eqResultsTitle => 'Your EQ Profile';
+
+  @override
+  String get eqResultsSubtitle =>
+      'Your emotional intelligence across four skills';
+
+  @override
+  String get eqOverallLabel => 'Your EQ score';
+
+  @override
+  String get eqStrengthsTitle => 'Your strengths';
+
+  @override
+  String get eqGrowthTitle => 'Where to grow';
+
+  @override
+  String get eqLevelDeveloping => 'Developing';
+
+  @override
+  String get eqLevelBalanced => 'Balanced';
+
+  @override
+  String get eqLevelStrong => 'Strong';
+
+  @override
+  String get eqAttribution =>
+      'Based on the Wong & Law Emotional Intelligence Scale (WLEIS) and the Mayer–Salovey four-branch model.';
+
+  @override
+  String get eqSelfAppraisal => 'Understanding Yourself';
+
+  @override
+  String get eqOthersAppraisal => 'Reading Others';
+
+  @override
+  String get eqUseOfEmotion => 'Using Emotions';
+
+  @override
+  String get eqRegulation => 'Managing Emotions';
+
+  @override
+  String eqShareText(int percent, String level, String url) {
+    return 'My EQ score is $percent% ($level) — I discovered my emotional intelligence profile with \"Who Am I?\" 🧠 What\'s yours?\n$url';
+  }
 
   @override
   String get sharePreviewTitle => 'Share Preview';

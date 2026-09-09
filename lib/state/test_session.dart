@@ -5,24 +5,31 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/mini_ipip_items.dart';
 import '../data/models/question.dart';
-import '../data/models/test_result.dart';
-import '../domain/scoring.dart';
+import '../data/test_registry.dart';
 
 const String _progressKey = 'in_progress_v1';
 
+/// The default test id used when none has been configured yet.
+const String _defaultTestId = 'bigfive';
+
 /// Drives the one-question-per-screen test flow and holds the user's answers.
 ///
-/// In-progress state (answers + position) is persisted to shared_preferences so
-/// the user can close the app mid-test and resume from the intro screen. It is
-/// cleared on completion or reset.
+/// A single session serves every test: [configure] swaps in the selected test's
+/// item set. In-progress state (test id + answers + position) is persisted to
+/// shared_preferences so the user can close the app mid-test and resume the same
+/// test. It is cleared on completion or reset.
 class TestSession extends ChangeNotifier {
-  TestSession(this._prefs, {List<Question>? questions})
-      : questions = questions ?? kMiniIpipItems;
+  TestSession(this._prefs, {String? testId, List<TestItem>? items})
+      : testId = testId ?? _defaultTestId,
+        questions = items ?? kMiniIpipItems;
 
   final SharedPreferences _prefs;
 
-  /// Items in presentation order.
-  final List<Question> questions;
+  /// The catalog id of the test currently loaded (e.g. 'bigfive', 'career').
+  String testId;
+
+  /// Items in presentation order for the current test.
+  List<TestItem> questions;
 
   final Map<int, int> _answers = <int, int>{};
   int _currentIndex = 0;
@@ -35,7 +42,7 @@ class TestSession extends ChangeNotifier {
   /// 1-based position for display (e.g. "6 / 20").
   int get currentPosition => _currentIndex + 1;
 
-  Question get currentQuestion => questions[_currentIndex];
+  TestItem get currentQuestion => questions[_currentIndex];
 
   int get answeredCount => _answers.length;
 
@@ -50,8 +57,25 @@ class TestSession extends ChangeNotifier {
 
   bool get canGoBack => _currentIndex > 0;
 
+  /// A snapshot of the current answers (id → response 1–5), for scoring.
+  Map<int, int> get answers => Map<int, int>.of(_answers);
+
   /// The response (1–5) previously given for [questionId], or `null`.
   int? responseFor(int questionId) => _answers[questionId];
+
+  /// Loads [items] for [testId] and clears any prior answers. Called when
+  /// starting a test fresh (i.e. not resuming an in-progress one).
+  Future<void> configure({
+    required String testId,
+    required List<TestItem> items,
+  }) async {
+    this.testId = testId;
+    questions = items;
+    _answers.clear();
+    _currentIndex = 0;
+    await _persist();
+    notifyListeners();
+  }
 
   /// Records [value] (1–5) for the current question and advances to the next
   /// unanswered position (or stays on the last question when finished).
@@ -73,14 +97,6 @@ class TestSession extends ChangeNotifier {
 
   void goBack() => goTo(_currentIndex - 1);
 
-  /// Scores the completed test. Throws if called before [isComplete].
-  TestResult buildResult() {
-    if (!isComplete) {
-      throw StateError('Cannot score an incomplete test');
-    }
-    return scoreAnswers(Map<int, int>.of(_answers), items: questions);
-  }
-
   /// Restores any saved in-progress session from disk. Call once at startup.
   Future<void> restore() async {
     final String? raw = _prefs.getString(_progressKey);
@@ -88,6 +104,8 @@ class TestSession extends ChangeNotifier {
     try {
       final Map<String, dynamic> data =
           jsonDecode(raw) as Map<String, dynamic>;
+      testId = data['testId'] as String? ?? _defaultTestId;
+      questions = itemsForTest(testId);
       final Map<String, dynamic> saved =
           (data['answers'] as Map).cast<String, dynamic>();
       _answers
@@ -116,6 +134,7 @@ class TestSession extends ChangeNotifier {
     await _prefs.setString(
       _progressKey,
       jsonEncode(<String, dynamic>{
+        'testId': testId,
         'index': _currentIndex,
         'answers': <String, int>{
           for (final MapEntry<int, int> e in _answers.entries)

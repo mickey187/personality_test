@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 import '../../app_scope.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/question.dart';
+import '../../domain/career_scoring.dart';
+import '../../domain/eq_scoring.dart';
+import '../../domain/scoring.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
 import '../../state/test_session.dart';
@@ -21,13 +24,36 @@ class _QuestionScreenState extends State<QuestionScreen> {
   bool _transitioning = false;
   int? _pendingValue;
 
-  List<String> _likertLabels(AppLocalizations l10n) => <String>[
-        l10n.likert1,
-        l10n.likert2,
-        l10n.likert3,
-        l10n.likert4,
-        l10n.likert5,
-      ];
+  /// Likert labels for the active test: the career test rates activities by
+  /// like/dislike, the EQ test by agreement, the Big Five by accuracy.
+  List<String> _likertLabels(AppLocalizations l10n, String testId) {
+    switch (testId) {
+      case 'career':
+        return <String>[
+          l10n.careerLikert1,
+          l10n.careerLikert2,
+          l10n.careerLikert3,
+          l10n.careerLikert4,
+          l10n.careerLikert5,
+        ];
+      case 'eq':
+        return <String>[
+          l10n.agreeLikert1,
+          l10n.agreeLikert2,
+          l10n.agreeLikert3,
+          l10n.agreeLikert4,
+          l10n.agreeLikert5,
+        ];
+      default:
+        return <String>[
+          l10n.likert1,
+          l10n.likert2,
+          l10n.likert3,
+          l10n.likert4,
+          l10n.likert5,
+        ];
+    }
+  }
 
   Future<void> _select(int value) async {
     if (_transitioning) return;
@@ -45,16 +71,34 @@ class _QuestionScreenState extends State<QuestionScreen> {
     if (!mounted) return;
 
     if (wasLast && session.isComplete) {
-      final result = session.buildResult();
-      await AppScope.resultsOf(context).complete(result);
-      if (!mounted) return;
-      context.go(Routes.results);
+      await _finish(session);
       return;
     }
     setState(() {
       _transitioning = false;
       _pendingValue = null;
     });
+  }
+
+  /// Scores the completed test and routes to the matching results screen.
+  Future<void> _finish(TestSession session) async {
+    switch (session.testId) {
+      case 'career':
+        final result = scoreCareer(session.answers);
+        await AppScope.careerResultsOf(context).complete(result);
+        if (!mounted) return;
+        context.go(Routes.careerResults);
+      case 'eq':
+        final result = scoreEq(session.answers);
+        await AppScope.eqResultsOf(context).complete(result);
+        if (!mounted) return;
+        context.go(Routes.eqResults);
+      default:
+        final result = scoreAnswers(session.answers);
+        await AppScope.resultsOf(context).complete(result);
+        if (!mounted) return;
+        context.go(Routes.results);
+    }
   }
 
   void _back(TestSession session) {
@@ -77,7 +121,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         child: AnimatedBuilder(
           animation: session,
           builder: (BuildContext context, _) {
-            final Question q = session.currentQuestion;
+            final TestItem q = session.currentQuestion;
             final int? selected =
                 _pendingValue ?? session.responseFor(q.id);
             final double progress = session.currentPosition / session.total;
@@ -137,7 +181,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                             ),
                           ),
                           const SizedBox(height: 32),
-                          ..._buildOptions(l10n, selected),
+                          ..._buildOptions(l10n, session.testId, selected),
                         ],
                       ),
                     ),
@@ -151,8 +195,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 
-  List<Widget> _buildOptions(AppLocalizations l10n, int? selected) {
-    final List<String> labels = _likertLabels(l10n);
+  List<Widget> _buildOptions(
+    AppLocalizations l10n,
+    String testId,
+    int? selected,
+  ) {
+    final List<String> labels = _likertLabels(l10n, testId);
     return <Widget>[
       for (int i = 0; i < labels.length; i++) ...<Widget>[
         _LikertOption(

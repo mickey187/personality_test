@@ -5,6 +5,9 @@
   "landingDesc": "ስብዕናዎን ይወቁ — በሳይንስ ላይ የተመሠረተ የ Big Five ምርመራ በ 2 ደቂቃ ውስጥ።",
   "landingTime": "~2 ደቂቃ ብቻ",
   "landingScience": "በሳይንስ የተረጋገጠ",
+  "homeGreeting": "ራስዎን ይወቁ — ምርመራ ይምረጡ",
+  "soonBadge": "በቅርብ",
+  "comingSoon": "በቅርብ ይመጣል",
   "startButton": "ጀምር",
   "continueButton": "ቀጥል",
   "aboutLink": "ስለ ምርመራው",
@@ -23,6 +26,18 @@
   "likert4": "ትንሽ ትክክል",
   "likert5": "በጣም ትክክል",
 
+  "careerLikert1": "በጣም አልወድም",
+  "careerLikert2": "አልወድም",
+  "careerLikert3": "እርግጠኛ አይደለሁም",
+  "careerLikert4": "እወዳለሁ",
+  "careerLikert5": "በጣም እወዳለሁ",
+
+  "agreeLikert1": "በጣም አልስማማም",
+  "agreeLikert2": "አልስማማም",
+  "agreeLikert3": "ገለልተኛ",
+  "agreeLikert4": "እስማማለሁ",
+  "agreeLikert5": "በጣም እስማማለሁ",
+
   "resultsTitle": "ውጤትዎ",
   "resultsSubtitle": "የ Big Five ስብዕና ገጽታዎ",
   "shareButton": "ውጤት አጋራ",
@@ -34,6 +49,49 @@
   "traitConscientiousness": "ታታሪነት (ኮንሺየንሽስነስ)",
   "traitNeuroticism": "ስሜታዊነት (ኒውሮቲሲዝም)",
   "traitOpenness": "ክፍትነት (ኦፕንነስ)",
+
+  "careerResultsTitle": "የሙያ መገለጫዎ",
+  "careerResultsSubtitle": "የ RIASEC የፍላጎት መገለጫዎ",
+  "careerCodeLabel": "የፍላጎት ኮድዎ",
+  "careerTopInterests": "ዋና ዋና ፍላጎቶችዎ",
+  "careersThatFit": "ለእርስዎ የሚስማሙ ሙያዎች",
+  "onetAttribution": "የፍላጎት ጥያቄዎቹ ከ O*NET Interest Profiler (የአሜሪካ የሠራተኛ መሥሪያ ቤት፣ CC BY 4.0) የተወሰዱ ናቸው።",
+  "careerShareText": "የሙያ ፍላጎት ኮዴ {code} ነው — ለእኔ የሚስማሙ ሙያዎችን በ«እኔ ማነኝ» አገኘሁ 🧭 አንተስ?\n{url}",
+  "@careerShareText": {
+    "placeholders": {
+      "code": { "type": "String" },
+      "url": { "type": "String" }
+    }
+  },
+
+  "riasecRealistic": "ተግባራዊ (ሠሪዎች)",
+  "riasecInvestigative": "መርማሪ (አሳቢዎች)",
+  "riasecArtistic": "ጥበባዊ (ፈጣሪዎች)",
+  "riasecSocial": "ማኅበራዊ (ረጂዎች)",
+  "riasecEnterprising": "ሥራ ፈጣሪ (አሳማኞች)",
+  "riasecConventional": "ሥርዓታዊ (አደራጆች)",
+
+  "eqResultsTitle": "የ EQ መገለጫዎ",
+  "eqResultsSubtitle": "ስሜታዊ ብልህነትዎ በአራት ክህሎቶች",
+  "eqOverallLabel": "የ EQ ውጤትዎ",
+  "eqStrengthsTitle": "ጥንካሬዎችዎ",
+  "eqGrowthTitle": "የሚያሳድጉት",
+  "eqLevelDeveloping": "በማደግ ላይ",
+  "eqLevelBalanced": "ሚዛናዊ",
+  "eqLevelStrong": "ጠንካራ",
+  "eqAttribution": "በ Wong & Law Emotional Intelligence Scale (WLEIS) እና በ Mayer–Salovey ባለ አራት ቅርንጫፍ ሞዴል ላይ የተመሠረተ።",
+  "eqSelfAppraisal": "ራስን መረዳት",
+  "eqOthersAppraisal": "ሌሎችን ማንበብ",
+  "eqUseOfEmotion": "ስሜትን መጠቀም",
+  "eqRegulation": "ስሜትን ማስተዳደር",
+  "eqShareText": "የ EQ ውጤቴ {percent}% ({level}) ነው — ስሜታዊ ብልህነቴን በ«እኔ ማነኝ» አገኘሁ 🧠 አንተስ?\n{url}",
+  "@eqShareText": {
+    "placeholders": {
+      "percent": { "type": "int" },
+      "level": { "type": "String" },
+      "url": { "type": "String" }
+    }
+  },
 
   "sharePreviewTitle": "ለማጋራት ይቅረቡ",
   "shareFormatTelegram": "Telegram",

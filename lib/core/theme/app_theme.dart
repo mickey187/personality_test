@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../data/models/eq.dart';
+import '../../data/models/riasec.dart';
 import '../../data/models/trait.dart';
 
 /// Organic design-system tokens, ported from the Claude Design `_ds/styles.css`
@@ -41,13 +43,36 @@ abstract final class AppColors {
   static Color get divider => text.withValues(alpha: 0.16);
 }
 
-/// Trait accent colours from the design's `TRAIT_COLORS`.
+/// Trait accent colours from the design's `TRAIT_COLORS`, retuned to the blue
+/// palette alongside the accent swap (E→accent, N→accent-700 dark blue,
+/// C→accent-400 light blue; A/O keep the sage second accent).
 const Map<Trait, Color> kTraitColors = <Trait, Color>{
-  Trait.extraversion: Color(0xFFC67139),
+  Trait.extraversion: Color(0xFF3982C6),
   Trait.agreeableness: Color(0xFF7A8A5E),
-  Trait.conscientiousness: Color(0xFFF6A06B),
-  Trait.neuroticism: Color(0xFF8C491A),
+  Trait.conscientiousness: Color(0xFF6BB5F6),
+  Trait.neuroticism: Color(0xFF1A548C),
   Trait.openness: Color(0xFFAEBF92),
+};
+
+/// Accent colours for the six RIASEC interest areas on the Career Aptitude
+/// results screen. Drawn from the app's warm blue/sage palette so the bars sit
+/// comfortably alongside the rest of the design.
+const Map<RiasecArea, Color> kRiasecColors = <RiasecArea, Color>{
+  RiasecArea.realistic: Color(0xFF7A8A5E), // sage
+  RiasecArea.investigative: Color(0xFF3982C6), // blue accent
+  RiasecArea.artistic: Color(0xFFC65B8A), // rose
+  RiasecArea.social: Color(0xFFE8A44A), // amber
+  RiasecArea.enterprising: Color(0xFF1A548C), // dark blue
+  RiasecArea.conventional: Color(0xFF6BB5F6), // light blue
+};
+
+/// Accent colours for the four EQ dimensions on the results screen, drawn from
+/// the app's warm blue/sage palette.
+const Map<EqDimension, Color> kEqColors = <EqDimension, Color>{
+  EqDimension.selfAppraisal: Color(0xFF3982C6), // blue accent
+  EqDimension.othersAppraisal: Color(0xFF7A8A5E), // sage
+  EqDimension.useOfEmotion: Color(0xFFE8A44A), // amber
+  EqDimension.regulation: Color(0xFF1A548C), // dark blue
 };
 
 /// Corner radii (`--radius-*`); small controls go fully pill (999px).

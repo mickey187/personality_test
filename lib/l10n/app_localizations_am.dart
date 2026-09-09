@@ -22,6 +22,15 @@ class AppLocalizationsAm extends AppLocalizations {
   String get landingScience => 'በሳይንስ የተረጋገጠ';
 
   @override
+  String get homeGreeting => 'ራስዎን ይወቁ — ምርመራ ይምረጡ';
+
+  @override
+  String get soonBadge => 'በቅርብ';
+
+  @override
+  String get comingSoon => 'በቅርብ ይመጣል';
+
+  @override
   String get startButton => 'ጀምር';
 
   @override
@@ -49,6 +58,36 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get likert5 => 'በጣም ትክክል';
+
+  @override
+  String get careerLikert1 => 'በጣም አልወድም';
+
+  @override
+  String get careerLikert2 => 'አልወድም';
+
+  @override
+  String get careerLikert3 => 'እርግጠኛ አይደለሁም';
+
+  @override
+  String get careerLikert4 => 'እወዳለሁ';
+
+  @override
+  String get careerLikert5 => 'በጣም እወዳለሁ';
+
+  @override
+  String get agreeLikert1 => 'በጣም አልስማማም';
+
+  @override
+  String get agreeLikert2 => 'አልስማማም';
+
+  @override
+  String get agreeLikert3 => 'ገለልተኛ';
+
+  @override
+  String get agreeLikert4 => 'እስማማለሁ';
+
+  @override
+  String get agreeLikert5 => 'በጣም እስማማለሁ';
 
   @override
   String get resultsTitle => 'ውጤትዎ';
@@ -79,6 +118,93 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get traitOpenness => 'ክፍትነት (ኦፕንነስ)';
+
+  @override
+  String get careerResultsTitle => 'የሙያ መገለጫዎ';
+
+  @override
+  String get careerResultsSubtitle => 'የ RIASEC የፍላጎት መገለጫዎ';
+
+  @override
+  String get careerCodeLabel => 'የፍላጎት ኮድዎ';
+
+  @override
+  String get careerTopInterests => 'ዋና ዋና ፍላጎቶችዎ';
+
+  @override
+  String get careersThatFit => 'ለእርስዎ የሚስማሙ ሙያዎች';
+
+  @override
+  String get onetAttribution =>
+      'የፍላጎት ጥያቄዎቹ ከ O*NET Interest Profiler (የአሜሪካ የሠራተኛ መሥሪያ ቤት፣ CC BY 4.0) የተወሰዱ ናቸው።';
+
+  @override
+  String careerShareText(String code, String url) {
+    return 'የሙያ ፍላጎት ኮዴ $code ነው — ለእኔ የሚስማሙ ሙያዎችን በ«እኔ ማነኝ» አገኘሁ 🧭 አንተስ?\n$url';
+  }
+
+  @override
+  String get riasecRealistic => 'ተግባራዊ (ሠሪዎች)';
+
+  @override
+  String get riasecInvestigative => 'መርማሪ (አሳቢዎች)';
+
+  @override
+  String get riasecArtistic => 'ጥበባዊ (ፈጣሪዎች)';
+
+  @override
+  String get riasecSocial => 'ማኅበራዊ (ረጂዎች)';
+
+  @override
+  String get riasecEnterprising => 'ሥራ ፈጣሪ (አሳማኞች)';
+
+  @override
+  String get riasecConventional => 'ሥርዓታዊ (አደራጆች)';
+
+  @override
+  String get eqResultsTitle => 'የ EQ መገለጫዎ';
+
+  @override
+  String get eqResultsSubtitle => 'ስሜታዊ ብልህነትዎ በአራት ክህሎቶች';
+
+  @override
+  String get eqOverallLabel => 'የ EQ ውጤትዎ';
+
+  @override
+  String get eqStrengthsTitle => 'ጥንካሬዎችዎ';
+
+  @override
+  String get eqGrowthTitle => 'የሚያሳድጉት';
+
+  @override
+  String get eqLevelDeveloping => 'በማደግ ላይ';
+
+  @override
+  String get eqLevelBalanced => 'ሚዛናዊ';
+
+  @override
+  String get eqLevelStrong => 'ጠንካራ';
+
+  @override
+  String get eqAttribution =>
+      'በ Wong & Law Emotional Intelligence Scale (WLEIS) እና በ Mayer–Salovey ባለ አራት ቅርንጫፍ ሞዴል ላይ የተመሠረተ።';
+
+  @override
+  String get eqSelfAppraisal => 'ራስን መረዳት';
+
+  @override
+  String get eqOthersAppraisal => 'ሌሎችን ማንበብ';
+
+  @override
+  String get eqUseOfEmotion => 'ስሜትን መጠቀም';
+
+  @override
+  String get eqRegulation => 'ስሜትን ማስተዳደር';
+
+  @override
+  String eqShareText(int percent, String level, String url) {
+    return 'የ EQ ውጤቴ $percent% ($level) ነው — ስሜታዊ ብልህነቴን በ«እኔ ማነኝ» አገኘሁ 🧠 አንተስ?\n$url';
+  }
 
   @override
   String get sharePreviewTitle => 'ለማጋራት ይቅረቡ';
