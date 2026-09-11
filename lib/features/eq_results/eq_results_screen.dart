@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../app_scope.dart';
 import '../../core/ads/ad_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/eq_content.dart';
 import '../../data/models/eq.dart';
+import '../../data/test_catalog.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
+import '../share/share_card_data.dart';
 import '../widgets/organic_widgets.dart';
 
 /// Shows the EQ result: an overall score, the four skill bars, the user's
@@ -41,14 +42,30 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
     });
   }
 
-  Future<void> _share(EqResult result, AppLocalizations l10n) async {
-    await SharePlus.instance.share(
-      ShareParams(
-        text: l10n.eqShareText(
-          result.overallPercent,
-          _bandLabel(result.overallLevel, l10n),
-          Brand.storeUrl,
-        ),
+  /// Overall score as the headline, the four skills as bars.
+  ShareCardData _shareData(
+    EqResult result,
+    String lang,
+    AppLocalizations l10n,
+  ) {
+    final String band = _bandLabel(result.overallLevel, l10n);
+    return ShareCardData(
+      profileLabel: testById('eq')!.name.resolve(lang),
+      headline: '${result.overallPercent}% · $band',
+      headlineColor: AppColors.accent,
+      stats: <ShareStat>[
+        for (final EqDimension dim in result.ranked)
+          ShareStat(
+            label: dim.label(l10n),
+            percent: result.percentFor(dim),
+            fraction: result.fractionFor(dim),
+            color: kEqColors[dim]!,
+          ),
+      ],
+      shareText: l10n.eqShareText(
+        result.overallPercent,
+        band,
+        Brand.storeUrl,
       ),
     );
   }
@@ -189,7 +206,10 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
                 label: l10n.shareButton,
                 icon: Icons.ios_share_rounded,
                 fontSize: 16,
-                onPressed: () => _share(result, l10n),
+                onPressed: () => context.push(
+                  Routes.share,
+                  extra: _shareData(result, lang, l10n),
+                ),
               ),
               const SizedBox(height: 10),
               SecondaryPillButton(

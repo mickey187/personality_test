@@ -6,6 +6,7 @@ import '../../core/ads/ad_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
+import '../share/share_card_data.dart';
 import 'organic_widgets.dart';
 
 /// One interest/style bar on a ranked-profile results screen.
@@ -59,7 +60,7 @@ class RankedResultsView extends StatefulWidget {
     required this.section2Title,
     required this.section2,
     required this.attribution,
-    required this.onShare,
+    required this.shareData,
   });
 
   final String title;
@@ -74,7 +75,9 @@ class RankedResultsView extends StatefulWidget {
   final String section2Title;
   final List<RankedCard> section2;
   final String attribution;
-  final Future<void> Function() onShare;
+
+  /// Result rendered as the shareable image on the share-preview screen.
+  final ShareCardData shareData;
 
   @override
   State<RankedResultsView> createState() => _RankedResultsViewState();
@@ -192,7 +195,8 @@ class _RankedResultsViewState extends State<RankedResultsView> {
                 label: l10n.shareButton,
                 icon: Icons.ios_share_rounded,
                 fontSize: 16,
-                onPressed: widget.onShare,
+                onPressed: () =>
+                    context.push(Routes.share, extra: widget.shareData),
               ),
               const SizedBox(height: 10),
               SecondaryPillButton(

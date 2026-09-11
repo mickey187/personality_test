@@ -8,17 +8,21 @@ import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../app_scope.dart';
 import '../../core/theme/app_theme.dart';
-import '../../data/models/test_result.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
 import '../widgets/organic_widgets.dart';
 import 'share_card.dart';
+import 'share_card_data.dart';
 
-/// Preview + export of the branded result card.
+/// Preview + export of the branded result card. Every test routes here with its
+/// own [ShareCardData], so they all share an image rather than plain text.
 class ShareCardScreen extends StatefulWidget {
-  const ShareCardScreen({super.key});
+  const ShareCardScreen({super.key, required this.data});
+
+  /// `null` when the route was reached without state to render — e.g. a deep
+  /// link or a restart, since the data travels as a `go_router` `extra`.
+  final ShareCardData? data;
 
   @override
   State<ShareCardScreen> createState() => _ShareCardScreenState();
@@ -29,7 +33,7 @@ class _ShareCardScreenState extends State<ShareCardScreen> {
   ShareFormat _format = ShareFormat.square;
   bool _sharing = false;
 
-  Future<void> _share(AppLocalizations l10n) async {
+  Future<void> _share(ShareCardData data) async {
     if (_sharing) return;
     setState(() => _sharing = true);
     try {
@@ -43,7 +47,7 @@ class _ShareCardScreenState extends State<ShareCardScreen> {
       await SharePlus.instance.share(
         ShareParams(
           files: <XFile>[XFile(file.path, mimeType: 'image/png')],
-          text: l10n.shareSheetText(Brand.storeUrl),
+          text: data.shareText,
         ),
       );
     } catch (e) {
@@ -71,8 +75,8 @@ class _ShareCardScreenState extends State<ShareCardScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final TestResult? result = AppScope.resultsOf(context).current;
-    if (result == null) {
+    final ShareCardData? data = widget.data;
+    if (data == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (context.mounted) context.go(Routes.landing);
       });
@@ -117,7 +121,7 @@ class _ShareCardScreenState extends State<ShareCardScreen> {
                       child: RepaintBoundary(
                         key: _cardKey,
                         child: ShareCard(
-                          result: result,
+                          data: data,
                           format: _format,
                           l10n: l10n,
                         ),
@@ -130,7 +134,7 @@ class _ShareCardScreenState extends State<ShareCardScreen> {
                 label: _sharing ? '…' : l10n.shareNow,
                 icon: Icons.ios_share_rounded,
                 fontSize: 16,
-                onPressed: () => _share(l10n),
+                onPressed: () => _share(data),
               ),
             ],
           ),

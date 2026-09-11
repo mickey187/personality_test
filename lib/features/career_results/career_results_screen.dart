@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../app_scope.dart';
 import '../../core/ads/ad_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/career_content.dart';
 import '../../data/models/riasec.dart';
+import '../../data/test_catalog.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
+import '../share/share_card_data.dart';
 import '../widgets/organic_widgets.dart';
 
 /// Shows the Career Aptitude (RIASEC) result: a Holland code, the six interest
@@ -41,11 +42,27 @@ class _CareerResultsScreenState extends State<CareerResultsScreen> {
     });
   }
 
-  Future<void> _share(CareerResult result, AppLocalizations l10n) async {
-    await SharePlus.instance.share(
-      ShareParams(
-        text: l10n.careerShareText(result.hollandCode, Brand.storeUrl),
-      ),
+  /// Holland code as the headline, the six interest areas as bars.
+  ShareCardData _shareData(
+    CareerResult result,
+    String lang,
+    AppLocalizations l10n,
+  ) {
+    final List<RiasecArea> ranked = result.ranked;
+    return ShareCardData(
+      profileLabel: testById('career')!.name.resolve(lang),
+      headline: result.hollandCode,
+      headlineColor: kRiasecColors[ranked.first]!,
+      stats: <ShareStat>[
+        for (final RiasecArea area in ranked)
+          ShareStat(
+            label: area.label(l10n),
+            percent: result.percentFor(area),
+            fraction: result.fractionFor(area),
+            color: kRiasecColors[area]!,
+          ),
+      ],
+      shareText: l10n.careerShareText(result.hollandCode, Brand.storeUrl),
     );
   }
 
@@ -155,7 +172,10 @@ class _CareerResultsScreenState extends State<CareerResultsScreen> {
                 label: l10n.shareButton,
                 icon: Icons.ios_share_rounded,
                 fontSize: 16,
-                onPressed: () => _share(result, l10n),
+                onPressed: () => context.push(
+                  Routes.share,
+                  extra: _shareData(result, lang, l10n),
+                ),
               ),
               const SizedBox(height: 10),
               SecondaryPillButton(

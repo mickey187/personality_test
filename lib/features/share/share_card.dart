@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme/app_theme.dart';
-import '../../data/models/test_result.dart';
-import '../../data/models/trait.dart';
 import '../../l10n/app_localizations.dart';
+import 'share_card_data.dart';
 
 /// Aspect/size presets for the share card.
 enum ShareFormat {
@@ -19,6 +18,14 @@ extension ShareFormatSize on ShareFormat {
         ShareFormat.square => const Size(280, 280),
         ShareFormat.story => const Size(240, 420),
       };
+
+  /// How many bars fit without crowding the card. The square card gives part
+  /// of its bar space to the headline when a test has one, so it shows only
+  /// the strongest few; the tall story card fits every dimension.
+  int maxStats({required bool hasHeadline}) => switch (this) {
+        ShareFormat.square => hasHeadline ? 4 : 5,
+        ShareFormat.story => 6,
+      };
 }
 
 /// The branded, dark result card that gets rendered to an image and shared.
@@ -27,12 +34,12 @@ extension ShareFormatSize on ShareFormat {
 class ShareCard extends StatelessWidget {
   const ShareCard({
     super.key,
-    required this.result,
+    required this.data,
     required this.format,
     required this.l10n,
   });
 
-  final TestResult result;
+  final ShareCardData data;
   final ShareFormat format;
   final AppLocalizations l10n;
 
@@ -90,7 +97,7 @@ class ShareCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 _header(isSquare),
-                _bars(isSquare),
+                _body(isSquare),
                 _footer(),
               ],
             ),
@@ -122,7 +129,7 @@ class ShareCard extends StatelessWidget {
         ),
         const SizedBox(height: 2),
         Text(
-          l10n.shareCardProfileLabel.toUpperCase(),
+          data.profileLabel.toUpperCase(),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: AppFonts.body(
@@ -135,19 +142,61 @@ class ShareCard extends StatelessWidget {
     );
   }
 
-  Widget _bars(bool isSquare) {
+  Widget _body(bool isSquare) {
+    final bool hasHeadline = data.headline != null;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        if (hasHeadline) ...<Widget>[
+          _headline(isSquare, data.headline!),
+          SizedBox(height: isSquare ? 8 : 18),
+        ],
+        // The square card has to fit a headline and four bars in 280px, so its
+        // bars run a little tighter than the roomier Big Five / story layouts.
+        _bars(isSquare, compact: isSquare && hasHeadline),
+      ],
+    );
+  }
+
+  Widget _headline(bool isSquare, String headline) {
+    // A short headline is a mark, not a phrase — the Holland code gets the
+    // same oversized treatment it has on the results screen. Longer style
+    // names stay small enough to wrap onto a second line.
+    final bool isShort = headline.characters.length <= 6;
+    final double size = isShort
+        ? (isSquare ? 30 : 34)
+        : (isSquare ? 19 : 22);
+
+    return Text(
+      headline,
+      maxLines: isShort ? 1 : 2,
+      overflow: TextOverflow.ellipsis,
+      style: AppFonts.display(
+        size: size,
+        color: _onCard(data.headlineColor ?? AppColors.accentLight),
+        height: 1.15,
+      ),
+    );
+  }
+
+  Widget _bars(bool isSquare, {required bool compact}) {
+    final List<ShareStat> stats = data.stats
+        .take(format.maxStats(hasHeadline: data.headline != null))
+        .toList();
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        for (final Trait trait in Trait.values) ...<Widget>[
+        for (int i = 0; i < stats.length; i++) ...<Widget>[
           _CardBar(
-            label: trait.label(l10n),
-            percent: result[trait].percent,
-            fraction: result[trait].fraction,
-            color: kTraitColors[trait]!,
+            label: stats[i].label,
+            percent: stats[i].percent,
+            fraction: stats[i].fraction,
+            color: stats[i].color,
+            compact: compact,
           ),
-          if (trait != Trait.values.last)
-            SizedBox(height: isSquare ? 5 : 12),
+          if (i < stats.length - 1)
+            SizedBox(height: isSquare ? (compact ? 4 : 5) : 12),
         ],
       ],
     );
@@ -187,12 +236,20 @@ class ShareCard extends StatelessWidget {
   }
 }
 
+/// Accents are picked for the cream results screens; the darkest of them (the
+/// deep blue) all but vanishes at headline size on the card's near-black
+/// gradient, so lift the dark end of the palette toward white.
+Color _onCard(Color color) => color.computeLuminance() < 0.16
+    ? Color.lerp(color, Colors.white, 0.45)!
+    : color;
+
 class _CardBar extends StatelessWidget {
   const _CardBar({
     required this.label,
     required this.percent,
     required this.fraction,
     required this.color,
+    this.compact = false,
   });
 
   final String label;
@@ -200,8 +257,12 @@ class _CardBar extends StatelessWidget {
   final double fraction;
   final Color color;
 
+  /// Trims a couple of pixels off each bar for the tighter square layout.
+  final bool compact;
+
   @override
   Widget build(BuildContext context) {
+    final double barHeight = compact ? 5 : 6;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,19 +299,19 @@ class _CardBar extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: compact ? 3 : 4),
         ClipRRect(
           borderRadius: BorderRadius.circular(AppRadii.pill),
           child: Stack(
             children: <Widget>[
               Container(
-                height: 6,
+                height: barHeight,
                 color: Colors.white.withValues(alpha: 0.08),
               ),
               FractionallySizedBox(
                 widthFactor: fraction.clamp(0.0, 1.0),
                 child: Container(
-                  height: 6,
+                  height: barHeight,
                   decoration: BoxDecoration(
                     color: color,
                     borderRadius: BorderRadius.circular(AppRadii.pill),

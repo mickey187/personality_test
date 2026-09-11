@@ -9,6 +9,7 @@ import '../features/learning_results/learning_results_screen.dart';
 import '../features/love_results/love_results_screen.dart';
 import '../features/question/question_screen.dart';
 import '../features/results/results_screen.dart';
+import '../features/share/share_card_data.dart';
 import '../features/share/share_card_screen.dart';
 import '../features/test_detail/test_detail_screen.dart';
 
@@ -17,7 +18,9 @@ abstract final class Routes {
   static const String landing = '/';
   static const String test = '/test';
   static const String results = '/results';
-  static const String share = '/results/share';
+
+  /// Share preview for any test — push it with a [ShareCardData] as `extra`.
+  static const String share = '/share';
   static const String careerResults = '/career/results';
   static const String eqResults = '/eq/results';
   static const String loveResults = '/love/results';
@@ -50,12 +53,11 @@ GoRouter createAppRouter() {
       GoRoute(
         path: Routes.results,
         builder: (context, state) => const ResultsScreen(),
-        routes: <RouteBase>[
-          GoRoute(
-            path: 'share',
-            builder: (context, state) => const ShareCardScreen(),
-          ),
-        ],
+      ),
+      GoRoute(
+        path: Routes.share,
+        builder: (context, state) =>
+            ShareCardScreen(data: state.extra as ShareCardData?),
       ),
       GoRoute(
         path: Routes.careerResults,

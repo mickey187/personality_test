@@ -9,6 +9,7 @@ import '../../data/models/trait.dart';
 import '../../data/trait_content.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
+import '../share/share_card_data.dart';
 import '../widgets/organic_widgets.dart';
 
 /// Shows the five Big Five trait scores as bars with a short description each.
@@ -26,6 +27,24 @@ class _ResultsScreenState extends State<ResultsScreen> {
   void _retake(BuildContext context) {
     AppScope.sessionOf(context).reset();
     context.go(Routes.landing);
+  }
+
+  /// The five trait bars, in the fixed Big Five order — no single trait is
+  /// "the" result, so the card has no headline.
+  ShareCardData _shareData(TestResult result, AppLocalizations l10n) {
+    return ShareCardData(
+      profileLabel: l10n.shareCardProfileLabel,
+      stats: <ShareStat>[
+        for (final Trait trait in Trait.values)
+          ShareStat(
+            label: trait.label(l10n),
+            percent: result[trait].percent,
+            fraction: result[trait].fraction,
+            color: kTraitColors[trait]!,
+          ),
+      ],
+      shareText: l10n.shareSheetText(Brand.storeUrl),
+    );
   }
 
   Future<void> _reveal() async {
@@ -121,7 +140,10 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 label: l10n.shareButton,
                 icon: Icons.ios_share_rounded,
                 fontSize: 16,
-                onPressed: () => context.push(Routes.share),
+                onPressed: () => context.push(
+                  Routes.share,
+                  extra: _shareData(result, l10n),
+                ),
               ),
               const SizedBox(height: 10),
               SecondaryPillButton(
