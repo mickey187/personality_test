@@ -122,11 +122,41 @@ abstract class AppLocalizations {
   /// **'Scientifically validated'**
   String get landingScience;
 
+  /// No description provided for @homeHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover what makes you, you.'**
+  String get homeHeadline;
+
   /// No description provided for @homeGreeting.
   ///
   /// In en, this message translates to:
-  /// **'Know yourself — pick a test'**
+  /// **'Six short assessments. One evolving picture of you.'**
   String get homeGreeting;
+
+  /// No description provided for @profileStripTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile'**
+  String get profileStripTitle;
+
+  /// No description provided for @profileStripProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} complete'**
+  String profileStripProgress(int done, int total);
+
+  /// No description provided for @discoverTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll discover'**
+  String get discoverTitle;
+
+  /// No description provided for @scienceBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Science-based'**
+  String get scienceBadge;
 
   /// No description provided for @soonBadge.
   ///
@@ -143,7 +173,7 @@ abstract class AppLocalizations {
   /// No description provided for @startButton.
   ///
   /// In en, this message translates to:
-  /// **'Start Test'**
+  /// **'Start Assessment'**
   String get startButton;
 
   /// No description provided for @continueButton.
@@ -157,6 +187,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'About this test'**
   String get aboutLink;
+
+  /// No description provided for @questionMicrocopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the option that feels most true for you.'**
+  String get questionMicrocopy;
 
   /// No description provided for @questionProgress.
   ///
@@ -253,6 +289,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Strongly Agree'**
   String get agreeLikert5;
+
+  /// No description provided for @bigFiveTraitLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Big Five trait'**
+  String get bigFiveTraitLabel;
 
   /// No description provided for @resultsTitle.
   ///

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app_scope.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/test_catalog_item.dart';
 import '../../data/test_catalog.dart';
@@ -8,15 +9,50 @@ import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
 import '../widgets/organic_widgets.dart';
 
-/// Home screen: brand header, a one-line prompt, and the grid of tests. Only
-/// available tests open; the rest show a "coming soon" badge.
+/// Home screen: brand header, a "build your profile" headline, a completion
+/// strip across the six assessments, and the assessment list. Every test is
+/// available; each card states what it measures, why it matters, and its
+/// time/question-count meta.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  /// How many of the six tests already have a saved result, read straight
+  /// from the existing per-test stores (no new aggregation logic).
+  int _completedCount(BuildContext context) {
+    int done = 0;
+    if (AppScope.resultsOf(context).current != null) done++;
+    if (AppScope.careerResultsOf(context).current != null) done++;
+    if (AppScope.eqResultsOf(context).current != null) done++;
+    if (AppScope.loveResultsOf(context).current != null) done++;
+    if (AppScope.leadershipResultsOf(context).current != null) done++;
+    if (AppScope.learningResultsOf(context).current != null) done++;
+    return done;
+  }
+
+  bool _isDone(BuildContext context, String testId) {
+    switch (testId) {
+      case 'bigfive':
+        return AppScope.resultsOf(context).current != null;
+      case 'career':
+        return AppScope.careerResultsOf(context).current != null;
+      case 'eq':
+        return AppScope.eqResultsOf(context).current != null;
+      case 'love':
+        return AppScope.loveResultsOf(context).current != null;
+      case 'leadership':
+        return AppScope.leadershipResultsOf(context).current != null;
+      case 'learning':
+        return AppScope.learningResultsOf(context).current != null;
+      default:
+        return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final String lang = Localizations.localeOf(context).languageCode;
+    final int done = _completedCount(context);
 
     return Scaffold(
       body: SafeArea(
@@ -44,32 +80,37 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // Greeting.
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 4),
-              child: Text(
-                l10n.homeGreeting,
-                style: AppFonts.body(
-                  size: 15,
-                  color: AppColors.bodyMuted,
-                  height: 1.5,
-                ),
-              ),
-            ),
-            // Test grid.
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(20, 12, 20, 8),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  childAspectRatio: 0.94,
+                padding: const EdgeInsets.fromLTRB(20, 22, 20, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    for (final TestCatalogItem test in kTestCatalog)
-                      _TestCard(test: test, lang: lang, l10n: l10n),
+                    Text(
+                      l10n.homeHeadline,
+                      style: AppFonts.display(size: 28, height: 1.2),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      l10n.homeGreeting,
+                      style: AppFonts.body(
+                        size: 14.5,
+                        color: AppColors.bodyMuted,
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    _ProfileStrip(done: done, total: kTestCatalog.length, l10n: l10n),
+                    const SizedBox(height: 24),
+                    for (final TestCatalogItem test in kTestCatalog) ...<Widget>[
+                      _AssessmentCard(
+                        test: test,
+                        lang: lang,
+                        l10n: l10n,
+                        done: _isDone(context, test.id),
+                      ),
+                      const SizedBox(height: 12),
+                    ],
                   ],
                 ),
               ),
@@ -110,91 +151,179 @@ class _BrandMark extends StatelessWidget {
           colors: <Color>[AppColors.accent, AppColors.accent2],
         ),
       ),
-      child: const Icon(Icons.person_rounded, size: 18, color: AppColors.bg),
+      child: const Icon(Icons.person_rounded, size: 18, color: AppColors.surface),
     );
   }
 }
 
-/// One test tile in the home grid.
-class _TestCard extends StatelessWidget {
-  const _TestCard({
+/// A slim "Your Profile" strip: a dot per test (filled once its result is
+/// saved) and a short completion count — the light, non-invasive version of
+/// the brief's "unified personal profile" concept.
+class _ProfileStrip extends StatelessWidget {
+  const _ProfileStrip({required this.done, required this.total, required this.l10n});
+
+  final int done;
+  final int total;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(AppRadii.md),
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  l10n.profileStripTitle,
+                  style: AppFonts.body(size: 13.5, weight: FontWeight.w600),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  l10n.profileStripProgress(done, total),
+                  style: AppFonts.body(size: 12.5, color: AppColors.muted),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: <Widget>[
+              for (int i = 0; i < kTestCatalog.length; i++) ...<Widget>[
+                _ProfileDot(color: kTestCatalog[i].color, filled: i < done),
+                if (i < kTestCatalog.length - 1) const SizedBox(width: 5),
+              ],
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ProfileDot extends StatelessWidget {
+  const _ProfileDot({required this.color, required this.filled});
+
+  final Color color;
+  final bool filled;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 9,
+      height: 9,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: filled ? color : AppColors.border,
+      ),
+    );
+  }
+}
+
+/// One assessment row: icon badge, title + why-it-matters line, meta row,
+/// trailing chevron. All six share this template but are visually
+/// distinguished by their own accent colour, icon and copy.
+class _AssessmentCard extends StatelessWidget {
+  const _AssessmentCard({
     required this.test,
     required this.lang,
     required this.l10n,
+    required this.done,
   });
 
   final TestCatalogItem test;
   final String lang;
   final AppLocalizations l10n;
+  final bool done;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: AppColors.surface,
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(AppRadii.lg),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => context.push('${Routes.test}/${test.id}'),
-        child: Stack(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Opacity(
-                    opacity: test.available ? 1 : 0.5,
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: test.color,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            border: Border.all(color: AppColors.border),
+            borderRadius: BorderRadius.circular(AppRadii.lg),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              IconBadge(icon: test.icon, color: test.color, size: 46),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Text(
+                            test.name.resolve(lang),
+                            style: AppFonts.body(size: 16, weight: FontWeight.w600),
+                          ),
+                        ),
+                        if (done)
+                          const Padding(
+                            padding: EdgeInsets.only(left: 6),
+                            child: Icon(
+                              Icons.check_circle_rounded,
+                              size: 16,
+                              color: AppColors.accent,
+                            ),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      test.whyItMatters.resolve(lang),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.body(
+                        size: 13,
+                        color: AppColors.bodyMuted,
+                        height: 1.4,
                       ),
-                      child: Icon(test.icon, size: 20, color: AppColors.bg),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    test.name.resolve(lang),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppFonts.body(
-                      size: 13,
-                      weight: FontWeight.w600,
-                      height: 1.3,
+                    const SizedBox(height: 10),
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 4,
+                      children: <Widget>[
+                        MetaChip(
+                          icon: Icons.schedule_rounded,
+                          label: test.duration.resolve(lang),
+                        ),
+                        MetaChip(
+                          icon: Icons.help_outline_rounded,
+                          label: test.questions.resolve(lang),
+                        ),
+                        if (test.scienceBased)
+                          SoftBadge(
+                            label: l10n.scienceBadge,
+                            icon: Icons.verified_rounded,
+                            color: test.color,
+                          ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    test.duration.resolve(lang),
-                    style: AppFonts.body(size: 11, color: AppColors.muted),
-                  ),
-                ],
-              ),
-            ),
-            if (!test.available)
-              Positioned(
-                top: 10,
-                right: 10,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: AppColors.text.withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(AppRadii.pill),
-                  ),
-                  child: Text(
-                    l10n.soonBadge,
-                    style: AppFonts.body(
-                      size: 9,
-                      weight: FontWeight.w600,
-                      color: AppColors.muted,
-                      letterSpacing: 0.27,
-                    ),
-                  ),
+                  ],
                 ),
               ),
-          ],
+              const SizedBox(width: 4),
+              const Icon(Icons.chevron_right_rounded, color: AppColors.muted),
+            ],
+          ),
         ),
       ),
     );

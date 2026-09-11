@@ -79,7 +79,7 @@ void main() {
     // Open the Big Five detail screen, then start the test.
     await tester.tap(find.text('ስብዕና (Big Five)'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('ጀምር'));
+    await tester.tap(find.text('ምርመራ ጀምር'));
     await tester.pumpAndSettle();
 
     // Progress indicator for the first of twenty questions.
@@ -97,7 +97,7 @@ void main() {
     // Open the Career Aptitude detail screen, then start the test.
     await tester.tap(find.text('የሥራ ብቃት'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('ጀምር'));
+    await tester.tap(find.text('ምርመራ ጀምር'));
     await tester.pumpAndSettle();
 
     // Progress indicator for the first of forty-eight questions.
@@ -118,7 +118,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(eqCard);
     await tester.pumpAndSettle();
-    await tester.tap(find.text('ጀምር'));
+    await tester.tap(find.text('ምርመራ ጀምር'));
     await tester.pumpAndSettle();
 
     // Progress indicator for the first of forty questions.
@@ -136,7 +136,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(card);
     await tester.pumpAndSettle();
-    await tester.tap(find.text('ጀምር'));
+    await tester.tap(find.text('ምርመራ ጀምር'));
     await tester.pumpAndSettle();
   }
 

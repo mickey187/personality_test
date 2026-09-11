@@ -22,7 +22,24 @@ class AppLocalizationsAm extends AppLocalizations {
   String get landingScience => 'በሳይንስ የተረጋገጠ';
 
   @override
-  String get homeGreeting => 'ራስዎን ይወቁ — ምርመራ ይምረጡ';
+  String get homeHeadline => 'የእርስዎን ማንነት የሚገልጹ ነገሮችን ያግኙ።';
+
+  @override
+  String get homeGreeting => 'ስድስት አጫጭር ምርመራዎች። ስለ እርስዎ እየሰፋ የሚሄድ ምስል።';
+
+  @override
+  String get profileStripTitle => 'የእርስዎ መገለጫ';
+
+  @override
+  String profileStripProgress(int done, int total) {
+    return '$done ከ $total ተጠናቋል';
+  }
+
+  @override
+  String get discoverTitle => 'የሚያገኙት';
+
+  @override
+  String get scienceBadge => 'በሳይንስ የተመሠረተ';
 
   @override
   String get soonBadge => 'በቅርብ';
@@ -31,13 +48,16 @@ class AppLocalizationsAm extends AppLocalizations {
   String get comingSoon => 'በቅርብ ይመጣል';
 
   @override
-  String get startButton => 'ጀምር';
+  String get startButton => 'ምርመራ ጀምር';
 
   @override
   String get continueButton => 'ቀጥል';
 
   @override
   String get aboutLink => 'ስለ ምርመራው';
+
+  @override
+  String get questionMicrocopy => 'ለእርስዎ በጣም እውነት የሚመስለውን አማራጭ ይምረጡ።';
 
   @override
   String questionProgress(int current, int total) {
@@ -88,6 +108,9 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get agreeLikert5 => 'በጣም እስማማለሁ';
+
+  @override
+  String get bigFiveTraitLabel => 'የ Big Five ባህሪ';
 
   @override
   String get resultsTitle => 'ውጤትዎ';

@@ -22,7 +22,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get landingScience => 'Scientifically validated';
 
   @override
-  String get homeGreeting => 'Know yourself — pick a test';
+  String get homeHeadline => 'Discover what makes you, you.';
+
+  @override
+  String get homeGreeting =>
+      'Six short assessments. One evolving picture of you.';
+
+  @override
+  String get profileStripTitle => 'Your profile';
+
+  @override
+  String profileStripProgress(int done, int total) {
+    return '$done of $total complete';
+  }
+
+  @override
+  String get discoverTitle => 'You\'ll discover';
+
+  @override
+  String get scienceBadge => 'Science-based';
 
   @override
   String get soonBadge => 'Soon';
@@ -31,13 +49,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get comingSoon => 'Coming Soon';
 
   @override
-  String get startButton => 'Start Test';
+  String get startButton => 'Start Assessment';
 
   @override
   String get continueButton => 'Continue';
 
   @override
   String get aboutLink => 'About this test';
+
+  @override
+  String get questionMicrocopy =>
+      'Choose the option that feels most true for you.';
 
   @override
   String questionProgress(int current, int total) {
@@ -88,6 +110,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get agreeLikert5 => 'Strongly Agree';
+
+  @override
+  String get bigFiveTraitLabel => 'Big Five trait';
 
   @override
   String get resultsTitle => 'Your Results';

@@ -20,6 +20,9 @@ class TestCatalogItem {
     required this.description,
     required this.duration,
     required this.questions,
+    required this.whyItMatters,
+    required this.discoverBullets,
+    this.scienceBased = false,
   });
 
   /// Stable identifier used in routes.
@@ -39,4 +42,15 @@ class TestCatalogItem {
   final LocalizedText description;
   final LocalizedText duration;
   final LocalizedText questions;
+
+  /// One line shown on the home card: why this assessment is worth taking.
+  final LocalizedText whyItMatters;
+
+  /// 3-4 short "You'll discover" bullets shown on the intro screen.
+  final List<LocalizedText> discoverBullets;
+
+  /// Whether to show the "Science-based" badge. `false` for tests that are
+  /// popular frameworks rather than empirically validated instruments (love,
+  /// learning) — an honesty distinction the catalog has always drawn.
+  final bool scienceBased;
 }

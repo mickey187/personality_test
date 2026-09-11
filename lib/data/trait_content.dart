@@ -17,6 +17,24 @@ class TraitContent {
 /// Copy is deliberately DESCRIPTIVE / self-insight framed — no career,
 /// relationship, health, or predictive claims. Amharic is the designer's draft,
 /// pending final translation + native review.
+/// Plain-language captions for each Big Five trait, shown as the primary
+/// label on the results screen (with the clinical term — e.g. "Big Five
+/// trait: Neuroticism" — as a small secondary caption). Keeps the science
+/// term available without leading with jargon.
+const Map<Trait, LocalizedText> kTraitPlainLabel = <Trait, LocalizedText>{
+  Trait.extraversion: LocalizedText(en: 'Social energy', am: 'ማህበራዊ ጉልበት'),
+  Trait.agreeableness: LocalizedText(en: 'Compassion', am: 'አዛኝነት'),
+  Trait.conscientiousness: LocalizedText(en: 'Self-discipline', am: 'ራስን መግዛት'),
+  Trait.neuroticism: LocalizedText(
+    en: 'Emotional sensitivity',
+    am: 'ስሜታዊ ተጋላጭነት',
+  ),
+  Trait.openness: LocalizedText(
+    en: 'Curiosity & imagination',
+    am: 'ጉጉትና ምናብ',
+  ),
+};
+
 const Map<Trait, TraitContent> kTraitContent = <Trait, TraitContent>{
   Trait.extraversion: TraitContent(
     descriptions: <TraitLevel, LocalizedText>{

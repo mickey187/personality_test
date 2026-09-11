@@ -10,8 +10,9 @@ import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
 import '../widgets/organic_widgets.dart';
 
-/// Intro screen for a single test: hero icon, blurb, meta, and the start CTA
-/// (or a locked "coming soon" state for tests that aren't available yet).
+/// Intro screen for a single test: hero illustration, blurb, meta, a
+/// "you'll discover" list, and the start CTA (or a locked "coming soon"
+/// state for tests that aren't available yet).
 class TestDetailScreen extends StatelessWidget {
   const TestDetailScreen({super.key, required this.testId});
 
@@ -47,7 +48,7 @@ class TestDetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 14, 24, 8),
+              padding: const EdgeInsets.fromLTRB(20, 14, 20, 8),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: BackChevron(onTap: () => context.pop()),
@@ -55,23 +56,26 @@ class TestDetailScreen extends StatelessWidget {
             ),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(24, 20, 24, 32),
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 32),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    _HeroIcon(icon: test.icon, color: test.color),
-                    const SizedBox(height: 20),
+                    Center(child: _HeroBlob(icon: test.icon, color: test.color)),
+                    const SizedBox(height: 22),
                     Text(
                       test.name.resolve(lang),
                       textAlign: TextAlign.center,
-                      style: AppFonts.body(size: 22, weight: FontWeight.w700),
+                      style: AppFonts.display(size: 24, height: 1.2),
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      test.category.resolve(lang),
-                      textAlign: TextAlign.center,
-                      style: AppFonts.body(size: 13, color: AppColors.muted),
+                    Center(
+                      child: Text(
+                        test.category.resolve(lang),
+                        textAlign: TextAlign.center,
+                        style: AppFonts.body(size: 13, color: AppColors.muted),
+                      ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     Text(
                       test.description.resolve(lang),
                       textAlign: TextAlign.center,
@@ -81,21 +85,60 @@ class TestDetailScreen extends StatelessWidget {
                         height: 1.55,
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        _MetaChip(
-                          icon: Icons.schedule_rounded,
-                          label: test.duration.resolve(lang),
-                        ),
-                        const SizedBox(width: 16),
-                        _MetaChip(
-                          icon: Icons.help_outline_rounded,
-                          label: test.questions.resolve(lang),
-                        ),
-                      ],
+                    const SizedBox(height: 18),
+                    Center(
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 16,
+                        runSpacing: 8,
+                        children: <Widget>[
+                          MetaChip(
+                            icon: Icons.schedule_rounded,
+                            label: test.duration.resolve(lang),
+                          ),
+                          MetaChip(
+                            icon: Icons.help_outline_rounded,
+                            label: test.questions.resolve(lang),
+                          ),
+                          if (test.scienceBased)
+                            SoftBadge(
+                              label: l10n.scienceBadge,
+                              icon: Icons.verified_rounded,
+                              color: test.color,
+                            ),
+                        ],
+                      ),
                     ),
+                    const SizedBox(height: 28),
+                    if (test.discoverBullets.isNotEmpty) ...<Widget>[
+                      Text(
+                        l10n.discoverTitle,
+                        style: AppFonts.body(size: 14, weight: FontWeight.w600),
+                      ),
+                      const SizedBox(height: 10),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: AppColors.surface,
+                          borderRadius: BorderRadius.circular(AppRadii.md),
+                          border: Border.all(color: AppColors.border),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            for (int i = 0; i < test.discoverBullets.length; i++) ...<Widget>[
+                              _DiscoverBullet(
+                                text: test.discoverBullets[i].resolve(lang),
+                                color: test.color,
+                              ),
+                              if (i < test.discoverBullets.length - 1)
+                                const SizedBox(height: 10),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -105,6 +148,8 @@ class TestDetailScreen extends StatelessWidget {
               child: test.available
                   ? PrimaryPillButton(
                       label: l10n.startButton,
+                      icon: Icons.arrow_forward_rounded,
+                      color: test.color,
                       onPressed: () => _start(context),
                     )
                   : _ComingSoonPlaceholder(label: l10n.comingSoon),
@@ -116,47 +161,78 @@ class TestDetailScreen extends StatelessWidget {
   }
 }
 
-class _HeroIcon extends StatelessWidget {
-  const _HeroIcon({required this.icon, required this.color});
+/// A soft colour-tinted blob behind the test's icon glyph — the app's
+/// native stand-in for a per-assessment illustration.
+class _HeroBlob extends StatelessWidget {
+  const _HeroBlob({required this.icon, required this.color});
 
   final IconData icon;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 80,
-      height: 80,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: AppColors.text.withValues(alpha: 0.10),
-            blurRadius: 24,
-            offset: const Offset(0, 8),
+    return SizedBox(
+      width: 108,
+      height: 108,
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Container(
+            width: 108,
+            height: 108,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: color.withValues(alpha: 0.12),
+            ),
+          ),
+          Container(
+            width: 72,
+            height: 72,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[color, Color.lerp(color, Colors.black, 0.18)!],
+              ),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: color.withValues(alpha: 0.30),
+                  blurRadius: 20,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            child: Icon(icon, size: 34, color: AppColors.surface),
           ),
         ],
       ),
-      child: Icon(icon, size: 40, color: AppColors.bg),
     );
   }
 }
 
-class _MetaChip extends StatelessWidget {
-  const _MetaChip({required this.icon, required this.label});
+class _DiscoverBullet extends StatelessWidget {
+  const _DiscoverBullet({required this.text, required this.color});
 
-  final IconData icon;
-  final String label;
+  final String text;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Icon(icon, size: 15, color: AppColors.muted),
-        const SizedBox(width: 5),
-        Text(label, style: AppFonts.body(size: 13, color: AppColors.muted)),
+        Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Icon(Icons.check_rounded, size: 15, color: color),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(
+            text,
+            style: AppFonts.body(size: 14, color: AppColors.bodyMuted, height: 1.45),
+          ),
+        ),
       ],
     );
   }
@@ -174,14 +250,14 @@ class _ComingSoonPlaceholder extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
-        color: AppColors.surface.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(AppRadii.pill),
-        border: Border.all(color: AppColors.text.withValues(alpha: 0.2)),
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(AppRadii.button),
+        border: Border.all(color: AppColors.border),
       ),
       child: Text(
         label,
         textAlign: TextAlign.center,
-        style: AppFonts.display(size: 15, color: AppColors.muted),
+        style: AppFonts.display(size: 15, weight: FontWeight.w600, color: AppColors.muted),
       ),
     );
   }

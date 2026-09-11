@@ -5,13 +5,25 @@
   "landingDesc": "Discover your personality — a science-based Big Five assessment in just 2 minutes.",
   "landingTime": "~2 minutes",
   "landingScience": "Scientifically validated",
-  "homeGreeting": "Know yourself — pick a test",
+  "homeHeadline": "Discover what makes you, you.",
+  "homeGreeting": "Six short assessments. One evolving picture of you.",
+  "profileStripTitle": "Your profile",
+  "profileStripProgress": "{done} of {total} complete",
+  "@profileStripProgress": {
+    "placeholders": {
+      "done": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "discoverTitle": "You'll discover",
+  "scienceBadge": "Science-based",
   "soonBadge": "Soon",
   "comingSoon": "Coming Soon",
-  "startButton": "Start Test",
+  "startButton": "Start Assessment",
   "continueButton": "Continue",
   "aboutLink": "About this test",
 
+  "questionMicrocopy": "Choose the option that feels most true for you.",
   "questionProgress": "{current} / {total}",
   "@questionProgress": {
     "placeholders": {
@@ -38,6 +50,7 @@
   "agreeLikert4": "Agree",
   "agreeLikert5": "Strongly Agree",
 
+  "bigFiveTraitLabel": "Big Five trait",
   "resultsTitle": "Your Results",
   "resultsSubtitle": "Your Big Five personality profile",
   "shareButton": "Share Results",

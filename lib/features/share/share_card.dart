@@ -134,7 +134,7 @@ class ShareCard extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: AppFonts.body(
             size: 9,
-            color: AppColors.muted,
+            color: AppColors.onDarkMuted,
             letterSpacing: 1.0,
           ),
         ),
@@ -228,7 +228,10 @@ class ShareCard extends StatelessWidget {
             Brand.storeUrl,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: AppFonts.body(size: 9, color: AppColors.bodyMuted),
+            style: AppFonts.body(
+              size: 9,
+              color: AppColors.onDarkMuted.withValues(alpha: 0.65),
+            ),
           ),
         ],
       ),

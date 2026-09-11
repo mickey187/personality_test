@@ -5,13 +5,25 @@
   "landingDesc": "ስብዕናዎን ይወቁ — በሳይንስ ላይ የተመሠረተ የ Big Five ምርመራ በ 2 ደቂቃ ውስጥ።",
   "landingTime": "~2 ደቂቃ ብቻ",
   "landingScience": "በሳይንስ የተረጋገጠ",
-  "homeGreeting": "ራስዎን ይወቁ — ምርመራ ይምረጡ",
+  "homeHeadline": "የእርስዎን ማንነት የሚገልጹ ነገሮችን ያግኙ።",
+  "homeGreeting": "ስድስት አጫጭር ምርመራዎች። ስለ እርስዎ እየሰፋ የሚሄድ ምስል።",
+  "profileStripTitle": "የእርስዎ መገለጫ",
+  "profileStripProgress": "{done} ከ {total} ተጠናቋል",
+  "@profileStripProgress": {
+    "placeholders": {
+      "done": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "discoverTitle": "የሚያገኙት",
+  "scienceBadge": "በሳይንስ የተመሠረተ",
   "soonBadge": "በቅርብ",
   "comingSoon": "በቅርብ ይመጣል",
-  "startButton": "ጀምር",
+  "startButton": "ምርመራ ጀምር",
   "continueButton": "ቀጥል",
   "aboutLink": "ስለ ምርመራው",
 
+  "questionMicrocopy": "ለእርስዎ በጣም እውነት የሚመስለውን አማራጭ ይምረጡ።",
   "questionProgress": "{current} / {total}",
   "@questionProgress": {
     "placeholders": {
@@ -38,6 +50,7 @@
   "agreeLikert4": "እስማማለሁ",
   "agreeLikert5": "በጣም እስማማለሁ",
 
+  "bigFiveTraitLabel": "የ Big Five ባህሪ",
   "resultsTitle": "ውጤትዎ",
   "resultsSubtitle": "የ Big Five ስብዕና ገጽታዎ",
   "shareButton": "ውጤት አጋራ",

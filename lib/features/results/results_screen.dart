@@ -6,13 +6,16 @@ import '../../core/ads/ad_service.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/test_result.dart';
 import '../../data/models/trait.dart';
+import '../../data/test_catalog.dart';
 import '../../data/trait_content.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
 import '../share/share_card_data.dart';
 import '../widgets/organic_widgets.dart';
 
-/// Shows the five Big Five trait scores as bars with a short description each.
+/// Shows the five Big Five trait scores: a radar-chart snapshot up top, then
+/// each trait as a card with a plain-language label, the clinical term as a
+/// secondary caption, an animated bar, and a short description.
 class ResultsScreen extends StatefulWidget {
   const ResultsScreen({super.key});
 
@@ -47,6 +50,17 @@ class _ResultsScreenState extends State<ResultsScreen> {
     );
   }
 
+  /// A one-line synthesis built from the two highest-scoring traits' own
+  /// plain-language labels — no new taxonomy, just a headline drawn from
+  /// content that already exists.
+  String _snapshotLine(TestResult result, String lang) {
+    final List<Trait> ranked = List<Trait>.of(Trait.values)
+      ..sort((Trait a, Trait b) => result[b].percent.compareTo(result[a].percent));
+    final String first = kTraitPlainLabel[ranked[0]]!.resolve(lang);
+    final String second = kTraitPlainLabel[ranked[1]]!.resolve(lang);
+    return '$first · $second';
+  }
+
   Future<void> _reveal() async {
     if (_revealing) return;
     setState(() => _revealing = true);
@@ -65,6 +79,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
     final l10n = AppLocalizations.of(context);
     final String lang = Localizations.localeOf(context).languageCode;
     final TestResult? result = AppScope.resultsOf(context).current;
+    final Color accent = testById('bigfive')?.color ?? AppColors.accent;
 
     // Deep-linked here without a result — bounce back to the landing screen.
     if (result == null) {
@@ -83,7 +98,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               child: PrimaryPillButton(
                 label: _revealing ? '…' : l10n.seeResultButton,
                 icon: Icons.visibility_rounded,
-                fontSize: 16,
+                color: accent,
                 onPressed: _reveal,
               ),
             ),
@@ -98,7 +113,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
           child: Column(
             children: <Widget>[
-              Align(
+              const Align(
                 alignment: Alignment.centerRight,
                 child: LanguageToggle(),
               ),
@@ -113,11 +128,18 @@ class _ResultsScreenState extends State<ResultsScreen> {
                         textAlign: TextAlign.center,
                         style: AppFonts.ethiopic(size: 24),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        l10n.resultsSubtitle,
-                        textAlign: TextAlign.center,
-                        style: AppFonts.body(size: 14, color: AppColors.muted),
+                      const SizedBox(height: 20),
+                      ResultHeroCard(
+                        eyebrow: l10n.resultsSubtitle,
+                        headline: TraitRadarChart(
+                          fractions: <double>[
+                            for (final Trait t in Trait.values) result[t].fraction,
+                          ],
+                          colors: <Color>[
+                            for (final Trait t in Trait.values) kTraitColors[t]!,
+                          ],
+                        ),
+                        description: _snapshotLine(result, lang),
                       ),
                       const SizedBox(height: 24),
                       for (int i = 0; i < Trait.values.length; i++) ...<Widget>[
@@ -129,7 +151,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           order: i,
                         ),
                         if (i < Trait.values.length - 1)
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 12),
                       ],
                       const SizedBox(height: 24),
                     ],
@@ -139,7 +161,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               PrimaryPillButton(
                 label: l10n.shareButton,
                 icon: Icons.ios_share_rounded,
-                fontSize: 16,
+                color: accent,
                 onPressed: () => context.push(
                   Routes.share,
                   extra: _shareData(result, l10n),
@@ -179,92 +201,38 @@ class _TraitCard extends StatelessWidget {
     final String description =
         kTraitContent[trait]!.descriptionFor(score.level).resolve(lang);
 
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(20),
+    return InsightCard(
+      color: color,
+      icon: _traitIcon(trait),
+      label: kTraitPlainLabel[trait]!.resolve(lang),
+      subLabel: '${l10n.bigFiveTraitLabel}: ${trait.label(l10n)}',
+      trailing: Text(
+        '${score.percent}%',
+        style: AppFonts.body(size: 15, weight: FontWeight.w700, color: color),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Flexible(
-                child: Text(
-                  trait.label(l10n),
-                  style: AppFonts.body(size: 14, weight: FontWeight.w600),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                '${score.percent}%',
-                style: AppFonts.body(
-                  size: 14,
-                  weight: FontWeight.w700,
-                  color: color,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          _TraitBar(fraction: score.fraction, color: color, order: order),
-          const SizedBox(height: 10),
-          Text(
-            description,
-            style: AppFonts.body(
-              size: 13,
-              color: AppColors.bodyMuted,
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
+      children: <Widget>[
+        AnimatedBar(fraction: score.fraction, color: color, order: order),
+        const SizedBox(height: 10),
+        Text(
+          description,
+          style: AppFonts.body(size: 13, color: AppColors.bodyMuted, height: 1.5),
+        ),
+      ],
     );
   }
-}
 
-class _TraitBar extends StatelessWidget {
-  const _TraitBar({
-    required this.fraction,
-    required this.color,
-    required this.order,
-  });
-
-  final double fraction;
-  final Color color;
-  final int order;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(AppRadii.pill),
-      child: Stack(
-        children: <Widget>[
-          Container(
-            height: 8,
-            color: AppColors.text.withValues(alpha: 0.08),
-          ),
-          TweenAnimationBuilder<double>(
-            tween: Tween<double>(begin: 0, end: fraction.clamp(0.0, 1.0)),
-            duration: Duration(milliseconds: 800 + order * 100),
-            curve: Curves.easeOutCubic,
-            builder: (BuildContext context, double value, _) {
-              return FractionallySizedBox(
-                widthFactor: value,
-                child: Container(
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: color,
-                    borderRadius: BorderRadius.circular(AppRadii.pill),
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-    );
+  IconData _traitIcon(Trait trait) {
+    switch (trait) {
+      case Trait.extraversion:
+        return Icons.groups_rounded;
+      case Trait.agreeableness:
+        return Icons.favorite_rounded;
+      case Trait.conscientiousness:
+        return Icons.task_alt_rounded;
+      case Trait.neuroticism:
+        return Icons.waves_rounded;
+      case Trait.openness:
+        return Icons.auto_awesome_rounded;
+    }
   }
 }

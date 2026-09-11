@@ -116,7 +116,7 @@ class _RankedResultsViewState extends State<RankedResultsView> {
               child: PrimaryPillButton(
                 label: _revealing ? '…' : l10n.seeResultButton,
                 icon: Icons.visibility_rounded,
-                fontSize: 16,
+                color: widget.heroColor,
                 onPressed: _reveal,
               ),
             ),
@@ -131,7 +131,7 @@ class _RankedResultsViewState extends State<RankedResultsView> {
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
           child: Column(
             children: <Widget>[
-              Align(alignment: Alignment.centerRight, child: LanguageToggle()),
+              const Align(alignment: Alignment.centerRight, child: LanguageToggle()),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -143,37 +143,43 @@ class _RankedResultsViewState extends State<RankedResultsView> {
                         textAlign: TextAlign.center,
                         style: AppFonts.ethiopic(size: 24),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        widget.subtitle,
-                        textAlign: TextAlign.center,
-                        style: AppFonts.body(size: 14, color: AppColors.muted),
-                      ),
                       const SizedBox(height: 20),
-                      _Hero(
-                        label: widget.heroLabel,
-                        value: widget.heroValue,
-                        color: widget.heroColor,
+                      ResultHeroCard(
+                        eyebrow: widget.heroLabel,
+                        headline: Text(
+                          widget.heroValue,
+                          textAlign: TextAlign.center,
+                          style: AppFonts.display(
+                            size: 28,
+                            color: widget.heroColor,
+                            height: 1.15,
+                          ),
+                        ),
                         description: widget.heroDescription,
                       ),
                       const SizedBox(height: 24),
                       for (int i = 0; i < widget.bars.length; i++) ...<Widget>[
-                        _Bar(bar: widget.bars[i], order: i),
-                        if (i < widget.bars.length - 1)
-                          const SizedBox(height: 14),
+                        DimensionRow(
+                          label: widget.bars[i].label,
+                          percent: widget.bars[i].percent,
+                          fraction: widget.bars[i].fraction,
+                          color: widget.bars[i].color,
+                          order: i,
+                        ),
+                        if (i < widget.bars.length - 1) const SizedBox(height: 14),
                       ],
-                      const SizedBox(height: 28),
-                      _SectionTitle(widget.section1Title),
+                      const SizedBox(height: 26),
+                      SectionTitle(widget.section1Title),
                       const SizedBox(height: 12),
                       for (final RankedCard c in widget.section1) ...<Widget>[
-                        _Card(card: c),
+                        _card(c),
                         const SizedBox(height: 12),
                       ],
-                      const SizedBox(height: 16),
-                      _SectionTitle(widget.section2Title),
+                      const SizedBox(height: 12),
+                      SectionTitle(widget.section2Title),
                       const SizedBox(height: 12),
                       for (final RankedCard c in widget.section2) ...<Widget>[
-                        _Card(card: c),
+                        _card(c),
                         const SizedBox(height: 12),
                       ],
                       const SizedBox(height: 8),
@@ -194,7 +200,7 @@ class _RankedResultsViewState extends State<RankedResultsView> {
               PrimaryPillButton(
                 label: l10n.shareButton,
                 icon: Icons.ios_share_rounded,
-                fontSize: 16,
+                color: widget.heroColor,
                 onPressed: () =>
                     context.push(Routes.share, extra: widget.shareData),
               ),
@@ -209,185 +215,18 @@ class _RankedResultsViewState extends State<RankedResultsView> {
       ),
     );
   }
-}
 
-class _Hero extends StatelessWidget {
-  const _Hero({
-    required this.label,
-    required this.value,
-    required this.color,
-    required this.description,
-  });
-
-  final String label;
-  final String value;
-  final Color color;
-  final String description;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Column(
-        children: <Widget>[
-          Text(
-            label,
-            style: AppFonts.body(size: 13, color: AppColors.muted),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            value,
-            textAlign: TextAlign.center,
-            style: AppFonts.display(size: 30, color: color, height: 1.15),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            description,
-            textAlign: TextAlign.center,
-            style: AppFonts.body(
-              size: 13,
-              color: AppColors.bodyMuted,
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _Bar extends StatelessWidget {
-  const _Bar({required this.bar, required this.order});
-
-  final RankedBar bar;
-  final int order;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _card(RankedCard c) {
+    return InsightCard(
+      color: c.color,
+      icon: c.icon ?? Icons.circle,
+      label: c.label,
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Flexible(
-              child: Text(
-                bar.label,
-                style: AppFonts.body(size: 14, weight: FontWeight.w600),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              '${bar.percent}%',
-              style: AppFonts.body(
-                size: 14,
-                weight: FontWeight.w700,
-                color: bar.color,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(AppRadii.pill),
-          child: Stack(
-            children: <Widget>[
-              Container(height: 8, color: AppColors.text.withValues(alpha: 0.08)),
-              TweenAnimationBuilder<double>(
-                tween: Tween<double>(begin: 0, end: bar.fraction.clamp(0.0, 1.0)),
-                duration: Duration(milliseconds: 800 + order * 100),
-                curve: Curves.easeOutCubic,
-                builder: (BuildContext context, double value, _) {
-                  return FractionallySizedBox(
-                    widthFactor: value,
-                    child: Container(
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: bar.color,
-                        borderRadius: BorderRadius.circular(AppRadii.pill),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+        Text(
+          c.text,
+          style: AppFonts.body(size: 13, color: AppColors.bodyMuted, height: 1.5),
         ),
       ],
-    );
-  }
-}
-
-class _Card extends StatelessWidget {
-  const _Card({required this.card});
-
-  final RankedCard card;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              if (card.icon != null) ...<Widget>[
-                Icon(card.icon, size: 16, color: card.color),
-                const SizedBox(width: 8),
-              ] else ...<Widget>[
-                Container(
-                  width: 10,
-                  height: 10,
-                  decoration:
-                      BoxDecoration(color: card.color, shape: BoxShape.circle),
-                ),
-                const SizedBox(width: 8),
-              ],
-              Flexible(
-                child: Text(
-                  card.label,
-                  style: AppFonts.body(size: 14, weight: FontWeight.w600),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Text(
-            card.text,
-            style: AppFonts.body(
-              size: 13,
-              color: AppColors.bodyMuted,
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SectionTitle extends StatelessWidget {
-  const _SectionTitle(this.text);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        text,
-        style: AppFonts.body(size: 16, weight: FontWeight.w700),
-      ),
     );
   }
 }

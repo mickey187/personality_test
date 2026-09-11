@@ -8,108 +8,147 @@ import '../../data/models/love.dart';
 import '../../data/models/riasec.dart';
 import '../../data/models/trait.dart';
 
-/// Organic design-system tokens, ported from the Claude Design `_ds/styles.css`
-/// and the "Personality Test" source. Colours are used directly (the design
-/// hard-codes them per element) rather than only through [ColorScheme].
+/// Design-system tokens for the "premium self-discovery" redesign: a calm
+/// off-white canvas, white cards, and one indigo/blue app-wide accent, with
+/// each assessment carrying its own accent (see [AppAccents]) used for its
+/// icon, hero and progress states.
 abstract final class AppColors {
-  /// App canvas (`--color-bg`).
-  static const Color bg = Color(0xFFF5EAD8);
+  /// App canvas.
+  static const Color bg = Color(0xFFFAF9F5);
 
-  /// The device / outer page tone behind the app.
-  static const Color deviceBg = Color(0xFFE8DECE);
+  /// Card / surface fill.
+  static const Color surface = Color(0xFFFFFFFF);
 
-  /// Card / control fill (`--color-surface`).
-  static const Color surface = Color(0xFFEBDDC5);
+  /// Primary ink.
+  static const Color text = Color(0xFF172033);
 
-  /// Primary ink (`--color-text`).
-  static const Color text = Color(0xFF201E1D);
+  /// Hairline borders between surface and canvas.
+  static const Color border = Color(0xFFE8E6DF);
 
-  /// Blue accent (`--color-accent`); swapped from the original terracotta,
-  /// hue-rotated to blue while preserving each step's lightness/saturation.
-  static const Color accent = Color(0xFF3982C6);
+  /// App-wide indigo/blue accent (buttons, links, the Personality assessment).
+  static const Color accent = Color(0xFF4F63D6);
 
-  /// Sage second accent (`--color-accent-2`).
-  static const Color accent2 = Color(0xFF7A8A5E);
+  /// Secondary decorative accent (brand-mark gradient only).
+  static const Color accent2 = Color(0xFF14A89A);
 
-  // Accent ramp steps used by the design.
-  static const Color accentTint = Color(0xFFEBF6FF); // accent-100
-  static const Color accentLight = Color(0xFF6BB5F6); // accent-400
-  static const Color accentHover = Color(0xFF2D72B2); // accent-600
-  static const Color accentActive = Color(0xFF1A548C); // accent-700
+  // Accent ramp steps.
+  static const Color accentTint = Color(0xFFEEF0FC);
+  static const Color accentLight = Color(0xFF8B97E8);
+  static const Color accentHover = Color(0xFF3E4FBE);
+  static const Color accentActive = Color(0xFF2F3E9E);
 
-  // Neutral ramp steps used by the design.
-  static const Color muted = Color(0xFFA19786); // neutral-500 (labels)
-  static const Color bodyMuted = Color(0xFF645C50); // neutral-700 (body copy)
-  static const Color inkSoft = Color(0xFF2E2B25); // neutral-900 (share card)
+  /// Secondary text — labels, meta, chrome (`--color-secondary`).
+  static const Color muted = Color(0xFF687080);
 
-  /// `--color-divider` (16% ink).
-  static Color get divider => text.withValues(alpha: 0.16);
+  /// Body copy — a touch darker than [muted] for comfortable reading.
+  static const Color bodyMuted = Color(0xFF4B5468);
+
+  /// Near-black used only for the dark share-card gradient.
+  static const Color inkSoft = Color(0xFF14172A);
+
+  /// Muted text tuned for the dark share-card gradient — [muted]/[bodyMuted]
+  /// are calibrated for light surfaces and read too low-contrast on dark.
+  static const Color onDarkMuted = Color(0xFFA6ACC4);
+
+  /// `--color-divider`.
+  static Color get divider => text.withValues(alpha: 0.10);
 }
 
-/// Trait accent colours from the design's `TRAIT_COLORS`, retuned to the blue
-/// palette alongside the accent swap (E→accent, N→accent-700 dark blue,
-/// C→accent-400 light blue; A/O keep the sage second accent).
+/// One accent colour per assessment — used for its home card icon, intro
+/// hero, question-screen progress/selection state, and results hero. Keeps
+/// six tests reading as one system (shared radii/type/surfaces) while each
+/// still has a distinct identity, per the brief's "assessment accents" table.
+abstract final class AppAccents {
+  static const Color personality = AppColors.accent; // indigo/blue
+  static const Color career = Color(0xFF2F9E6E); // green
+  static const Color eq = Color(0xFFE8734A); // orange/coral
+  static const Color leadership = Color(0xFF7C5CD9); // purple
+  static const Color learning = Color(0xFF14A89A); // teal
+  static const Color love = Color(0xFFE15B84); // rose
+}
+
+/// Curated dimension palette shared by every per-trait/per-area colour map
+/// below, so bars across different tests still read as one design system.
+abstract final class _Palette {
+  static const Color indigo = Color(0xFF4F63D6);
+  static const Color green = Color(0xFF2F9E6E);
+  static const Color coral = Color(0xFFE8734A);
+  static const Color purple = Color(0xFF7C5CD9);
+  static const Color teal = Color(0xFF14A89A);
+  static const Color rose = Color(0xFFE15B84);
+  static const Color amber = Color(0xFFE0A83E);
+}
+
+/// Trait accent colours for the Big Five results screen.
 const Map<Trait, Color> kTraitColors = <Trait, Color>{
-  Trait.extraversion: Color(0xFF3982C6),
-  Trait.agreeableness: Color(0xFF7A8A5E),
-  Trait.conscientiousness: Color(0xFF6BB5F6),
-  Trait.neuroticism: Color(0xFF1A548C),
-  Trait.openness: Color(0xFFAEBF92),
+  Trait.extraversion: _Palette.green,
+  Trait.agreeableness: _Palette.coral,
+  Trait.conscientiousness: _Palette.indigo,
+  Trait.neuroticism: _Palette.purple,
+  Trait.openness: _Palette.teal,
 };
 
-/// Accent colours for the six RIASEC interest areas on the Career Aptitude
-/// results screen. Drawn from the app's warm blue/sage palette so the bars sit
-/// comfortably alongside the rest of the design.
+/// Accent colours for the six RIASEC interest areas on the Career results.
 const Map<RiasecArea, Color> kRiasecColors = <RiasecArea, Color>{
-  RiasecArea.realistic: Color(0xFF7A8A5E), // sage
-  RiasecArea.investigative: Color(0xFF3982C6), // blue accent
-  RiasecArea.artistic: Color(0xFFC65B8A), // rose
-  RiasecArea.social: Color(0xFFE8A44A), // amber
-  RiasecArea.enterprising: Color(0xFF1A548C), // dark blue
-  RiasecArea.conventional: Color(0xFF6BB5F6), // light blue
+  RiasecArea.realistic: _Palette.green,
+  RiasecArea.investigative: _Palette.indigo,
+  RiasecArea.artistic: _Palette.rose,
+  RiasecArea.social: _Palette.amber,
+  RiasecArea.enterprising: _Palette.purple,
+  RiasecArea.conventional: _Palette.teal,
 };
 
-/// Accent colours for the four EQ dimensions on the results screen, drawn from
-/// the app's warm blue/sage palette.
+/// Accent colours for the four EQ dimensions on the results screen.
 const Map<EqDimension, Color> kEqColors = <EqDimension, Color>{
-  EqDimension.selfAppraisal: Color(0xFF3982C6), // blue accent
-  EqDimension.othersAppraisal: Color(0xFF7A8A5E), // sage
-  EqDimension.useOfEmotion: Color(0xFFE8A44A), // amber
-  EqDimension.regulation: Color(0xFF1A548C), // dark blue
+  EqDimension.selfAppraisal: _Palette.coral,
+  EqDimension.othersAppraisal: _Palette.green,
+  EqDimension.useOfEmotion: _Palette.amber,
+  EqDimension.regulation: _Palette.indigo,
 };
 
 /// Accent colours for the five love languages on the results screen.
 const Map<LoveLanguage, Color> kLoveColors = <LoveLanguage, Color>{
-  LoveLanguage.wordsOfAffirmation: Color(0xFF3982C6), // blue
-  LoveLanguage.qualityTime: Color(0xFF7A8A5E), // sage
-  LoveLanguage.receivingGifts: Color(0xFFE8A44A), // amber
-  LoveLanguage.actsOfService: Color(0xFF1A548C), // dark blue
-  LoveLanguage.physicalTouch: Color(0xFFC65B8A), // rose
+  LoveLanguage.wordsOfAffirmation: _Palette.rose,
+  LoveLanguage.qualityTime: _Palette.indigo,
+  LoveLanguage.receivingGifts: _Palette.amber,
+  LoveLanguage.actsOfService: _Palette.green,
+  LoveLanguage.physicalTouch: _Palette.purple,
 };
 
 /// Accent colours for the six Goleman leadership styles.
 const Map<LeadershipStyle, Color> kLeadershipColors = <LeadershipStyle, Color>{
-  LeadershipStyle.visionary: Color(0xFF3982C6), // blue
-  LeadershipStyle.coaching: Color(0xFF7A8A5E), // sage
-  LeadershipStyle.affiliative: Color(0xFFC65B8A), // rose
-  LeadershipStyle.democratic: Color(0xFF6BB5F6), // light blue
-  LeadershipStyle.pacesetting: Color(0xFFE8A44A), // amber
-  LeadershipStyle.commanding: Color(0xFF1A548C), // dark blue
+  LeadershipStyle.visionary: _Palette.purple,
+  LeadershipStyle.coaching: _Palette.green,
+  LeadershipStyle.affiliative: _Palette.rose,
+  LeadershipStyle.democratic: _Palette.indigo,
+  LeadershipStyle.pacesetting: _Palette.amber,
+  LeadershipStyle.commanding: _Palette.coral,
 };
 
 /// Accent colours for the four VARK learning modes.
 const Map<LearningStyle, Color> kLearningColors = <LearningStyle, Color>{
-  LearningStyle.visual: Color(0xFF3982C6), // blue
-  LearningStyle.auditory: Color(0xFFE8A44A), // amber
-  LearningStyle.readingWriting: Color(0xFF7A8A5E), // sage
-  LearningStyle.kinesthetic: Color(0xFF1A548C), // dark blue
+  LearningStyle.visual: _Palette.teal,
+  LearningStyle.auditory: _Palette.amber,
+  LearningStyle.readingWriting: _Palette.green,
+  LearningStyle.kinesthetic: _Palette.indigo,
 };
 
-/// Corner radii (`--radius-*`); small controls go fully pill (999px).
+/// Corner-radius hierarchy. Only [pill] is a true stadium shape — badges,
+/// chips and toggles; everything else gets a fixed radius so the UI reads as
+/// deliberate rather than "everything is equally soft."
 abstract final class AppRadii {
   static const double sm = 8;
+
+  /// Inner cards (trait/insight cards nested inside a screen).
   static const double md = 16;
-  static const double lg = 28;
+
+  /// Buttons — a rounded rect, not a stadium.
+  static const double button = 14;
+
+  /// Hero / outer cards.
+  static const double lg = 24;
+
+  /// Badges, chips, toggles.
   static const double pill = 999;
 }
 
@@ -133,27 +172,29 @@ abstract final class Brand {
 
 /// Typography helpers.
 ///
-/// Caprasimo (display) and Figtree (body) carry no Geʽez glyphs, so every style
-/// lists Noto Sans Ethiopic as a fallback — Amharic then renders correctly even
-/// on Latin-primary styles, matching the browser fallback the design relied on.
+/// Sora (display) and Inter (body) carry no Geʽez glyphs, so every style
+/// lists Noto Sans Ethiopic as a fallback — Amharic still renders correctly
+/// on Latin-primary styles.
 abstract final class AppFonts {
   static final String _ethiopic = GoogleFonts.notoSansEthiopic().fontFamily!;
 
-  /// Display / heading style (Caprasimo) with Ethiopic fallback.
+  /// Display / heading style (Sora) with Ethiopic fallback.
   static TextStyle display({
     required double size,
     Color color = AppColors.text,
+    FontWeight weight = FontWeight.w700,
     double? height,
     double letterSpacing = 0,
   }) =>
-      GoogleFonts.caprasimo(
+      GoogleFonts.sora(
         fontSize: size,
         color: color,
+        fontWeight: weight,
         height: height,
         letterSpacing: letterSpacing,
       ).copyWith(fontFamilyFallback: <String>[_ethiopic]);
 
-  /// Body style (Figtree) with Ethiopic fallback.
+  /// Body style (Inter) with Ethiopic fallback.
   static TextStyle body({
     required double size,
     Color color = AppColors.text,
@@ -161,7 +202,7 @@ abstract final class AppFonts {
     double? height,
     double letterSpacing = 0,
   }) =>
-      GoogleFonts.figtree(
+      GoogleFonts.inter(
         fontSize: size,
         color: color,
         fontWeight: weight,
@@ -184,7 +225,7 @@ abstract final class AppFonts {
       );
 }
 
-/// Builds the app's light Organic theme.
+/// Builds the app's light theme.
 ThemeData buildOrganicTheme() {
   final ColorScheme scheme = ColorScheme.fromSeed(
     seedColor: AppColors.accent,
@@ -193,7 +234,7 @@ ThemeData buildOrganicTheme() {
   ).copyWith(
     primary: AppColors.accent,
     secondary: AppColors.accent2,
-    onPrimary: AppColors.bg,
+    onPrimary: AppColors.surface,
     surface: AppColors.bg,
     onSurface: AppColors.text,
   );
@@ -202,7 +243,7 @@ ThemeData buildOrganicTheme() {
     useMaterial3: true,
     colorScheme: scheme,
     scaffoldBackgroundColor: AppColors.bg,
-    textTheme: GoogleFonts.figtreeTextTheme().apply(
+    textTheme: GoogleFonts.interTextTheme().apply(
       bodyColor: AppColors.text,
       displayColor: AppColors.text,
       fontFamilyFallback: <String>[GoogleFonts.notoSansEthiopic().fontFamily!],

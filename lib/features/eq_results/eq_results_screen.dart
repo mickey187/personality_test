@@ -52,7 +52,7 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
     return ShareCardData(
       profileLabel: testById('eq')!.name.resolve(lang),
       headline: '${result.overallPercent}% · $band',
-      headlineColor: AppColors.accent,
+      headlineColor: AppAccents.eq,
       stats: <ShareStat>[
         for (final EqDimension dim in result.ranked)
           ShareStat(
@@ -86,6 +86,7 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
     final l10n = AppLocalizations.of(context);
     final String lang = Localizations.localeOf(context).languageCode;
     final EqResult? result = AppScope.eqResultsOf(context).current;
+    final Color accent = testById('eq')?.color ?? AppColors.accent;
 
     // Deep-linked here without a result — bounce back to the landing screen.
     if (result == null) {
@@ -104,7 +105,7 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
               child: PrimaryPillButton(
                 label: _revealing ? '…' : l10n.seeResultButton,
                 icon: Icons.visibility_rounded,
-                fontSize: 16,
+                color: accent,
                 onPressed: _reveal,
               ),
             ),
@@ -123,7 +124,7 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
           child: Column(
             children: <Widget>[
-              Align(
+              const Align(
                 alignment: Alignment.centerRight,
                 child: LanguageToggle(),
               ),
@@ -138,52 +139,78 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
                         textAlign: TextAlign.center,
                         style: AppFonts.ethiopic(size: 24),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        l10n.eqResultsSubtitle,
-                        textAlign: TextAlign.center,
-                        style: AppFonts.body(size: 14, color: AppColors.muted),
-                      ),
                       const SizedBox(height: 20),
-                      _OverallHero(
-                        result: result,
-                        bandLabel: _bandLabel(result.overallLevel, l10n),
-                        lang: lang,
-                        l10n: l10n,
+                      ResultHeroCard(
+                        eyebrow: l10n.eqOverallLabel,
+                        headline: Column(
+                          children: <Widget>[
+                            Text(
+                              '${result.overallPercent}%',
+                              style: AppFonts.display(size: 46, color: accent),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              _bandLabel(result.overallLevel, l10n),
+                              style: AppFonts.body(
+                                size: 15,
+                                weight: FontWeight.w700,
+                                color: AppColors.text,
+                              ),
+                            ),
+                          ],
+                        ),
+                        description: kEqOverallContent[result.overallLevel]!.resolve(lang),
                       ),
                       const SizedBox(height: 24),
                       for (int i = 0; i < ranked.length; i++) ...<Widget>[
-                        _DimensionBar(
-                          dimension: ranked[i],
+                        DimensionRow(
+                          label: ranked[i].label(l10n),
                           percent: result.percentFor(ranked[i]),
                           fraction: result.fractionFor(ranked[i]),
-                          l10n: l10n,
+                          color: kEqColors[ranked[i]]!,
                           order: i,
                         ),
                         if (i < ranked.length - 1) const SizedBox(height: 14),
                       ],
-                      const SizedBox(height: 28),
-                      _SectionTitle(l10n.eqStrengthsTitle),
+                      const SizedBox(height: 26),
+                      SectionTitle(l10n.eqStrengthsTitle),
                       const SizedBox(height: 12),
                       for (final EqDimension dim in strengths) ...<Widget>[
-                        _DimensionCard(
-                          text: kEqContent[dim]!
-                              .descriptionFor(result.levelFor(dim))
-                              .resolve(lang),
-                          dimension: dim,
-                          l10n: l10n,
+                        InsightCard(
+                          color: kEqColors[dim]!,
+                          icon: Icons.star_rounded,
+                          label: dim.label(l10n),
+                          children: <Widget>[
+                            Text(
+                              kEqContent[dim]!.descriptionFor(result.levelFor(dim)).resolve(lang),
+                              style: AppFonts.body(
+                                size: 13,
+                                color: AppColors.bodyMuted,
+                                height: 1.5,
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 12),
                       ],
-                      const SizedBox(height: 16),
-                      _SectionTitle(l10n.eqGrowthTitle),
+                      const SizedBox(height: 12),
+                      SectionTitle(l10n.eqGrowthTitle),
                       const SizedBox(height: 12),
                       for (final EqDimension dim in growth) ...<Widget>[
-                        _DimensionCard(
-                          text: kEqContent[dim]!.tip.resolve(lang),
-                          dimension: dim,
-                          l10n: l10n,
+                        InsightCard(
+                          color: kEqColors[dim]!,
                           icon: Icons.tips_and_updates_outlined,
+                          label: dim.label(l10n),
+                          children: <Widget>[
+                            Text(
+                              kEqContent[dim]!.tip.resolve(lang),
+                              style: AppFonts.body(
+                                size: 13,
+                                color: AppColors.bodyMuted,
+                                height: 1.5,
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 12),
                       ],
@@ -205,7 +232,7 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
               PrimaryPillButton(
                 label: l10n.shareButton,
                 icon: Icons.ios_share_rounded,
-                fontSize: 16,
+                color: accent,
                 onPressed: () => context.push(
                   Routes.share,
                   extra: _shareData(result, lang, l10n),
@@ -219,221 +246,6 @@ class _EqResultsScreenState extends State<EqResultsScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-/// The overall EQ score headline: a big percentage, the band label and a
-/// one-line summary of what that band means.
-class _OverallHero extends StatelessWidget {
-  const _OverallHero({
-    required this.result,
-    required this.bandLabel,
-    required this.lang,
-    required this.l10n,
-  });
-
-  final EqResult result;
-  final String bandLabel;
-  final String lang;
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Column(
-        children: <Widget>[
-          Text(
-            l10n.eqOverallLabel,
-            style: AppFonts.body(size: 13, color: AppColors.muted),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            '${result.overallPercent}%',
-            style: AppFonts.display(size: 48, color: AppColors.accent),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            bandLabel,
-            style: AppFonts.body(
-              size: 15,
-              weight: FontWeight.w700,
-              color: AppColors.accentActive,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            kEqOverallContent[result.overallLevel]!.resolve(lang),
-            textAlign: TextAlign.center,
-            style: AppFonts.body(
-              size: 13,
-              color: AppColors.bodyMuted,
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// One EQ dimension as a label + percentage + animated bar.
-class _DimensionBar extends StatelessWidget {
-  const _DimensionBar({
-    required this.dimension,
-    required this.percent,
-    required this.fraction,
-    required this.l10n,
-    required this.order,
-  });
-
-  final EqDimension dimension;
-  final int percent;
-  final double fraction;
-  final AppLocalizations l10n;
-  final int order;
-
-  @override
-  Widget build(BuildContext context) {
-    final Color color = kEqColors[dimension]!;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Flexible(
-              child: Text(
-                dimension.label(l10n),
-                style: AppFonts.body(size: 14, weight: FontWeight.w600),
-              ),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              '$percent%',
-              style: AppFonts.body(
-                size: 14,
-                weight: FontWeight.w700,
-                color: color,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(AppRadii.pill),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: 8,
-                color: AppColors.text.withValues(alpha: 0.08),
-              ),
-              TweenAnimationBuilder<double>(
-                tween: Tween<double>(begin: 0, end: fraction.clamp(0.0, 1.0)),
-                duration: Duration(milliseconds: 800 + order * 100),
-                curve: Curves.easeOutCubic,
-                builder: (BuildContext context, double value, _) {
-                  return FractionallySizedBox(
-                    widthFactor: value,
-                    child: Container(
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: color,
-                        borderRadius: BorderRadius.circular(AppRadii.pill),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// A card for a strength description or a growth tip, keyed by dimension colour.
-class _DimensionCard extends StatelessWidget {
-  const _DimensionCard({
-    required this.text,
-    required this.dimension,
-    required this.l10n,
-    this.icon,
-  });
-
-  final String text;
-  final EqDimension dimension;
-  final AppLocalizations l10n;
-  final IconData? icon;
-
-  @override
-  Widget build(BuildContext context) {
-    final Color color = kEqColors[dimension]!;
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              if (icon != null) ...<Widget>[
-                Icon(icon, size: 16, color: color),
-                const SizedBox(width: 8),
-              ] else ...<Widget>[
-                Container(
-                  width: 10,
-                  height: 10,
-                  decoration:
-                      BoxDecoration(color: color, shape: BoxShape.circle),
-                ),
-                const SizedBox(width: 8),
-              ],
-              Flexible(
-                child: Text(
-                  dimension.label(l10n),
-                  style: AppFonts.body(size: 14, weight: FontWeight.w600),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Text(
-            text,
-            style: AppFonts.body(
-              size: 13,
-              color: AppColors.bodyMuted,
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SectionTitle extends StatelessWidget {
-  const _SectionTitle(this.text);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        text,
-        style: AppFonts.body(size: 16, weight: FontWeight.w700),
       ),
     );
   }

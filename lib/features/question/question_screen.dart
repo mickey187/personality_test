@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../app_scope.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/question.dart';
+import '../../data/models/test_catalog_item.dart';
+import '../../data/test_catalog.dart';
 import '../../domain/career_scoring.dart';
 import '../../domain/eq_scoring.dart';
 import '../../domain/leadership_scoring.dart';
@@ -146,6 +148,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
             final int? selected =
                 _pendingValue ?? session.responseFor(q.id);
             final double progress = session.currentPosition / session.total;
+            final TestCatalogItem? test = testById(session.testId);
+            final Color accent = test?.color ?? AppColors.accent;
 
             return Padding(
               padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
@@ -156,7 +160,23 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      BackChevron(onTap: () => _back(session)),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          BackChevron(onTap: () => _back(session)),
+                          if (test != null) ...<Widget>[
+                            const SizedBox(width: 2),
+                            Text(
+                              test.name.resolve(lang),
+                              style: AppFonts.body(
+                                size: 14,
+                                weight: FontWeight.w600,
+                                color: AppColors.bodyMuted,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
                       Text(
                         l10n.questionProgress(
                           session.currentPosition,
@@ -170,8 +190,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  _ProgressBar(value: progress),
+                  const SizedBox(height: 10),
+                  _ProgressBar(value: progress, color: accent),
                   Expanded(
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
@@ -191,18 +211,25 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       child: Column(
                         key: ValueKey<int>(session.currentIndex),
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           Text(
                             q.text.resolve(lang),
                             textAlign: TextAlign.center,
-                            style: AppFonts.body(
-                              size: 22,
+                            style: AppFonts.display(
+                              size: 21,
                               weight: FontWeight.w600,
-                              height: 1.4,
+                              height: 1.35,
                             ),
                           ),
-                          const SizedBox(height: 32),
-                          ..._buildOptions(l10n, session.testId, selected),
+                          const SizedBox(height: 6),
+                          Text(
+                            l10n.questionMicrocopy,
+                            textAlign: TextAlign.center,
+                            style: AppFonts.body(size: 12.5, color: AppColors.muted),
+                          ),
+                          const SizedBox(height: 28),
+                          ..._buildOptions(l10n, session.testId, selected, accent),
                         ],
                       ),
                     ),
@@ -220,6 +247,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     AppLocalizations l10n,
     String testId,
     int? selected,
+    Color accent,
   ) {
     final List<String> labels = _likertLabels(l10n, testId);
     return <Widget>[
@@ -227,6 +255,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         _LikertOption(
           label: labels[i],
           selected: selected == i + 1,
+          color: accent,
           onTap: () => _select(i + 1),
         ),
         if (i < labels.length - 1) const SizedBox(height: 10),
@@ -236,9 +265,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
 }
 
 class _ProgressBar extends StatelessWidget {
-  const _ProgressBar({required this.value});
+  const _ProgressBar({required this.value, required this.color});
 
   final double value;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -246,19 +276,12 @@ class _ProgressBar extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppRadii.pill),
       child: Stack(
         children: <Widget>[
-          Container(height: 6, color: AppColors.surface),
+          Container(height: 6, color: AppColors.border),
           AnimatedFractionallySizedBox(
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeInOut,
             widthFactor: value.clamp(0.0, 1.0),
-            child: Container(
-              height: 6,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: <Color>[AppColors.accent, AppColors.accentLight],
-                ),
-              ),
-            ),
+            child: Container(height: 6, color: color),
           ),
         ],
       ),
@@ -266,15 +289,20 @@ class _ProgressBar extends StatelessWidget {
   }
 }
 
+/// A radio-style selection row: an outlined circle (filled when selected)
+/// plus the label, in a tinted rounded card — replaces the earlier full-pill
+/// buttons so the flow reads as a considered choice rather than a form.
 class _LikertOption extends StatelessWidget {
   const _LikertOption({
     required this.label,
     required this.selected,
+    required this.color,
     required this.onTap,
   });
 
   final String label;
   final bool selected;
+  final Color color;
   final VoidCallback onTap;
 
   @override
@@ -286,23 +314,43 @@ class _LikertOption extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
-          color: selected ? AppColors.accentTint : AppColors.surface,
-          borderRadius: BorderRadius.circular(AppRadii.pill),
+          color: selected ? color.withValues(alpha: 0.07) : AppColors.surface,
+          borderRadius: BorderRadius.circular(AppRadii.md),
           border: Border.all(
-            color: selected
-                ? AppColors.accent
-                : AppColors.text.withValues(alpha: 0.10),
-            width: 2,
+            color: selected ? color : AppColors.border,
+            width: selected ? 2 : 1,
           ),
         ),
-        child: Text(
-          label,
-          textAlign: TextAlign.center,
-          style: AppFonts.body(
-            size: 15,
-            weight: selected ? FontWeight.w600 : FontWeight.w400,
-            color: selected ? AppColors.accent : AppColors.text,
-          ),
+        child: Row(
+          children: <Widget>[
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              width: 20,
+              height: 20,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: selected ? color : Colors.transparent,
+                border: Border.all(
+                  color: selected ? color : AppColors.muted,
+                  width: 1.6,
+                ),
+              ),
+              child: selected
+                  ? const Icon(Icons.check_rounded, size: 14, color: AppColors.surface)
+                  : null,
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                label,
+                style: AppFonts.body(
+                  size: 15,
+                  weight: selected ? FontWeight.w600 : FontWeight.w400,
+                  color: selected ? AppColors.text : AppColors.bodyMuted,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
