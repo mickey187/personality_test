@@ -29,7 +29,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.wordsOfAffirmation,
     text: LocalizedText(
       en: 'Hearing "I love you" — and why — means a lot to me.',
-      am: '«እወድሃለሁ» እና ለምን እንደሆነ መስማት ለእኔ ብዙ ትርጉም አለው።',
+      am: 'አንድ ሰው እንደሚወደኝ እና ለምን እንደሆነ ሲነግረኝ በጣም ደስ ይለኛል።',
     ),
   ),
   LoveItem(
@@ -37,7 +37,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.qualityTime,
     text: LocalizedText(
       en: 'I feel most loved when someone gives me their undivided attention.',
-      am: 'አንድ ሰው ሙሉ ትኩረቱን ሲሰጠኝ በጣም የመወደድ ስሜት ይሰማኛል።',
+      am: 'አንድ ሰው ሙሉ ትኩረቱን ሲሰጠኝ በጣም እንደተወደድኩ ይሰማኛል።',
     ),
   ),
   LoveItem(
@@ -45,7 +45,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.receivingGifts,
     text: LocalizedText(
       en: 'A thoughtful gift makes me feel truly remembered.',
-      am: 'በጥንቃቄ የተመረጠ ስጦታ በእውነት እንደታሰብኩ ያሰማኛል።',
+      am: 'አስተዋይነት የተሞላበት ስጦታ እንደታሰብኩኝ እንዲሰማኝ ያደርጋል።',
     ),
   ),
   LoveItem(
@@ -53,7 +53,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.actsOfService,
     text: LocalizedText(
       en: 'I feel loved when someone helps me with a task or chore.',
-      am: 'አንድ ሰው በሥራ ወይም በተግባር ሲረዳኝ የመወደድ ስሜት ይሰማኛል።',
+      am: 'አንድ ሰው በሆነ ስራ ወይም ተግባር ሲያግዘኝ እንደተወደድኩ ይሰማኛል።',
     ),
   ),
   LoveItem(
@@ -61,7 +61,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.physicalTouch,
     text: LocalizedText(
       en: 'A hug or a hand on my shoulder makes me feel connected.',
-      am: 'እቅፍ ወይም በትከሻዬ ላይ የተቀመጠ እጅ የመቀራረብ ስሜት ይሰጠኛል።',
+      am: 'እቅፍ ወይም ትከሻዬ ላይ የሚደረግ ንክኪ የቅርበት ስሜት ይፈጥርብኛል።',
     ),
   ),
 
@@ -71,7 +71,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.wordsOfAffirmation,
     text: LocalizedText(
       en: 'Compliments and words of appreciation make my day.',
-      am: 'ምስጋናና የአድናቆት ቃላት ቀኔን ያሳምሩታል።',
+      am: 'ምስጋና እና የአድናቆት ቃላት ቀኔን ያሳምሩታል።',
     ),
   ),
   LoveItem(
@@ -79,7 +79,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.qualityTime,
     text: LocalizedText(
       en: 'Uninterrupted time together means more to me than gifts.',
-      am: 'ሳይቋረጥ አብሮ ማሳለፍ ከስጦታ በላይ ለእኔ ትርጉም አለው።',
+      am: 'ያለ ምንም መረበሽ አብረን የምናሳልፈው ጊዜ ከስጦታ በላይ ዋጋ አለው።',
     ),
   ),
   LoveItem(
@@ -87,7 +87,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.receivingGifts,
     text: LocalizedText(
       en: 'I treasure small tokens that show someone was thinking of me.',
-      am: 'አንድ ሰው እያሰበኝ እንደነበር የሚያሳዩ ትንንሽ ምልክቶችን አከብራለሁ።',
+      am: 'አንድ ሰው እንዳሰበኝ የሚያሳዩ ትናንሽ የማስታወሻ ስጦታዎችን ከፍ አድርጌ እመለከታለሁ።',
     ),
   ),
   LoveItem(
@@ -95,7 +95,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.actsOfService,
     text: LocalizedText(
       en: 'Actions that make my life easier mean more than words.',
-      am: 'ሕይወቴን የሚያቀሉ ተግባራት ከቃላት ይበልጣሉ።',
+      am: 'ህይወቴን የሚያቀሉልኝ ተግባራት ከቃላት በላይ ትርጉም አላቸው።',
     ),
   ),
   LoveItem(
@@ -103,7 +103,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.physicalTouch,
     text: LocalizedText(
       en: 'Physical closeness is how I feel most reassured.',
-      am: 'አካላዊ ቅርበት ከሁሉም በላይ የመረጋጋት ስሜት ይሰጠኛል።',
+      am: 'አካላዊ ቅርበት የመረጋጋት እና የደህንነት ስሜት ይሰጠኛል።',
     ),
   ),
 
@@ -113,7 +113,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.wordsOfAffirmation,
     text: LocalizedText(
       en: 'I feel loved when someone encourages me with their words.',
-      am: 'አንድ ሰው በቃላቱ ሲያበረታታኝ የመወደድ ስሜት ይሰማኛል።',
+      am: 'አንድ ሰው በቃላቱ ሲያበረታታኝ እንደተወደድኩ ይሰማኛል።',
     ),
   ),
   LoveItem(
@@ -121,7 +121,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.qualityTime,
     text: LocalizedText(
       en: 'I feel close to people when we do activities together.',
-      am: 'አብረን ነገሮችን ስንሠራ ከሰዎች ጋር ቅርበት ይሰማኛል።',
+      am: 'ከሰዎች ጋር አብረን የሆነ ነገር ስንሰራ የቅርበት ስሜት ይሰማኛል።',
     ),
   ),
   LoveItem(
@@ -129,7 +129,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.receivingGifts,
     text: LocalizedText(
       en: 'Receiving a present, however small, makes me feel loved.',
-      am: 'ስጦታ መቀበል፣ ትንሽም ቢሆን፣ የመወደድ ስሜት ይሰጠኛል።',
+      am: 'ስጦታ መቀበል፣ ትንሽም ብትሆን፣ እንደተወደድኩ እንዲሰማኝ ያደርጋል።',
     ),
   ),
   LoveItem(
@@ -137,7 +137,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.actsOfService,
     text: LocalizedText(
       en: 'When someone does something practical for me, I feel cared for.',
-      am: 'አንድ ሰው ተግባራዊ የሆነ ነገር ሲያደርግልኝ እንደተከበርኩ ይሰማኛል።',
+      am: 'አንድ ሰው የሚጠቅም ነገር ሲያደርግልኝ እንክብካቤ እንደተደረገልኝ ይሰማኛል።',
     ),
   ),
   LoveItem(
@@ -145,7 +145,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.physicalTouch,
     text: LocalizedText(
       en: 'I feel loved through affectionate touch.',
-      am: 'በፍቅር በተሞላ ንክኪ የመወደድ ስሜት ይሰማኛል።',
+      am: 'ፍቅር የተሞላበት ንክኪ የመወደድ ስሜት ይሰጠኛል።',
     ),
   ),
 
@@ -155,7 +155,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.wordsOfAffirmation,
     text: LocalizedText(
       en: 'A heartfelt note or message makes me feel truly valued.',
-      am: 'ከልብ የመጣ ማስታወሻ ወይም መልእክት በእውነት ዋጋ እንዳለኝ ያሰማኛል።',
+      am: 'ከልብ የተጻፈ ማስታወሻ ወይም መልዕክት ዋጋ እንዳለኝ እንዲሰማኝ ያደርጋል።',
     ),
   ),
   LoveItem(
@@ -163,7 +163,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.qualityTime,
     text: LocalizedText(
       en: 'A deep one-on-one conversation makes me feel cared for.',
-      am: 'ጥልቅ የሆነ የፊት ለፊት ጭውውት ማድረግ እንደተከበርኩ ያሰማኛል።',
+      am: 'ከአንድ ሰው ጋር ብቻ የማደርገው ጥልቅ ውይይት እንክብካቤ እንደተደረገልኝ እንዲሰማኝ ያደርጋል።',
     ),
   ),
   LoveItem(
@@ -171,7 +171,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.receivingGifts,
     text: LocalizedText(
       en: 'The effort behind a gift matters more to me than its price.',
-      am: 'ከስጦታው ዋጋ ይልቅ ከኋላው ያለው ጥረት ለእኔ ይበልጣል።',
+      am: 'ከስጦታው ዋጋ ይልቅ በስተጀርባ ያለው ጥረት ለእኔ ትልቅ ትርጉም አለው።',
     ),
   ),
   LoveItem(
@@ -179,7 +179,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.actsOfService,
     text: LocalizedText(
       en: 'I appreciate it most when people show love by helping out.',
-      am: 'ሰዎች በመርዳት ፍቅራቸውን ሲያሳዩ በጣም አደንቃለሁ።',
+      am: 'ሰዎች ፍቅራቸውን በማገዝ ሲገልጹልኝ በጣም አደንቃለሁ።',
     ),
   ),
   LoveItem(
@@ -187,7 +187,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.physicalTouch,
     text: LocalizedText(
       en: 'Sitting close to someone comforts me.',
-      am: 'ከአንድ ሰው ጋር ተጠግቶ መቀመጥ ያጽናናኛል።',
+      am: 'ከአንድ ሰው አጠገብ ተጠግቶ መቀመጥ የመጽናናት ስሜት ይሰጠኛል።',
     ),
   ),
 
@@ -197,7 +197,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.wordsOfAffirmation,
     text: LocalizedText(
       en: 'Kind, affirming words stay with me for a long time.',
-      am: 'ደግና አበረታች ቃላት ለረዥም ጊዜ ከእኔ ጋር ይቆያሉ።',
+      am: 'ደግ እና አበረታች ቃላት ለረጅም ጊዜ ከአእምሮዬ አይጠፉም።',
     ),
   ),
   LoveItem(
@@ -205,7 +205,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.qualityTime,
     text: LocalizedText(
       en: 'Focused, device-free time together is how I feel connected.',
-      am: 'ከስልክ ነጻ የሆነ ትኩረት የተሞላበት ጊዜ አብሮ ማሳለፍ የመቀራረብ ስሜት ይሰጠኛል።',
+      am: 'ከስልኮችና ሌሎች ረባሾች ርቀን ትኩረት ሰጥተን አብረን ጊዜ ስናሳልፍ የቅርበት ስሜት ይሰማኛል።',
     ),
   ),
   LoveItem(
@@ -213,7 +213,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.receivingGifts,
     text: LocalizedText(
       en: "I keep meaningful gifts because they remind me I'm cared for.",
-      am: 'ትርጉም ያላቸውን ስጦታዎች እይዛቸዋለሁ፣ እንደተወደድኩ ስለሚያስታውሱኝ።',
+      am: 'ትርጉም ያላቸውን ስጦታዎች የምጠብቀው እንክብካቤ እንደተደረገልኝ ስለሚያስታውሱኝ ነው።',
     ),
   ),
   LoveItem(
@@ -221,7 +221,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.actsOfService,
     text: LocalizedText(
       en: 'Someone taking a burden off my plate makes me feel supported.',
-      am: 'አንድ ሰው ሸክሜን ሲያቃልልኝ ድጋፍ እንዳለኝ ይሰማኛል።',
+      am: 'አንድ ሰው ሸክሜን ሲያቀልልኝ ድጋፍ እንደተደረገልኝ ይሰማኛል።',
     ),
   ),
   LoveItem(
@@ -229,7 +229,7 @@ const List<LoveItem> kLoveItems = <LoveItem>[
     language: LoveLanguage.physicalTouch,
     text: LocalizedText(
       en: 'A warm embrace can lift my mood instantly.',
-      am: 'ሞቅ ያለ እቅፍ ስሜቴን ወዲያውኑ ከፍ ያደርገዋል።',
+      am: 'ሞቅ ያለ እቅፍ ስሜቴን በቅጽበት ያነቃቃዋል።',
     ),
   ),
 ];

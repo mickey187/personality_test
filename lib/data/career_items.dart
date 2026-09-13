@@ -4,11 +4,7 @@ import 'models/riasec.dart';
 /// A single Career Aptitude (RIASEC) item: a concrete work activity the user
 /// rates from "Strongly Dislike" to "Strongly Like".
 class CareerItem implements TestItem {
-  const CareerItem({
-    required this.id,
-    required this.area,
-    required this.text,
-  });
+  const CareerItem({required this.id, required this.area, required this.text});
 
   /// 1-based presentation number (only a key — order does not affect scoring).
   @override
@@ -39,7 +35,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.realistic,
     text: LocalizedText(
       en: 'Build kitchen cabinets',
-      am: 'የወጥ ቤት ቁምሳጥኖችን መስራት',
+      am: 'የወጥ ቤት ካቢኔቶችን መገንባት',
     ),
   ),
   CareerItem(
@@ -47,7 +43,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.investigative,
     text: LocalizedText(
       en: 'Study the structure of the human body',
-      am: 'የሰውነት አካል አወቃቀርን ማጥናት',
+      am: 'የሰውነትን አወቃቀር ማጥናት',
     ),
   ),
   CareerItem(
@@ -55,7 +51,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.artistic,
     text: LocalizedText(
       en: 'Write books or plays',
-      am: 'መጽሐፍት ወይም ተውኔቶችን መጻፍ',
+      am: 'መጽሐፍትን ወይም ተውኔቶችን መጻፍ',
     ),
   ),
   CareerItem(
@@ -69,10 +65,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
   CareerItem(
     id: 5,
     area: RiasecArea.enterprising,
-    text: LocalizedText(
-      en: 'Start your own business',
-      am: 'የራስን ንግድ መጀመር',
-    ),
+    text: LocalizedText(en: 'Start your own business', am: 'የራስን ንግድ መጀመር'),
   ),
   CareerItem(
     id: 6,
@@ -95,18 +88,12 @@ const List<CareerItem> kCareerItems = <CareerItem>[
   CareerItem(
     id: 8,
     area: RiasecArea.investigative,
-    text: LocalizedText(
-      en: 'Develop a new medicine',
-      am: 'አዲስ መድኃኒት ማበልጸግ',
-    ),
+    text: LocalizedText(en: 'Develop a new medicine', am: 'አዲስ መድኃኒት ማበልጸግ'),
   ),
   CareerItem(
     id: 9,
     area: RiasecArea.artistic,
-    text: LocalizedText(
-      en: 'Play a musical instrument',
-      am: 'የሙዚቃ መሣሪያ መጫወት',
-    ),
+    text: LocalizedText(en: 'Play a musical instrument', am: 'የሙዚቃ መሣሪያ መጫወት'),
   ),
   CareerItem(
     id: 10,
@@ -119,17 +106,14 @@ const List<CareerItem> kCareerItems = <CareerItem>[
   CareerItem(
     id: 11,
     area: RiasecArea.enterprising,
-    text: LocalizedText(
-      en: 'Manage a retail store',
-      am: 'የችርቻሮ መደብር ማስተዳደር',
-    ),
+    text: LocalizedText(en: 'Manage a retail store', am: 'የችርቻሮ መደብርን ማስተዳደር'),
   ),
   CareerItem(
     id: 12,
     area: RiasecArea.conventional,
     text: LocalizedText(
       en: 'Develop a spreadsheet to track expenses',
-      am: 'ወጪዎችን ለመከታተል ሠንጠረዥ (ስፕሬድሺት) ማዘጋጀት',
+      am: 'ወጪዎችን ለመከታተል ስፕሬድሽት ማዘጋጀት',
     ),
   ),
 
@@ -139,7 +123,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.realistic,
     text: LocalizedText(
       en: 'Drive a truck to deliver packages',
-      am: 'ጭነት ለማድረስ የጭነት መኪና መንዳት',
+      am: 'ጥቅሎችን ለማድረስ የጭነት መኪና መንዳት',
     ),
   ),
   CareerItem(
@@ -147,7 +131,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.investigative,
     text: LocalizedText(
       en: 'Conduct chemical experiments',
-      am: 'የኬሚስትሪ ሙከራዎችን ማካሄድ',
+      am: 'የኬሚካል ሙከራዎችን ማካሄድ',
     ),
   ),
   CareerItem(
@@ -155,7 +139,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.artistic,
     text: LocalizedText(
       en: 'Design artwork for magazines',
-      am: 'ለመጽሔቶች የሥዕል ጥበብ ንድፍ መስራት',
+      am: 'ለመጽሔቶች የሥነ-ጥበብ ሥራዎችን መንደፍ',
     ),
   ),
   CareerItem(
@@ -163,7 +147,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.social,
     text: LocalizedText(
       en: 'Give career guidance to people',
-      am: 'ለሰዎች የሙያ ምክር መስጠት',
+      am: 'ለሰዎች የሙያ መመሪያ መስጠት',
     ),
   ),
   CareerItem(
@@ -179,7 +163,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.conventional,
     text: LocalizedText(
       en: "Calculate a company's payroll",
-      am: 'የድርጅት የደመወዝ ክፍያ ማስላት',
+      am: 'የአንድን ኩባንያ የደመወዝ ክፍያ ማስላት',
     ),
   ),
 
@@ -189,7 +173,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.realistic,
     text: LocalizedText(
       en: 'Assemble electronic parts',
-      am: 'የኤሌክትሮኒክስ ክፍሎችን መገጣጠም',
+      am: 'የኤሌክትሮኒክስ አካላትን መገጣጠም',
     ),
   ),
   CareerItem(
@@ -197,7 +181,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.investigative,
     text: LocalizedText(
       en: 'Study ways to reduce water pollution',
-      am: 'የውሃ ብክለትን ለመቀነስ መንገዶችን ማጥናት',
+      am: 'የውኃ ብክለትን የሚቀንሱ መንገዶችን ማጥናት',
     ),
   ),
   CareerItem(
@@ -205,7 +189,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.artistic,
     text: LocalizedText(
       en: 'Compose or arrange music',
-      am: 'ሙዚቃ መድረስ ወይም ማቀናበር',
+      am: 'ሙዚቃን መድረስ ወይም ማቀናበር',
     ),
   ),
   CareerItem(
@@ -213,7 +197,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.social,
     text: LocalizedText(
       en: 'Take care of children at a day-care center',
-      am: 'በማዋያ ተቋም ውስጥ ልጆችን መንከባከብ',
+      am: 'በሕጻናት ማቆያ ውስጥ ልጆችን መንከባከብ',
     ),
   ),
   CareerItem(
@@ -229,7 +213,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.conventional,
     text: LocalizedText(
       en: 'Organize and file business records',
-      am: 'የንግድ መዝገቦችን ማደራጀትና መመዝገብ',
+      am: 'የንግድ መዝገቦችን ማደራጀትና በፋይል ማስቀመጥ',
     ),
   ),
 
@@ -239,7 +223,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.realistic,
     text: LocalizedText(
       en: 'Install flooring in houses',
-      am: 'በቤቶች ውስጥ የወለል ንጣፍ መግጠም',
+      am: 'በቤቶች ውስጥ ወለል ማንጠፍ',
     ),
   ),
   CareerItem(
@@ -247,39 +231,33 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.investigative,
     text: LocalizedText(
       en: 'Investigate the cause of a disease',
-      am: 'የበሽታ መንስኤን መመርመር',
+      am: 'የበሽታን መንስኤ መመርመር',
     ),
   ),
   CareerItem(
     id: 27,
     area: RiasecArea.artistic,
-    text: LocalizedText(
-      en: 'Draw pictures or paint',
-      am: 'ሥዕል መሳል ወይም ቀለም መቀባት',
-    ),
+    text: LocalizedText(en: 'Draw pictures or paint', am: 'ስዕሎችን መሳል ወይም መቀባት'),
   ),
   CareerItem(
     id: 28,
     area: RiasecArea.social,
     text: LocalizedText(
       en: 'Help people who have problems with drugs or alcohol',
-      am: 'በዕፅ ወይም በአልኮል ችግር ውስጥ ያሉ ሰዎችን መርዳት',
+      am: 'በአደንዛዥ ዕፅ ወይም በአልኮል ችግር ያለባቸውን ሰዎች መርዳት',
     ),
   ),
   CareerItem(
     id: 29,
     area: RiasecArea.enterprising,
-    text: LocalizedText(
-      en: 'Market a new product',
-      am: 'አዲስ ምርትን ማስተዋወቅ',
-    ),
+    text: LocalizedText(en: 'Market a new product', am: 'አዲስ ምርትን ለገበያ ማቅረብ'),
   ),
   CareerItem(
     id: 30,
     area: RiasecArea.conventional,
     text: LocalizedText(
       en: 'Proofread records or forms',
-      am: 'መዝገቦችን ወይም ቅጾችን ማረም',
+      am: 'መዝገቦችን ወይም ቅጾችን አመሳክሮ ማረም',
     ),
   ),
 
@@ -287,33 +265,27 @@ const List<CareerItem> kCareerItems = <CareerItem>[
   CareerItem(
     id: 31,
     area: RiasecArea.realistic,
-    text: LocalizedText(
-      en: 'Fix a broken engine',
-      am: 'የተበላሸ ሞተር መጠገን',
-    ),
+    text: LocalizedText(en: 'Fix a broken engine', am: 'የተበላሸ ሞተርን መጠገን'),
   ),
   CareerItem(
     id: 32,
     area: RiasecArea.investigative,
     text: LocalizedText(
       en: 'Do research on plants or animals',
-      am: 'ስለ ዕፅዋት ወይም እንስሳት ምርምር ማድረግ',
+      am: 'በእጽዋት ወይም በእንስሳት ላይ ምርምር ማድረግ',
     ),
   ),
   CareerItem(
     id: 33,
     area: RiasecArea.artistic,
-    text: LocalizedText(
-      en: 'Act in a play',
-      am: 'በተውኔት ውስጥ መተወን',
-    ),
+    text: LocalizedText(en: 'Act in a play', am: 'በተውኔት ላይ መተወን'),
   ),
   CareerItem(
     id: 34,
     area: RiasecArea.social,
     text: LocalizedText(
       en: 'Teach an exercise or fitness class',
-      am: 'የአካል ብቃት እንቅስቃሴ ትምህርት ማስተማር',
+      am: 'የአካል ብቃት እንቅስቃሴ ትምህርት መስጠት',
     ),
   ),
   CareerItem(
@@ -321,7 +293,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.enterprising,
     text: LocalizedText(
       en: 'Manage a department within a large company',
-      am: 'በትልቅ ድርጅት ውስጥ አንድ ክፍልን ማስተዳደር',
+      am: 'በትልቅ ኩባንያ ውስጥ ያለን ክፍል ማስተዳደር',
     ),
   ),
   CareerItem(
@@ -329,7 +301,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.conventional,
     text: LocalizedText(
       en: 'Handle a business office’s bookkeeping',
-      am: 'የንግድ ቢሮ የሂሳብ መዝገብ ሥራን ማከናወን',
+      am: 'የአንድን ቢሮ የሒሳብ መዝገብ መያዝ',
     ),
   ),
 
@@ -339,7 +311,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.realistic,
     text: LocalizedText(
       en: 'Operate a machine on a production line',
-      am: 'በማምረቻ መስመር ላይ ማሽን ማንቀሳቀስ',
+      am: 'በማምረቻ መስመር ላይ ማሽንን ማንቀሳቀስ',
     ),
   ),
   CareerItem(
@@ -355,7 +327,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.artistic,
     text: LocalizedText(
       en: 'Write scripts for movies or television',
-      am: 'ለፊልም ወይም ለቴሌቪዥን ድርሰት መጻፍ',
+      am: 'ለፊልሞች ወይም ለቴሌቪዥን ድርሰት መጻፍ',
     ),
   ),
   CareerItem(
@@ -363,7 +335,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.social,
     text: LocalizedText(
       en: 'Assist doctors in treating patients',
-      am: 'ሐኪሞችን በሽተኞችን በማከም ማገዝ',
+      am: 'ሐኪሞችን በሕክምና ወቅት ማገዝ',
     ),
   ),
   CareerItem(
@@ -371,7 +343,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.enterprising,
     text: LocalizedText(
       en: 'Buy and sell stocks and bonds',
-      am: 'የአክሲዮንና የቦንድ ግዢና ሽያጭ ማከናወን',
+      am: 'አክሲዮኖችንና ቦንዶችን መግዛትና መሸጥ',
     ),
   ),
   CareerItem(
@@ -379,7 +351,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.conventional,
     text: LocalizedText(
       en: 'Inventory supplies using a hand-held computer',
-      am: 'በእጅ በሚያዝ ኮምፒውተር ዕቃዎችን መቁጠርና መመዝገብ',
+      am: 'በእጅ በሚያዝ ኮምፒውተር የዕቃ ቆጠራ ማድረግ',
     ),
   ),
 
@@ -387,17 +359,14 @@ const List<CareerItem> kCareerItems = <CareerItem>[
   CareerItem(
     id: 43,
     area: RiasecArea.realistic,
-    text: LocalizedText(
-      en: 'Lay brick or tile',
-      am: 'ጡብ ወይም ንጣፍ (ታይል) መንጠፍ',
-    ),
+    text: LocalizedText(en: 'Lay brick or tile', am: 'ጡብ ወይም ንጣፍ ማንጠፍ'),
   ),
   CareerItem(
     id: 44,
     area: RiasecArea.investigative,
     text: LocalizedText(
       en: 'Work in a science laboratory',
-      am: 'በሳይንስ ላቦራቶሪ ውስጥ መስራት',
+      am: 'በሳይንስ ላብራቶሪ ውስጥ መሥራት',
     ),
   ),
   CareerItem(
@@ -405,7 +374,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.artistic,
     text: LocalizedText(
       en: 'Create special effects for movies',
-      am: 'ለፊልሞች ልዩ ዕይታዎችን (ስፔሻል ኢፌክት) መፍጠር',
+      am: 'ለፊልሞች \'ስፔሻል ኢፌክት\' መፍጠር',
     ),
   ),
   CareerItem(
@@ -413,7 +382,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.social,
     text: LocalizedText(
       en: 'Teach a high-school class',
-      am: 'የሁለተኛ ደረጃ ትምህርት ማስተማር',
+      am: 'በሁለተኛ ደረጃ ትምህርት ቤት ማስተማር',
     ),
   ),
   CareerItem(
@@ -421,7 +390,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.enterprising,
     text: LocalizedText(
       en: 'Give a speech to persuade a group of people',
-      am: 'የሰዎችን ስብስብ ለማሳመን ንግግር ማድረግ',
+      am: 'አንድን ቡድን ለማሳመን ንግግር ማድረግ',
     ),
   ),
   CareerItem(
@@ -429,7 +398,7 @@ const List<CareerItem> kCareerItems = <CareerItem>[
     area: RiasecArea.conventional,
     text: LocalizedText(
       en: 'Stamp, sort, and distribute mail for an organization',
-      am: 'ለድርጅት ደብዳቤዎችን ማህተም ማድረግ፣ መለየትና ማከፋፈል',
+      am: 'ለአንድ ድርጅት ፖስታዎችን ማተም፣ መለየትና ማከፋፈል',
     ),
   ),
 ];

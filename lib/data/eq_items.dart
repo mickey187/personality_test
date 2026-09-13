@@ -42,7 +42,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I have a good understanding of my own emotions.',
-      am: 'የራሴን ስሜቶች በሚገባ እረዳለሁ።',
+      am: 'የራሴን ስሜቶች በደንብ እረዳለሁ።',
     ),
   ),
   EqItem(
@@ -51,7 +51,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: "I am a good observer of other people's emotions.",
-      am: 'የሌሎችን ሰዎች ስሜት በደንብ የማስተውል ሰው ነኝ።',
+      am: 'የሌሎች ሰዎችን ስሜት በደንብ አስተውላለሁ።',
     ),
   ),
   EqItem(
@@ -60,7 +60,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I am a self-motivated person.',
-      am: 'ራሴን የማነሳሳ ሰው ነኝ።',
+      am: 'ራሴን በራሴ አነሳሳለሁ።',
     ),
   ),
   EqItem(
@@ -69,7 +69,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can stay calm and handle difficulties rationally.',
-      am: 'ረጋ ብዬ ችግሮችን በምክንያታዊነት መያዝ እችላለሁ።',
+      am: 'ተረጋግቼ ችግሮችን በምክንያታዊነት መወጣት እችላለሁ።',
     ),
   ),
 
@@ -89,7 +89,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I am sensitive to the feelings and emotions of others.',
-      am: 'ለሌሎች ሰዎች ስሜትና ስሜታዊ ሁኔታ ትኩረት እሰጣለሁ።',
+      am: 'የሌሎች ሰዎች ስሜት በቀላሉ ይገባኛል።',
     ),
   ),
   EqItem(
@@ -98,7 +98,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I always encourage myself to try my best.',
-      am: 'ሁልጊዜ የተቻለኝን እንዳደርግ ራሴን አበረታታለሁ።',
+      am: 'ምርጤን እንድሰራ ራሴን ሁሌም አበረታታለሁ።',
     ),
   ),
   EqItem(
@@ -107,7 +107,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I am quite capable of controlling my own emotions.',
-      am: 'የራሴን ስሜቶች የመቆጣጠር ችሎታ አለኝ።',
+      am: 'የራሴን ስሜቶች በደንብ መቆጣጠር እችላለሁ።',
     ),
   ),
 
@@ -118,7 +118,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I usually know why I feel the way I do.',
-      am: 'ብዙውን ጊዜ ለምን እንደዚያ እንደሚሰማኝ አውቃለሁ።',
+      am: 'አብዛኛውን ጊዜ ለምን እንደተሰማኝ ምክንያቱን አውቃለሁ።',
     ),
   ),
   EqItem(
@@ -127,7 +127,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can tell how people feel from their tone of voice.',
-      am: 'ሰዎች ከድምፃቸው ቃና ምን እንደሚሰማቸው ማወቅ እችላለሁ።',
+      am: 'ከሰዎች የድምፅ ቃና ስሜታቸውን መረዳት እችላለሁ።',
     ),
   ),
   EqItem(
@@ -136,7 +136,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I set goals for myself and do my best to reach them.',
-      am: 'ለራሴ ግቦችን አስቀምጣለሁ፣ ለማሳካትም የተቻለኝን አደርጋለሁ።',
+      am: 'ለራሴ ግቦችን አወጣና እነሱን ለማሳካት የተቻለኝን ሁሉ አደርጋለሁ።',
     ),
   ),
   EqItem(
@@ -145,7 +145,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can calm down quickly when I am very angry.',
-      am: 'በጣም ስቆጣ ቶሎ መረጋጋት እችላለሁ።',
+      am: 'በጣም ስናደድ ቶሎ መረጋጋት እችላለሁ።',
     ),
   ),
 
@@ -156,7 +156,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can tell when my mood begins to change.',
-      am: 'ስሜቴ መለወጥ ሲጀምር ማወቅ እችላለሁ።',
+      am: 'ስሜቴ መቀየር ሲጀምር አውቃለሁ።',
     ),
   ),
   EqItem(
@@ -165,7 +165,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: "I can read people's emotions from their facial expressions.",
-      am: 'የሰዎችን ስሜት ከፊት ገጽታቸው ማንበብ እችላለሁ።',
+      am: 'ከሰዎች የፊት ገጽታ ስሜታቸውን ማንበብ እችላለሁ።',
     ),
   ),
   EqItem(
@@ -174,7 +174,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I use my good moods to keep trying when things get hard.',
-      am: 'ነገሮች ሲከብዱ ጥሩ ስሜቴን ተጠቅሜ መሞከሬን እቀጥላለሁ።',
+      am: 'ነገሮች ሲከብዱ ጥረቴን እንድቀጥል ጥሩ ስሜቴን እጠቀምበታለሁ።',
     ),
   ),
   EqItem(
@@ -183,7 +183,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I have good control over how I express my feelings.',
-      am: 'ስሜቴን በምገልጽበት መንገድ ላይ ጥሩ ቁጥጥር አለኝ።',
+      am: 'ስሜቴን የምገልጽበትን መንገድ በደንብ መቆጣጠር እችላለሁ።',
     ),
   ),
 
@@ -194,7 +194,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I am aware of my emotions as I experience them.',
-      am: 'ስሜቶቼን በሚሰማኝ ጊዜ ወዲያውኑ አውቃቸዋለሁ።',
+      am: 'ስሜቶቼን በሚሰሙኝ ቅጽበት አውቃቸዋለሁ።',
     ),
   ),
   EqItem(
@@ -203,7 +203,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I usually know what my friends feel from their behavior.',
-      am: 'ብዙውን ጊዜ ጓደኞቼ ከባህሪያቸው ምን እንደሚሰማቸው አውቃለሁ።',
+      am: 'አብዛኛውን ጊዜ ከጓደኞቼ ባህሪ ምን እንደሚሰማቸው አውቃለሁ።',
     ),
   ),
   EqItem(
@@ -212,7 +212,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'When I am excited about something, I get much more done.',
-      am: 'በአንድ ነገር ስደሰት በጣም ብዙ ሥራ አከናውናለሁ።',
+      am: 'ስለ አንድ ነገር ስጓጓ ወይም ስደሰት ብዙ ስራዎችን አከናውናለሁ።',
     ),
   ),
   EqItem(
@@ -221,7 +221,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can steady myself soon after something upsetting happens.',
-      am: 'የሚያበሳጭ ነገር ከተከሰተ በኋላ ወዲያውኑ ራሴን ማረጋጋት እችላለሁ።',
+      am: 'የሚያበሳጭ ነገር ካጋጠመኝ በኋላ ቶሎ ራሴን ማረጋጋት እችላለሁ።',
     ),
   ),
 
@@ -232,7 +232,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'I often find it hard to make sense of my own feelings.',
-      am: 'ብዙ ጊዜ የራሴን ስሜቶች ለመረዳት እቸገራለሁ።',
+      am: 'የራሴን ስሜቶች ትርጉም ለመረዳት ብዙ ጊዜ ይከብደኛል።',
     ),
   ),
   EqItem(
@@ -241,7 +241,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'I find it hard to tell when someone is upset.',
-      am: 'አንድ ሰው ተበሳጭቶ ሲኖር ማወቅ ይከብደኛል።',
+      am: 'አንድ ሰው ሲከፋው ወይም ሲበሳጭ ለማወቅ ይከብደኛል።',
     ),
   ),
   EqItem(
@@ -250,7 +250,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'My emotions rarely help me get things done.',
-      am: 'ስሜቶቼ ሥራ እንዳከናውን የሚረዱኝ ጊዜ ጥቂት ነው።',
+      am: 'ስሜቶቼ ስራን ለመስራት ብዙም አይረዱኝም።',
     ),
   ),
   EqItem(
@@ -259,7 +259,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'I lose control of my emotions more often than I would like.',
-      am: 'ከምፈልገው በላይ ብዙ ጊዜ ስሜቴን መቆጣጠር ያቅተኛል።',
+      am: 'ከምፈልገው በላይ ብዙ ጊዜ ስሜቶቼ ከቁጥጥሬ ውጪ ይሆናሉ።',
     ),
   ),
 
@@ -270,7 +270,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'Much of the time I am confused about how I really feel.',
-      am: 'አብዛኛውን ጊዜ በእውነት ምን እንደሚሰማኝ ግራ ይገባኛል።',
+      am: 'አብዛኛውን ጊዜ በትክክል ምን እንደሚሰማኝ ግራ ይገባኛል።',
     ),
   ),
   EqItem(
@@ -279,7 +279,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'I often misread how other people are feeling.',
-      am: 'ብዙ ጊዜ ሌሎች ሰዎች ምን እንደሚሰማቸው በተሳሳተ መንገድ እረዳለሁ።',
+      am: 'የሌሎች ሰዎችን ስሜት አብዛኛውን ጊዜ በተሳሳተ መንገድ እረዳለሁ።',
     ),
   ),
   EqItem(
@@ -297,7 +297,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'Once I get upset, it takes me a long time to settle down.',
-      am: 'አንዴ ከተበሳጨሁ ለመረጋጋት ረዥም ጊዜ ይወስድብኛል።',
+      am: 'አንዴ ከተበሳጨሁ በኋላ ለመረጋጋት ረጅም ጊዜ ይፈጅብኛል።',
     ),
   ),
 
@@ -308,7 +308,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'When something upsets me, I can name the exact emotion.',
-      am: 'የሚያበሳጨኝ ነገር ሲኖር የሚሰማኝን ስሜት በትክክል መሰየም እችላለሁ።',
+      am: 'የሚያስከፋኝ ነገር ሲያጋጥም የተሰማኝን ስሜት በትክክል መሰየም እችላለሁ።',
     ),
   ),
   EqItem(
@@ -317,7 +317,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can sense the mood of a group when I enter a room.',
-      am: 'ወደ ክፍል ስገባ የሰዎቹን ስሜት ማስተዋል እችላለሁ።',
+      am: 'አንድ ክፍል ውስጥ ስገባ የቡድኑን ስሜት መረዳት እችላለሁ።',
     ),
   ),
   EqItem(
@@ -326,7 +326,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can put myself in a positive mood when I need energy.',
-      am: 'ጉልበት ሲያስፈልገኝ ራሴን ወደ አዎንታዊ ስሜት ማስገባት እችላለሁ።',
+      am: 'ጉልበት በሚያስፈልገኝ ጊዜ ራሴን ጥሩ ስሜት ውስጥ ማስገባት እችላለሁ።',
     ),
   ),
   EqItem(
@@ -335,7 +335,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I can keep disruptive emotions in check under pressure.',
-      am: 'በጫና ውስጥም ቢሆን የሚያውኩ ስሜቶችን መቆጣጠር እችላለሁ።',
+      am: 'ጫና ውስጥ ስሆን የሚያውኩ ስሜቶችን መቆጣጠር እችላለሁ።',
     ),
   ),
 
@@ -346,7 +346,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I understand what triggers my strongest emotions.',
-      am: 'ጠንካራ ስሜቶቼን የሚቀሰቅሱትን ነገሮች እረዳለሁ።',
+      am: 'ኃይለኛ ስሜቶቼን ምን እንደሚቀሰቅሳቸው በደንብ እረዳለሁ።',
     ),
   ),
   EqItem(
@@ -364,7 +364,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I motivate myself by imagining a good outcome.',
-      am: 'ጥሩ ውጤት በማሰብ ራሴን አነሳሳለሁ።',
+      am: 'ጥሩ ውጤት እንደሚመጣ በማሰብ ራሴን አነሳሳለሁ።',
     ),
   ),
   EqItem(
@@ -373,7 +373,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'When I am stressed, I can stop it from taking over.',
-      am: 'ውጥረት ሲኖርብኝ እንዳይቆጣጠረኝ ማድረግ እችላለሁ።',
+      am: 'ውጥረት ውስጥ ስሆን ስሜቱ እንዳይቆጣጠረኝ ማድረግ እችላለሁ።',
     ),
   ),
 
@@ -384,7 +384,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: 'I am rarely sure what I am truly feeling.',
-      am: 'በእውነት ምን እንደሚሰማኝ እርግጠኛ የምሆንበት ጊዜ ጥቂት ነው።',
+      am: 'በትክክል ምን እንደሚሰማኝ ብዙ ጊዜ እርግጠኛ አይደለሁም።',
     ),
   ),
   EqItem(
@@ -393,7 +393,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: true,
     text: LocalizedText(
       en: "Other people's body language usually goes over my head.",
-      am: 'የሌሎችን ሰዎች የሰውነት ምልክት ብዙ ጊዜ አልረዳውም።',
+      am: 'የሌሎች ሰዎች የአካል ቋንቋ አብዛኛውን ጊዜ አይገባኝም።',
     ),
   ),
   EqItem(
@@ -402,7 +402,7 @@ const List<EqItem> kEqItems = <EqItem>[
     reverseScored: false,
     text: LocalizedText(
       en: 'I tell myself I am capable when I face a challenge.',
-      am: 'ፈተና ሲገጥመኝ ብቁ እንደሆንኩ ራሴን እነግራለሁ።',
+      am: 'ፈተና ሲያጋጥመኝ \'ይህን ማድረግ እችላለሁ\' ብዬ ለራሴ እነግረዋለሁ።',
     ),
   ),
   EqItem(

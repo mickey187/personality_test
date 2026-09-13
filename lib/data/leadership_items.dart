@@ -29,7 +29,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.visionary,
     text: LocalizedText(
       en: "I naturally paint a clear, inspiring picture of where we're headed.",
-      am: 'ወዴት እያመራን እንደሆነ ግልጽና አነቃቂ ምስል በተፈጥሮ እስላለሁ።',
+      am: 'ወዴት እያመራን እንደሆነ ግልጽ እና አነቃቂ የሆነ ምስልን በተፈጥሮዬ አስቀምጣለሁ።',
     ),
   ),
   LeadershipItem(
@@ -37,7 +37,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.coaching,
     text: LocalizedText(
       en: 'I invest time helping people grow their skills.',
-      am: 'ሰዎች ክህሎታቸውን እንዲያሳድጉ ለመርዳት ጊዜ እሰጣለሁ።',
+      am: 'ሰዎች ክህሎታቸውን እንዲያሳድጉ ለመርዳት ጊዜዬን እሰጣለሁ።',
     ),
   ),
   LeadershipItem(
@@ -45,7 +45,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.affiliative,
     text: LocalizedText(
       en: 'I put people and relationships first.',
-      am: 'ሰዎችንና ግንኙነቶችን አስቀድማለሁ።',
+      am: 'ለሰዎች እና ለግንኙነቶች ቅድሚያ እሰጣለሁ።',
     ),
   ),
   LeadershipItem(
@@ -53,7 +53,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.democratic,
     text: LocalizedText(
       en: 'I make decisions by seeking input from the team.',
-      am: 'ከቡድኑ ሐሳብ በመቀበል ውሳኔ አደርጋለሁ።',
+      am: 'ውሳኔዎችን የምወስነው ከቡድኑ ሀሳብ በመቀበል ነው።',
     ),
   ),
   LeadershipItem(
@@ -61,7 +61,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.pacesetting,
     text: LocalizedText(
       en: 'I set high performance standards and model them myself.',
-      am: 'ከፍተኛ የአፈጻጸም መስፈርት አስቀምጣለሁ በራሴም አሳያለሁ።',
+      am: 'ከፍተኛ የሥራ አፈጻጸም ደረጃዎችን አስቀምጣለሁ፤ እኔም ራሴ አርአያ እሆናለሁ።',
     ),
   ),
   LeadershipItem(
@@ -69,7 +69,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.commanding,
     text: LocalizedText(
       en: 'In a crisis, I take firm control and give clear orders.',
-      am: 'በችግር ጊዜ ጠንካራ ቁጥጥር እወስዳለሁ ግልጽ ትዕዛዞችንም እሰጣለሁ።',
+      am: 'ቀውስ ሲፈጠር ሁኔታውን ተቆጣጥሬ ግልጽ ትዕዛዞችን እሰጣለሁ።',
     ),
   ),
 
@@ -79,7 +79,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.visionary,
     text: LocalizedText(
       en: 'I help people see how their work connects to a bigger purpose.',
-      am: 'ሰዎች ሥራቸው ከትልቅ ዓላማ ጋር እንዴት እንደሚገናኝ እንዲያዩ እረዳለሁ።',
+      am: 'ሰዎች ሥራቸው ከትልቁ ዓላማ ጋር እንዴት እንደሚገናኝ እንዲገነዘቡ እረዳለሁ።',
     ),
   ),
   LeadershipItem(
@@ -87,7 +87,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.coaching,
     text: LocalizedText(
       en: 'I enjoy mentoring others and giving developmental feedback.',
-      am: 'ሌሎችን ማማከርና የእድገት አስተያየት መስጠት ያስደስተኛል።',
+      am: 'ሌሎችን መምከር እና እድገታቸው ላይ ያተኮረ ገንቢ አስተያየት መስጠት ያስደስተኛል።',
     ),
   ),
   LeadershipItem(
@@ -95,7 +95,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.affiliative,
     text: LocalizedText(
       en: 'I work hard to keep the team in harmony.',
-      am: 'ቡድኑ በስምምነት እንዲቆይ ጠንክሬ እሠራለሁ።',
+      am: 'የቡድኑን ስምምነት እና ሰላም ለመጠበቅ ጠንክሬ እሰራለሁ።',
     ),
   ),
   LeadershipItem(
@@ -103,7 +103,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.democratic,
     text: LocalizedText(
       en: "I value everyone's voice before choosing a direction.",
-      am: 'አቅጣጫ ከመምረጤ በፊት የሁሉንም ድምፅ አከብራለሁ።',
+      am: 'አቅጣጫ ከመምረጤ በፊት የሁሉንም ሰው ሀሳብ ከፍ አድርጌ እመለከታለሁ።',
     ),
   ),
   LeadershipItem(
@@ -111,7 +111,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.pacesetting,
     text: LocalizedText(
       en: 'I expect excellence and move quickly to achieve it.',
-      am: 'የላቀ ውጤት እጠብቃለሁ ለማሳካትም በፍጥነት እንቀሳቀሳለሁ።',
+      am: 'የላቀ ውጤት እጠብቃለሁ፤ እሱን ለማሳካትም በፍጥነት እነቀሳቀሳለሁ።',
     ),
   ),
   LeadershipItem(
@@ -119,7 +119,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.commanding,
     text: LocalizedText(
       en: 'I expect people to do what I ask without much debate.',
-      am: 'ሰዎች የምጠይቀውን ብዙ ክርክር ሳይኖር እንዲፈጽሙ እጠብቃለሁ።',
+      am: 'ሰዎች ያልኳቸውን ነገር ብዙ ውይይት ሳያደርጉ እንዲፈጽሙ እጠብቃለሁ።',
     ),
   ),
 
@@ -128,9 +128,10 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     id: 13,
     style: LeadershipStyle.visionary,
     text: LocalizedText(
-      en: 'I lead by setting a compelling direction and letting people find '
+      en:
+          'I lead by setting a compelling direction and letting people find '
           'their way.',
-      am: 'አሳማኝ አቅጣጫ በማስቀመጥና ሰዎች መንገዳቸውን እንዲያገኙ በመፍቀድ እመራለሁ።',
+      am: 'አጓጊ አቅጣጫ አስቀምጬ ሰዎች የራሳቸውን መንገድ እንዲያገኙ በመተው እመራለሁ።',
     ),
   ),
   LeadershipItem(
@@ -138,7 +139,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.coaching,
     text: LocalizedText(
       en: 'I help people identify their strengths and areas to improve.',
-      am: 'ሰዎች ጥንካሬያቸውንና ሊያሻሽሉት የሚገባውን እንዲለዩ እረዳለሁ።',
+      am: 'ሰዎች ጠንካራ ጎናቸውን እና ሊያሻሽሏቸው የሚገቡ ነገሮችን እንዲለዩ እረዳቸዋለሁ።',
     ),
   ),
   LeadershipItem(
@@ -146,7 +147,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.affiliative,
     text: LocalizedText(
       en: "I pay close attention to people's emotional needs.",
-      am: 'ለሰዎች ስሜታዊ ፍላጎት ከፍተኛ ትኩረት እሰጣለሁ።',
+      am: 'ለሰዎች ስሜታዊ ፍላጎቶች ከፍተኛ ትኩረት እሰጣለሁ።',
     ),
   ),
   LeadershipItem(
@@ -154,7 +155,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.democratic,
     text: LocalizedText(
       en: 'I build buy-in by involving people in decisions.',
-      am: 'ሰዎችን በውሳኔ ውስጥ በማሳተፍ ተቀባይነትን እገነባለሁ።',
+      am: 'ሰዎችን በውሳኔ አሰጣጥ ሂደት ውስጥ በማሳተፍ የጋራ ስምምነትን እገነባለሁ።',
     ),
   ),
   LeadershipItem(
@@ -162,7 +163,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.pacesetting,
     text: LocalizedText(
       en: 'I lead by personally demonstrating how things should be done.',
-      am: 'ነገሮች እንዴት መከናወን እንዳለባቸው በራሴ በማሳየት እመራለሁ።',
+      am: 'ነገሮች እንዴት መከናወን እንዳለባቸው እኔ ራሴ በተግባር በማሳየት እመራለሁ።',
     ),
   ),
   LeadershipItem(
@@ -170,7 +171,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.commanding,
     text: LocalizedText(
       en: 'I make quick decisions and direct people decisively.',
-      am: 'ፈጣን ውሳኔ አደርጋለሁ ሰዎችንም በቆራጥነት እመራለሁ።',
+      am: 'ፈጣን ውሳኔዎችን ወስኜ ሰዎችን በቆራጥነት እመራለሁ።',
     ),
   ),
 
@@ -180,16 +181,17 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.visionary,
     text: LocalizedText(
       en: 'I get people excited about a shared long-term goal.',
-      am: 'ሰዎችን ስለ የጋራ የረዥም ጊዜ ግብ አነቃቃለሁ።',
+      am: 'ሰዎችን በጋራ የረጅም ጊዜ ግባችን ላይ እንዲነሳሱ አደርጋለሁ።',
     ),
   ),
   LeadershipItem(
     id: 20,
     style: LeadershipStyle.coaching,
     text: LocalizedText(
-      en: "I care about people's long-term development, not just today's "
+      en:
+          "I care about people's long-term development, not just today's "
           'results.',
-      am: 'ስለ ሰዎች የረዥም ጊዜ እድገት እንጂ ስለ ዛሬ ውጤት ብቻ አላስብም።',
+      am: 'ስለዛሬው ውጤት ብቻ ሳይሆን ስለ ሰዎች የረጅም ጊዜ እድገትም አስባለሁ።',
     ),
   ),
   LeadershipItem(
@@ -197,7 +199,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.affiliative,
     text: LocalizedText(
       en: 'I build trust by being supportive and caring.',
-      am: 'ደጋፊና አሳቢ በመሆን መተማመንን እገነባለሁ።',
+      am: 'ደጋፊ እና አሳቢ በመሆን በሰዎች ዘንድ መተማመንን እገነባለሁ።',
     ),
   ),
   LeadershipItem(
@@ -205,7 +207,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.democratic,
     text: LocalizedText(
       en: 'I trust the group to help find the best path.',
-      am: 'ምርጡን መንገድ ለማግኘት ቡድኑን አምናለሁ።',
+      am: 'የተሻለውን መንገድ ለማግኘት በቡድኑ እተማመናለሁ።',
     ),
   ),
   LeadershipItem(
@@ -213,7 +215,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.pacesetting,
     text: LocalizedText(
       en: 'I push for better, faster results.',
-      am: 'የተሻለና ፈጣን ውጤት እንዲመጣ እገፋፋለሁ።',
+      am: 'ለተሻለ እና ለፈጣን ውጤት እገፋፋለሁ።',
     ),
   ),
   LeadershipItem(
@@ -221,7 +223,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.commanding,
     text: LocalizedText(
       en: "I'm comfortable being the one clearly in charge.",
-      am: 'በግልጽ ኃላፊው መሆን ያመቸኛል።',
+      am: 'በግልጽ ኃላፊነቱን መውሰድ አይከብደኝም።',
     ),
   ),
 
@@ -231,7 +233,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.visionary,
     text: LocalizedText(
       en: 'I focus on the "why" behind what we do, not just the "how".',
-      am: 'በምንሠራው ነገር ላይ «እንዴት» ብቻ ሳይሆን «ለምን» በሚለው ላይ አተኩራለሁ።',
+      am: 'አንድን ነገር \'እንዴት\' እንደምንሰራው ላይ ብቻ ሳይሆን \'ለምን\' እንደምንሰራው ላይ ትኩረት አደርጋለሁ።',
     ),
   ),
   LeadershipItem(
@@ -247,7 +249,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.affiliative,
     text: LocalizedText(
       en: 'I resolve conflict by helping people reconnect.',
-      am: 'ሰዎች እንደገና እንዲቀራረቡ በመርዳት አለመግባባትን እፈታለሁ።',
+      am: 'ሰዎች እንደገና እንዲግባቡ በመርዳት ግጭትን እፈታለሁ።',
     ),
   ),
   LeadershipItem(
@@ -263,7 +265,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.pacesetting,
     text: LocalizedText(
       en: 'I have little patience for poor performance.',
-      am: 'ለደካማ አፈጻጸም ትዕግስት የለኝም።',
+      am: 'ለደካማ የሥራ አፈጻጸም ብዙ ትዕግስት የለኝም።',
     ),
   ),
   LeadershipItem(
@@ -271,7 +273,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.commanding,
     text: LocalizedText(
       en: 'When things go wrong, I step in and take command.',
-      am: 'ነገሮች ሲበላሹ ጣልቃ ገብቼ አመራሩን እወስዳለሁ።',
+      am: 'ነገሮች ሲበላሹ ጣልቃ ገብቼ ሁኔታውን እቆጣጠራለሁ።',
     ),
   ),
 
@@ -281,7 +283,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.visionary,
     text: LocalizedText(
       en: "I inspire others by describing what's possible.",
-      am: 'ሊሆን የሚችለውን በመግለጽ ሌሎችን አነሳሳለሁ።',
+      am: 'ሊሆኑ የሚችሉ ነገሮችን በመግለጽ ሌሎችን አነሳሳለሁ።',
     ),
   ),
   LeadershipItem(
@@ -289,7 +291,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.coaching,
     text: LocalizedText(
       en: 'I delegate challenging tasks to help people stretch and learn.',
-      am: 'ሰዎች እንዲፈተኑና እንዲማሩ ከባድ ሥራዎችን አደራለሁ።',
+      am: 'ሰዎች አቅማቸውን እንዲፈትኑ እና እንዲማሩ ለመርዳት ፈታኝ ሥራዎችን አሳልፌ እሰጣለሁ።',
     ),
   ),
   LeadershipItem(
@@ -297,7 +299,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.affiliative,
     text: LocalizedText(
       en: 'I celebrate people and strengthen team bonds.',
-      am: 'ሰዎችን አከብራለሁ የቡድኑንም ትስስር አጠናክራለሁ።',
+      am: 'የሰዎችን ስኬት አከብራለሁ፤ የቡድን ትስስርንም አጠናክራለሁ።',
     ),
   ),
   LeadershipItem(
@@ -305,7 +307,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.democratic,
     text: LocalizedText(
       en: 'I ask "what do you think?" before deciding.',
-      am: 'ከመወሰኔ በፊት «አንተ ምን ታስባለህ?» እጠይቃለሁ።',
+      am: 'ከመወሰኔ በፊት “ምን ታስባላችሁ?” ብዬ እጠይቃለሁ።',
     ),
   ),
   LeadershipItem(
@@ -313,7 +315,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.pacesetting,
     text: LocalizedText(
       en: 'I drive myself and others hard to hit ambitious targets.',
-      am: 'ከፍ ያሉ ግቦችን ለመምታት ራሴንም ሌሎችንም አበረታታለሁ።',
+      am: 'ከፍ ያሉ ግቦችን ለመምታት እራሴንም ሆነ ሌሎችን ጠንክሬ እገፋለሁ።',
     ),
   ),
   LeadershipItem(
@@ -321,7 +323,7 @@ const List<LeadershipItem> kLeadershipItems = <LeadershipItem>[
     style: LeadershipStyle.commanding,
     text: LocalizedText(
       en: 'I set the rules and expect them to be followed.',
-      am: 'ደንቦችን አስቀምጣለሁ እንዲከበሩም እጠብቃለሁ።',
+      am: 'ደንቦችን አወጣለሁ፤ እንዲከበሩም እጠብቃለሁ።',
     ),
   ),
 ];
