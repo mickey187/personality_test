@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'ad_service.dart';
+
 /// Persistent banner shown at the bottom of every screen. Loads its own
 /// [BannerAd] and renders nothing until it's ready, so a slow/failed load
 /// never leaves a placeholder-sized gap.
@@ -35,6 +37,9 @@ class _BottomBannerAdState extends State<BottomBannerAd> {
   }
 
   Future<void> _load() async {
+    await AdService.instance.init();
+    if (!mounted) return;
+
     final int width = MediaQuery.sizeOf(context).width.truncate();
     final Orientation orientation = MediaQuery.orientationOf(context);
     final AdSize? size = await AdSize

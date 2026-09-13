@@ -24,19 +24,23 @@ class AdService {
   String get _adUnitId =>
       kReleaseMode ? _prodInterstitialId : _testInterstitialId;
 
-  bool _initialized = false;
   InterstitialAd? _interstitial;
+  Future<void>? _initFuture;
 
   /// Runs the UMP consent flow, then initialises the Mobile Ads SDK and
-  /// preloads the interstitial. Safe to call multiple times; never throws to
-  /// the caller.
+  /// preloads the interstitial. Safe to call multiple times — returns the
+  /// same in-flight/completed future — and never throws to the caller.
   ///
   /// Google requires consent to be gathered (EEA/UK/Swiss users) before ads
   /// are requested; `canRequestAds()` reflects that requirement so we never
   /// call `MobileAds.instance.initialize()` ahead of it.
-  Future<void> init() async {
-    if (_initialized) return;
-    _initialized = true;
+  ///
+  /// Callers that load an ad (e.g. [BottomBannerAd]) must await this first:
+  /// loading before `MobileAds.instance.initialize()` completes fails
+  /// without ever reaching AdMob's servers as a request.
+  Future<void> init() => _initFuture ??= _init();
+
+  Future<void> _init() async {
     try {
       await _gatherConsent();
       if (!await ConsentInformation.instance.canRequestAds()) return;
