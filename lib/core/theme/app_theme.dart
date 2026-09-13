@@ -163,7 +163,8 @@ abstract final class Brand {
   static const String profileLabel = 'Big Five Profile';
 
   /// Store CTA printed on the share card / used in share text.
-  static const String storeUrl = 'play.google.com/store/apps/enemanej';
+  static const String storeUrl =
+      'https://play.google.com/store/apps/details?id=com.topnotchtechy.personality_test&pcampaignid=web_share';
 
   static const String citation =
       'Mini-IPIP · Donnellan, Oswald, Baird & Lucas (2006)\n'
