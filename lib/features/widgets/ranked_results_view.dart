@@ -131,7 +131,18 @@ class _RankedResultsViewState extends State<RankedResultsView> {
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
           child: Column(
             children: <Widget>[
-              const Align(alignment: Alignment.centerRight, child: LanguageToggle()),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  QuickIconButton(
+                    icon: Icons.ios_share_rounded,
+                    color: widget.heroColor,
+                    onPressed: () =>
+                        context.push(Routes.share, extra: widget.shareData),
+                  ),
+                  const LanguageToggle(),
+                ],
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -192,22 +203,22 @@ class _RankedResultsViewState extends State<RankedResultsView> {
                           height: 1.5,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 28),
+                      PrimaryPillButton(
+                        label: l10n.shareButton,
+                        icon: Icons.ios_share_rounded,
+                        color: widget.heroColor,
+                        onPressed: () =>
+                            context.push(Routes.share, extra: widget.shareData),
+                      ),
+                      const SizedBox(height: 10),
+                      SecondaryPillButton(
+                        label: l10n.retakeButton,
+                        onPressed: () => _retake(context),
+                      ),
                     ],
                   ),
                 ),
-              ),
-              PrimaryPillButton(
-                label: l10n.shareButton,
-                icon: Icons.ios_share_rounded,
-                color: widget.heroColor,
-                onPressed: () =>
-                    context.push(Routes.share, extra: widget.shareData),
-              ),
-              const SizedBox(height: 10),
-              SecondaryPillButton(
-                label: l10n.retakeButton,
-                onPressed: () => _retake(context),
               ),
             ],
           ),

@@ -198,6 +198,37 @@ class SecondaryPillButton extends StatelessWidget {
   }
 }
 
+/// Small circular tinted icon button — quick access to an action (e.g. share)
+/// that also has a full-size button further down a scrollable results screen.
+class QuickIconButton extends StatelessWidget {
+  const QuickIconButton({
+    super.key,
+    required this.icon,
+    required this.color,
+    required this.onPressed,
+  });
+
+  final IconData icon;
+  final Color color;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: color.withValues(alpha: 0.12),
+      shape: const CircleBorder(),
+      child: InkWell(
+        onTap: onPressed,
+        customBorder: const CircleBorder(),
+        child: Padding(
+          padding: const EdgeInsets.all(9),
+          child: Icon(icon, size: 18, color: color),
+        ),
+      ),
+    );
+  }
+}
+
 /// Small circular-ish back chevron used on the question / share / about headers.
 class BackChevron extends StatelessWidget {
   const BackChevron({super.key, required this.onTap});
