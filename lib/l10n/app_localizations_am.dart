@@ -347,6 +347,26 @@ class AppLocalizationsAm extends AppLocalizations {
   String get learningKinesthetic => 'በተግባር (እንቅስቃሴ)';
 
   @override
+  String get mbtiResultsTitle => 'Your Personality Type';
+
+  @override
+  String get mbtiResultsSubtitle => 'Your four preference pairs';
+
+  @override
+  String get mbtiTypeLabel => 'Your type';
+
+  @override
+  String get mbtiTraitsTitle => 'Your traits';
+
+  @override
+  String get mbtiGrowthTitle => 'Growth tip';
+
+  @override
+  String mbtiShareText(String code, String url) {
+    return 'My personality type is $code — I discovered it with \"Who Am I?\" 🧭 What\'s yours?\n$url';
+  }
+
+  @override
   String get sharePreviewTitle => 'ለማጋራት ይቅረቡ';
 
   @override

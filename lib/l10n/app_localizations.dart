@@ -734,6 +734,42 @@ abstract class AppLocalizations {
   /// **'Kinesthetic'**
   String get learningKinesthetic;
 
+  /// No description provided for @mbtiResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Personality Type'**
+  String get mbtiResultsTitle;
+
+  /// No description provided for @mbtiResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your four preference pairs'**
+  String get mbtiResultsSubtitle;
+
+  /// No description provided for @mbtiTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your type'**
+  String get mbtiTypeLabel;
+
+  /// No description provided for @mbtiTraitsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your traits'**
+  String get mbtiTraitsTitle;
+
+  /// No description provided for @mbtiGrowthTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Growth tip'**
+  String get mbtiGrowthTitle;
+
+  /// No description provided for @mbtiShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'My personality type is {code} — I discovered it with \"Who Am I?\" 🧭 What\'s yours?\n{url}'**
+  String mbtiShareText(String code, String url);
+
   /// No description provided for @sharePreviewTitle.
   ///
   /// In en, this message translates to:

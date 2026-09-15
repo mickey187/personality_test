@@ -6,6 +6,7 @@ import 'state/eq_result_store.dart';
 import 'state/leadership_result_store.dart';
 import 'state/learning_result_store.dart';
 import 'state/love_result_store.dart';
+import 'state/mbti_result_store.dart';
 import 'state/result_store.dart';
 import 'state/test_session.dart';
 
@@ -22,6 +23,7 @@ class AppScope extends InheritedWidget {
     required this.loveResults,
     required this.leadershipResults,
     required this.learningResults,
+    required this.mbtiResults,
     required super.child,
   });
 
@@ -33,6 +35,7 @@ class AppScope extends InheritedWidget {
   final LoveResultStore loveResults;
   final LeadershipResultStore leadershipResults;
   final LearningResultStore learningResults;
+  final MbtiResultStore mbtiResults;
 
   static AppScope _of(BuildContext context) {
     final AppScope? scope = context.getInheritedWidgetOfExactType<AppScope>();
@@ -53,6 +56,8 @@ class AppScope extends InheritedWidget {
       _of(context).leadershipResults;
   static LearningResultStore learningResultsOf(BuildContext context) =>
       _of(context).learningResults;
+  static MbtiResultStore mbtiResultsOf(BuildContext context) =>
+      _of(context).mbtiResults;
 
   @override
   bool updateShouldNotify(AppScope oldWidget) =>
@@ -63,5 +68,6 @@ class AppScope extends InheritedWidget {
       eqResults != oldWidget.eqResults ||
       loveResults != oldWidget.loveResults ||
       leadershipResults != oldWidget.leadershipResults ||
-      learningResults != oldWidget.learningResults;
+      learningResults != oldWidget.learningResults ||
+      mbtiResults != oldWidget.mbtiResults;
 }

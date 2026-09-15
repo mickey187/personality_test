@@ -3,6 +3,7 @@ import 'eq_items.dart';
 import 'leadership_items.dart';
 import 'learning_items.dart';
 import 'love_items.dart';
+import 'mbti_items.dart';
 import 'mini_ipip_items.dart';
 import 'models/question.dart';
 
@@ -23,6 +24,8 @@ List<TestItem> itemsForTest(String testId) {
       return kLeadershipItems;
     case 'learning':
       return kLearningItems;
+    case 'mbti':
+      return kMbtiItems;
     case 'bigfive':
     default:
       return kMiniIpipItems;

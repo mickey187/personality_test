@@ -11,6 +11,7 @@ import '../../domain/eq_scoring.dart';
 import '../../domain/leadership_scoring.dart';
 import '../../domain/learning_scoring.dart';
 import '../../domain/love_scoring.dart';
+import '../../domain/mbti_scoring.dart';
 import '../../domain/scoring.dart';
 import '../../l10n/app_localizations.dart';
 import '../../router/app_router.dart';
@@ -45,6 +46,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       case 'love':
       case 'leadership':
       case 'learning':
+      case 'mbti':
         return <String>[
           l10n.agreeLikert1,
           l10n.agreeLikert2,
@@ -116,6 +118,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
         await AppScope.learningResultsOf(context).complete(result);
         if (!mounted) return;
         context.go(Routes.learningResults);
+      case 'mbti':
+        final result = scoreMbti(session.answers);
+        await AppScope.mbtiResultsOf(context).complete(result);
+        if (!mounted) return;
+        context.go(Routes.mbtiResults);
       default:
         final result = scoreAnswers(session.answers);
         await AppScope.resultsOf(context).complete(result);

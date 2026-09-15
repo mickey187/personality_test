@@ -230,6 +230,52 @@ const List<TestCatalogItem> kTestCatalog = <TestCatalogItem>[
       ),
     ],
   ),
+  TestCatalogItem(
+    id: 'mbti',
+    icon: Icons.psychology_alt_rounded,
+    color: AppAccents.mbti,
+    available: true,
+    // Original items inspired by the public-domain Jungian dichotomy theory,
+    // not a validated/normed instrument — same honesty distinction drawn for
+    // love/leadership/learning above.
+    name: LocalizedText(
+      en: 'Personality Type (Jungian)',
+      am: 'Personality Type (Jungian)',
+    ),
+    category: LocalizedText(en: 'Self-Knowledge', am: 'Self-Knowledge'),
+    description: LocalizedText(
+      en: 'Discover your 4-letter personality type — inspired by Jungian '
+          'personality theory and the four classic preference pairs.',
+      am: 'Discover your 4-letter personality type — inspired by Jungian '
+          'personality theory and the four classic preference pairs.',
+    ),
+    duration: LocalizedText(en: '~5 min', am: '~5 min'),
+    questions: LocalizedText(en: '28 questions', am: '28 questions'),
+    whyItMatters: LocalizedText(
+      en: 'See how you focus your energy, take in information, make '
+          'decisions, and approach the world.',
+      am: 'See how you focus your energy, take in information, make '
+          'decisions, and approach the world.',
+    ),
+    discoverBullets: <LocalizedText>[
+      LocalizedText(
+        en: 'Whether you recharge alone or with others',
+        am: 'Whether you recharge alone or with others',
+      ),
+      LocalizedText(
+        en: 'How you naturally take in information',
+        am: 'How you naturally take in information',
+      ),
+      LocalizedText(
+        en: 'How you tend to make decisions',
+        am: 'How you tend to make decisions',
+      ),
+      LocalizedText(
+        en: 'Your 4-letter personality type',
+        am: 'Your 4-letter personality type',
+      ),
+    ],
+  ),
 ];
 
 /// Looks up a catalog item by [id], or `null` when unknown.

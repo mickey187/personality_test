@@ -5,6 +5,7 @@ import '../../data/models/eq.dart';
 import '../../data/models/leadership.dart';
 import '../../data/models/learning.dart';
 import '../../data/models/love.dart';
+import '../../data/models/mbti.dart';
 import '../../data/models/riasec.dart';
 import '../../data/models/trait.dart';
 
@@ -65,6 +66,7 @@ abstract final class AppAccents {
   static const Color leadership = Color(0xFF7C5CD9); // purple
   static const Color learning = Color(0xFF14A89A); // teal
   static const Color love = Color(0xFFE15B84); // rose
+  static const Color mbti = Color(0xFFD9A441); // gold/amber
 }
 
 /// Curated dimension palette shared by every per-trait/per-area colour map
@@ -131,6 +133,14 @@ const Map<LearningStyle, Color> kLearningColors = <LearningStyle, Color>{
   LearningStyle.auditory: _Palette.amber,
   LearningStyle.readingWriting: _Palette.green,
   LearningStyle.kinesthetic: _Palette.indigo,
+};
+
+/// Accent colours for the four personality-type axes on the results screen.
+const Map<MbtiAxis, Color> kMbtiColors = <MbtiAxis, Color>{
+  MbtiAxis.ei: _Palette.coral,
+  MbtiAxis.sn: _Palette.teal,
+  MbtiAxis.tf: _Palette.purple,
+  MbtiAxis.jp: _Palette.indigo,
 };
 
 /// Corner-radius hierarchy. Only [pill] is a true stadium shape — badges,

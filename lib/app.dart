@@ -13,6 +13,7 @@ import 'state/eq_result_store.dart';
 import 'state/leadership_result_store.dart';
 import 'state/learning_result_store.dart';
 import 'state/love_result_store.dart';
+import 'state/mbti_result_store.dart';
 import 'state/result_store.dart';
 import 'state/test_session.dart';
 
@@ -28,6 +29,7 @@ class WhoAmIApp extends StatelessWidget {
     required this.loveResults,
     required this.leadershipResults,
     required this.learningResults,
+    required this.mbtiResults,
   });
 
   final AppSettings settings;
@@ -38,6 +40,7 @@ class WhoAmIApp extends StatelessWidget {
   final LoveResultStore loveResults;
   final LeadershipResultStore leadershipResults;
   final LearningResultStore learningResults;
+  final MbtiResultStore mbtiResults;
 
   static final GoRouter _router = createAppRouter();
 
@@ -52,6 +55,7 @@ class WhoAmIApp extends StatelessWidget {
       loveResults: loveResults,
       leadershipResults: leadershipResults,
       learningResults: learningResults,
+      mbtiResults: mbtiResults,
       child: ListenableBuilder(
         listenable: settings,
         builder: (BuildContext context, _) {

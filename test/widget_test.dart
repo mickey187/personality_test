@@ -9,6 +9,7 @@ import 'package:personality_test/data/eq_result_repository.dart';
 import 'package:personality_test/data/leadership_result_repository.dart';
 import 'package:personality_test/data/learning_result_repository.dart';
 import 'package:personality_test/data/love_result_repository.dart';
+import 'package:personality_test/data/mbti_result_repository.dart';
 import 'package:personality_test/data/result_repository.dart';
 import 'package:personality_test/state/app_settings.dart';
 import 'package:personality_test/state/career_result_store.dart';
@@ -16,6 +17,7 @@ import 'package:personality_test/state/eq_result_store.dart';
 import 'package:personality_test/state/leadership_result_store.dart';
 import 'package:personality_test/state/learning_result_store.dart';
 import 'package:personality_test/state/love_result_store.dart';
+import 'package:personality_test/state/mbti_result_store.dart';
 import 'package:personality_test/state/result_store.dart';
 import 'package:personality_test/state/test_session.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,6 +43,7 @@ Future<Widget> _buildApp() async {
   final leadershipResults =
       LeadershipResultStore(LeadershipResultRepository(prefs));
   final learningResults = LearningResultStore(LearningResultRepository(prefs));
+  final mbtiResults = MbtiResultStore(MbtiResultRepository(prefs));
   return WhoAmIApp(
     settings: settings,
     session: session,
@@ -50,6 +53,7 @@ Future<Widget> _buildApp() async {
     loveResults: loveResults,
     leadershipResults: leadershipResults,
     learningResults: learningResults,
+    mbtiResults: mbtiResults,
   );
 }
 
@@ -155,6 +159,12 @@ void main() {
   testWidgets('Learning Style test starts a 20-item agree quiz', (tester) async {
     await startTest(tester, 'የመማር ዘዴ');
     expect(find.text('1 / 20'), findsOneWidget);
+    expect(find.text('በጣም እስማማለሁ'), findsOneWidget);
+  });
+
+  testWidgets('Personality Type test starts a 28-item agree quiz', (tester) async {
+    await startTest(tester, 'Personality Type (Jungian)');
+    expect(find.text('1 / 28'), findsOneWidget);
     expect(find.text('በጣም እስማማለሁ'), findsOneWidget);
   });
 }

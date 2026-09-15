@@ -8,6 +8,7 @@ import 'data/eq_result_repository.dart';
 import 'data/leadership_result_repository.dart';
 import 'data/learning_result_repository.dart';
 import 'data/love_result_repository.dart';
+import 'data/mbti_result_repository.dart';
 import 'data/result_repository.dart';
 import 'state/app_settings.dart';
 import 'state/career_result_store.dart';
@@ -15,6 +16,7 @@ import 'state/eq_result_store.dart';
 import 'state/leadership_result_store.dart';
 import 'state/learning_result_store.dart';
 import 'state/love_result_store.dart';
+import 'state/mbti_result_store.dart';
 import 'state/result_store.dart';
 import 'state/test_session.dart';
 
@@ -45,6 +47,9 @@ Future<void> main() async {
   final LearningResultStore learningResults =
       LearningResultStore(LearningResultRepository(prefs));
 
+  final MbtiResultStore mbtiResults =
+      MbtiResultStore(MbtiResultRepository(prefs));
+
   // Kick off AdMob init in the background so it never blocks first paint.
   AdService.instance.init();
 
@@ -58,6 +63,7 @@ Future<void> main() async {
       loveResults: loveResults,
       leadershipResults: leadershipResults,
       learningResults: learningResults,
+      mbtiResults: mbtiResults,
     ),
   );
 }

@@ -154,6 +154,16 @@
   "learningReadingWriting": "Reading / Writing",
   "learningKinesthetic": "Kinesthetic",
 
+  "mbtiResultsTitle": "Your Personality Type",
+  "mbtiResultsSubtitle": "Your four preference pairs",
+  "mbtiTypeLabel": "Your type",
+  "mbtiTraitsTitle": "Your traits",
+  "mbtiGrowthTitle": "Growth tip",
+  "mbtiShareText": "My personality type is {code} — I discovered it with \"Who Am I?\" 🧭 What's yours?\n{url}",
+  "@mbtiShareText": {
+    "placeholders": { "code": { "type": "String" }, "url": { "type": "String" } }
+  },
+
   "sharePreviewTitle": "Share Preview",
   "shareFormatTelegram": "Telegram",
   "shareFormatStories": "Stories",
